@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 社員入力画面 -->
+<shainadd>
+    <swKihon>基本情報</swKihon>
+    <selKaisha>会社</selKaisha>
+    <cdBusho>部署コード</cdBusho>
+    <btnSearchBusho>検索ボタン（部署コード）</btnSearchBusho>
+    <btnDispBusho>表示ボタン（部署コード）</btnDispBusho>
+    <nmBusho>部署名</nmBusho>
+    <cdBushoOya>上位部門コード</cdBushoOya>
+    <btnSearchBushoOya>検索ボタン（上位部門コード）</btnSearchBushoOya>
+    <btnDispBushoOya>表示ボタン（上位部門コード）</btnDispBushoOya>
+    <nmBushoOya>上位部門名</nmBushoOya>
+    <cdShain>社員コード</cdShain>
+    <cdOldShain>旧社員コード</cdOldShain>
+    <nmShainKana>社員名（カナ）</nmShainKana>
+    <nmShain>社員名</nmShain>
+    <nmInei>印影用名称</nmInei>
+    <kbShain>社員区分</kbShain>
+    <kbFruitsKengen>FRUITS権限レベル</kbFruitsKengen>
+    <kbDairi>代理店区分</kbDairi>
+    <cdKankatu>代理店管轄社員</cdKankatu>
+    <btnDispShain>表示ボタン（代理店管轄社員コード）</btnDispShain>
+    <nmKankatu>代理店管轄社員名</nmKankatu>
+    <kbShozokucho>所属長区分</kbShozokucho>
+    <kbMc5Kengen>権限区分</kbMc5Kengen>
+    <fgchkshushoku>申込チェックグループ（就職）</fgchkshushoku>
+    <fgchkkyoiku>申込チェックグループ（教育）</fgchkkyoiku>
+    <kbFgYoshinDairiten>代理店与信超過フラグ区分</kbFgYoshinDairiten>
+    <nmYoshinCommentDairiten>代理店与信超過コメント</nmYoshinCommentDairiten>
+    <fgYukou>有効フラグ</fgYukou>
+    <kbWebKahi>WEB申込可否区分</kbWebKahi>
+</shainadd>

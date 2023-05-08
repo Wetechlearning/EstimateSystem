@@ -1,0 +1,249 @@
+/*@fileOverview 社員一覧画面*/
+/*@name 社員一覧画面css　*/
+/*@author　spr*/
+/*@version 1*/
+/* テーブル仕様 */
+
+/*CSV取込*/
+#swReferCSV::before {
+    content: "CSV取込";
+}
+
+/*データ取込*/
+#nmDataPatn::before {
+    content: "データ取込";
+}
+#nmDataPatn_upload::after {
+    content: "参照...";
+}
+#btnClear_2::before {
+    content: "クリア";
+}
+#btnUpload::before {
+    content: "アップロード";
+}
+#btnDownload_2::before {
+    content: "CSV取込フォーマット";
+}
+
+/*印影用名称取込*/
+#nmDataPatn_3::before {
+    content: "印影用名称取込";
+}
+#nmDataPatn_3_upload::after {
+    content: "参照...";
+}
+#btnClear_4::before {
+    content: "クリア";
+}
+#btnDownload_45::before {
+    content: "ダウンロード";
+}
+#btnUpload_3::before {
+    content: "アップロード";
+}
+#btnDownload_56::before {
+    content: "CSV取込フォーマット";
+}
+
+/*データ取込(事業推進/企業審査 用)*/
+#nmDataPatn_2::before {
+    content: "データ取込(事業推進/企業審査 用)";
+}
+#nmDataPatn_2_upload::after {
+    content: "参照...";
+}
+#btnClear_3::before {
+    content: "クリア";
+}
+#btnDownload_3::before {
+    content: "ダウンロード";
+}
+#btnUpload_2::before {
+    content: "アップロード";
+}
+#btnDownload_4::before {
+    content: "CSV取込フォーマット";
+}
+
+
+/*検索条件*/
+#swSearchJyoken::before {
+    content: "検索条件";
+}
+
+#selKaisha::before {
+    content: "会社";
+}
+
+#cdJigyoMc5::before {
+    content: "事業部コード";
+}
+
+/*部署コード*/
+#cdBusho::before {
+    content: "部署コード";
+}
+#btnSearchBusho::before {
+    content: "検索";
+}
+#btnDispBusho::before {
+    content: "表示";
+}
+
+/*社員コード*/
+#cdShain::before {
+    content: "社員コード";
+}
+
+/*社員名*/
+#nmShain::before {
+    content: "社員名";
+}
+
+/*社員名(カナ)*/
+#nmShainKana::before {
+    content: "社員名(カナ)";
+}
+
+/*社員/代理店*/
+#fgShainDairiten::before {
+    content: "社員/代理店";
+}
+/*社員/代理店-社員*/
+#fgShain::after {
+    content: "社員";
+}
+/*社員/代理店-代理店*/
+#fgDairiten::after {
+    content: "代理店";
+}
+
+/*申込チェックグループ(就職)*/
+#fgchkshushoku::before {
+    content: "申込チェックグループ(就職)";
+}
+/*申込チェックグループ(就職)-権限あり*/
+#fgchkshushokuari::after {
+    content: "権限あり";
+}
+/*申込チェックグループ(就職)-権限なし*/
+#fgchkshushokunashi::after {
+    content: "権限なし";
+}
+
+/*申込チェックグループ(教育)*/
+#fgchkkyoiku::before {
+    content: "申込チェックグループ(教育)";
+}
+/*申込チェックグループ(教育)-権限あり*/
+#fgchkkyoikuari::after {
+    content: "権限あり";
+}
+/*申込チェックグループ(教育)-権限なし*/
+#fgchkkyoikunashi::after {
+    content: "権限なし";
+}
+
+
+/*有効フラグ*/
+#fgYukouMukou::before {
+    content: "有効フラグ";
+}
+/*有効フラグ-有効*/
+#fgYukou::after {
+    content: "有効";
+}
+/*有効フラグ-無効*/
+#fgMukou::after {
+    content: "無効";
+}
+
+
+/* ---検索区分--- */
+/*検索実行ボタン*/
+#btnSearch::before {
+    content: "実行";
+}
+/*ダウンロードボタン*/
+#btnDownload::before {
+    content: "ダウンロード";
+}
+/*条件クリアボタン*/
+#btnClear::before {
+    content: "条件クリア";
+}
+
+
+/* ------検索結果------ */
+#searchResults::before {
+    content: "検索結果";
+}
+
+/*詳細ボタン*/
+#m1BtnDetail::before {
+    content: "詳細";
+}
+
+/*選択ボタン*/
+#btnSelect::before {
+    content: "選択";
+}
+
+/*社員コード＿２*/
+#cdShain_2::before {
+}
+
+/*社員名＿２*/
+#nmShain_2::before {
+
+}
+
+/*部署コード＿２*/
+#cdBusho_2::before {
+
+}
+
+/*部署名＿２*/
+#nmBusho_2::before {
+
+}
+
+/*代理店社員区分名*/
+#nmDairitenShain::before {
+
+}
+/*所属長区分名*/
+#nmShozokuchoKb::before {
+
+}
+/*権限区分名*/
+#nmMc5Kengen::before {
+
+}
+/*有効フラグチェックボックス*/
+#fgDelete::before {
+
+}
+
+/*フッタ*/
+/*現ページ数*/
+#suPageCurrent::before {
+    content: "現ページ数";
+}
+
+/*総ページ数*/
+#suPageAll::before {
+    content: "総ページ数";
+}
+
+/*前頁*/
+#pagePreview::before {
+    content: "前頁";
+}
+
+/*次頁*/
+#pageNext::before {
+    content: "次頁";
+}
+

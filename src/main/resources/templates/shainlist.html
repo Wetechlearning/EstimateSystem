@@ -1,0 +1,366 @@
+<!--@fileOverview 社員一覧画面-->
+<!--@name 社員一覧画面html　-->
+<!--@author　spr-->
+<!--@version 1-->
+
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>社員一覧</title>
+    <!--　テキスト表示　-->
+    <link rel="stylesheet" href="../static/style/shainlist.css" />
+    <!-- 様式 -->
+    <link rel="stylesheet" href="../static/style/common.css" />
+
+</head>
+
+<style>
+    body{
+        background: url("../static/img/back.jpg");
+    }
+
+</style>
+
+<body>
+
+<div>
+    <!-- CSV取込 -->
+    <div>
+        <form>
+            <table>
+                <!-- ヘッド CSV取込 -->
+                <thead>
+                <tr>
+                    <th id="swReferCSV"></th>
+                </tr>
+                </thead>
+
+                <!-- データ取込 -->
+                <tr data-user-input="nmDataPatn">
+                    <td class="input_label"><label id="nmDataPatn"></label></td>
+                    <td>
+                        <!-- 参照ボタン -->
+                        <label id="nmDataPatn_upload" data-file-up="label_file_upload" for="nmDataPatn_input">
+                            <input type="text" data-file-up="text_file_path" disabled>
+                            <input type="file" id="nmDataPatn_input" class="SN5"
+                                   data-file-up="button_file_upload" data-format="00" >
+                        </label>
+                        <!-- クリアボタン -->
+                        <button id="btnClear_2_input" class="B" data-format="00"><label id="btnClear_2"></label></button>
+                        <!-- アップロードボタン -->
+                        <button id="btnUpload_input" class="B" data-format="00"><label id="btnUpload"></label></button>
+                        <!-- 取込結果CSVダウンロードボタン -->
+                        <button id="btnDownload_2_input" class="B" data-format="00"><label id="btnDownload_2"></label></button>
+                    </td>
+                </tr>
+
+                <!-- 印影用名称取込 -->
+                <tr data-user-input="nmDataPatn_3">
+                    <td class="input_label"><label id="nmDataPatn_3"></label></td>
+                    <td>
+                        <!-- 参照ボタン ボックス -->
+                        <label id="nmDataPatn_3_upload" data-file-up="label_file_upload" for="nmDataPatn_3_input">
+                            <input type="text" data-file-up="text_file_path" disabled>
+                            <input type="file" id="nmDataPatn_3_input" class="SN5"
+                                   data-file-up="button_file_upload" data-format="00">
+                        </label>
+                        <!-- クリアボタン -->
+                        <button id="btnClear_4_input" class="B" data-format="00"><label id="btnClear_4"></label></button>
+                        <!-- ダウンロードボタン -->
+                        <button id="btnDownload_45_input" class="B" data-format="00"><label id="btnDownload_45"></label></button>
+                        <!-- アップロードボタン -->
+                        <button id="btnUpload_3_input" class="B" data-format="00"><label id="btnUpload_3"></label></button>
+                        <!-- 取込結果CSVダウンロードボタン -->
+                        <button id="btnDownload_56_input" class="B" data-format="00"><label id="btnDownload_56"></label></button>
+                    </td>
+                </tr>
+
+                <!-- データ取込(事業推進/企業審査 用) -->
+                <tr data-user-input="nmDataPatn_2">
+                    <td class="input_label"><label id="nmDataPatn_2"></label></td>
+                    <td>
+                        <!-- 参照ボタン -->
+                        <label id="nmDataPatn_2_upload" data-file-up="label_file_upload" for="nmDataPatn_2_input">
+                            <input type="text" data-file-up="text_file_path" disabled>
+                            <input type="file" id="nmDataPatn_2_input" class="SN5"
+                                   data-file-up="button_file_upload" data-format="00">
+                        </label>
+                        <!-- クリアボタン -->
+                        <button id="btnClear_3_input" class="B" data-format="00"><label id="btnClear_3"></label></button>
+                        <!-- ダウンロードボタン -->
+                        <button id="btnDownload_3_input" class="B" data-format="00"><label id="btnDownload_3"></label></button>
+                        <!-- アップロードボタン -->
+                        <button id="btnUpload_2_input" class="B" data-format="00"><label id="btnUpload_2"></label></button>
+                        <!-- 取込結果CSVダウンロードボタン -->
+                        <button id="btnDownload_4_input" class="B" data-format="00"><label id="btnDownload_4"></label></button>
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
+
+    <!-- 検索条件 -->
+    <div th:fragment="resultFragment" th:object="${shaInSearch}" id="dataSearch">
+        <form th:action="@{/shaIn/list/search?page=1}" method="post"  id="async-form">
+            <table>
+                <!-- ヘッド 検索条件 -->
+                <thead>
+                <tr>
+                    <th id="swSearchJyoken"></th>
+                </tr>
+                </thead>
+
+                <!-- 会社 -->
+                <tr data-user-input="selKaisha">
+                    <td class="input_label"><label id="selKaisha" for="selKaisha_input"></label></td>
+                    <td>
+                        <select id="selKaisha_input" class="SG" data-format="00" th:field="*{cdKaisha}">
+                            <option value="">選択なし</option>
+                            <option value="0001">0001 マイナビ</option>
+                            <option value="0002">0002 MSC</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <!-- 事業部コード -->
+                <tr data-user-input="cdJigyoMc5">
+                    <td class="input_label"><label id="cdJigyoMc5" for="cdJigyoMc5_input"></label></td>
+                    <td>
+                        <select id="cdJigyoMc5_input" class="SG" data-format="00">
+                            <option value="">選択なし</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <!-- 部署コード -->
+                <tr data-user-input="cdBusho">
+                    <td class="input_label"><label id="cdBusho" for="cdBusho_input"></label></td>
+                    <td>
+                        <input id="cdBusho_input" class="SB">
+                        <!-- 検索ボタン(部署) -->
+                        <button id="btnSearchBusho_input" class="B"><label id="btnSearchBusho"></label></button>
+                        <!-- 表示ボタン(部署) -->
+                        <button id="btnDispBusho_input" class="B"><label id="btnDispBusho"></label></button>
+                        <!-- 部署名 -->
+                        <label id="nmBusho" for="nmBusho_input"></label><input id="nmBusho_input" class="SN5" readonly>
+                    </td>
+                </tr>
+
+                <!-- 社員コード -->
+                <tr data-user-input="cdShain">
+                    <td class="input_label"><label id="cdShain" for="cdShain_input"></label></td>
+                    <td><input id="cdShain_input" class="SB" th:field="*{cdShain}"></td>
+                </tr>
+
+                <!-- 社員名 -->
+                <tr data-user-input="nmShain">
+                    <td class="input_label"><label id="nmShain" for="nmShain_input"></label></td>
+                    <td><input id="nmShain_input" class="SB"></td>
+                </tr>
+
+                <!-- 社員名(カナ) -->
+                <tr data-user-input="nmShainKana">
+                    <td class="input_label"><label id="nmShainKana" for="nmShainKana_input"></label></td>
+                    <td><input id="nmShainKana_input" class="SB"></td>
+                </tr>
+
+                <!-- 社員/代理店 -->
+                <tr data-user-input="fgShainDairiten">
+                    <td class="input_label" id="fgShainDairiten"></td>
+                    <td>
+                        <!-- 社員/代理店-社員 -->
+                        <label id="fgShain" for="fgShain_input">
+                            <input type="checkbox" id="fgShain_input" class="SG" data-format="00"></label>
+                        <!-- 社員/代理店-代理店 -->
+                        <label id="fgDairiten" for="fgDairiten_input">
+                            <input type="checkbox" id="fgDairiten_input" class="SG" data-format="00"></label>
+                    </td>
+                </tr>
+
+                <!-- 申込チェックグループ(就職) -->
+                <tr data-user-input="fgchkshushoku">
+                    <td class="input_label" id="fgchkshushoku"></td>
+                    <td>
+                        <!-- 申込チェックグループ(就職) -権限あり -->
+                        <label id="fgchkshushokuari" for="fgchkshushokuari_input">
+                            <input type="checkbox" id="fgchkshushokuari_input" class="SG" data-format="00"></label>
+                        <!-- 申込チェックグループ(就職) -権限なし -->
+                        <label id="fgchkshushokunashi" for="fgchkshushokunashi_input">
+                            <input type="checkbox" id="fgchkshushokunashi_input" class="SG" data-format="00"></label>
+                    </td>
+                </tr>
+
+                <!-- 申込チェックグループ(教育) -->
+                <tr data-user-input="fgchkkyoiku">
+                    <td class="input_label" id="fgchkkyoiku"></td>
+                    <td>
+                        <!-- 申込チェックグループ(教育) -権限あり -->
+                        <label id="fgchkkyoikuari" for="fgchkkyoikuari_input">
+                            <input type="checkbox" id="fgchkkyoikuari_input" class="SG" data-format="00"></label>
+                        <!-- 申込チェックグループ(教育) -権限なし -->
+                        <label id="fgchkkyoikunashi" for="fgchkkyoikunashi_input">
+                            <input type="checkbox" id="fgchkkyoikunashi_input" class="SG" data-format="00"></label>
+                    </td>
+                </tr>
+
+                <!-- 有効フラグ -->
+                <tr data-user-input="fgYukouMukou">
+                    <td class="input_label" id="fgYukouMukou"></td>
+                    <td>
+                        <!-- 有効フラグ -有効 -->
+                        <label id="fgYukou" for="fgYukou_input">
+                            <input type="checkbox" name="fgYukouMukou" id="fgYukou_input" class="SG" data-format="00"></label>
+                        <!-- 有効フラグ -無効 -->
+                        <label id="fgMukou" for="fgMukou_input">
+                            <input type="checkbox" name="fgYukouMukou" id="fgMukou_input" class="SG" data-format="00"></label>
+                    </td>
+
+                    <td>
+                        <!-- 検索区分 -->
+                        <label id="kbSearch" for="kbSearch_input"></label>
+                        <select id="kbSearch_input" class="SG" data-format="00"></select>
+                        <!-- 検索実行ボタン -->
+                        <button id="btnSearch_input" class="B" data-format="00">
+                            <label id="btnSearch"></label></button >
+                        <!-- ダウンロードボタン -->
+                        <!-- <button id="btnDownload_input" class="B" data-format="00"><label id="btnDownload"></label></button> -->
+                        <!-- 条件クリアボタン -->
+                        <button id="btnClear_input" class="B" data-format="00"><label id="btnClear"></label></button>
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
+
+    <!-- 検索結果 -->
+    <div>
+        <form>
+            <table id="shaIn_data_container" style="display: none; text-align: center">
+                <!-- 検索結果 -->
+                <thead>
+                <tr>
+                    <th id="searchResults"></th>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label></label>
+                    </td>
+
+                    <td>
+                        <label>社員</label>
+                    </td>
+
+                    <td>
+                        <label>部署</label>
+                    </td>
+
+                    <td>
+                        <label>社員/代理店区分</label>
+                    </td>
+
+                    <td>
+                        <label>所属長区分名</label>
+                    </td>
+
+                    <td>
+                        <label>権限区分</label>
+                    </td>
+
+                    <td>
+                        <label>無効</label>
+                    </td>
+                </tr>
+                </thead>
+            </table>
+
+        </form>
+
+        <table>
+            <tr id="shaIn_model" style="display: none;">
+                <td>
+                    <!-- 詳細ボタン -->
+                    <button id="m1BtnDetail_input" class="B" data-format="00">
+                        <label id="m1BtnDetail">詳細</label></button>
+                    <!-- 選択ボタン -->
+                    <button id="btnSelect_input" class="B" data-format="00">
+                        <label id="btnSelect">選択</label></button>
+                </td>
+
+                <!-- 社員 -->
+                <td>
+                    <!-- 社員コード＿２ -->
+                    <span id="cdShain_2_sResult" data-sRmodel="cd_shain" data-sResult="sResult"
+                                 class="SD" data-format="00"></span>
+                    <!-- 社員名＿２ -->
+                    <span id="nmShain_2_sResult"  data-sRmodel="kn_shain" data-sResult="sResult"
+                                  class="SN5" data-format="00"></span>
+                </td>
+
+                <!-- 部署 -->
+                <td>
+                    <!-- 部署コード＿２ -->
+                    <span id="cdBusho_2_sResult" data-sRmodel="cd_busho" data-sResult="sResult"
+                          class="SD" data-format="00"></span>
+                    <!-- 部署名＿２ -->
+                    <span id="nmBusho_2_sResult" data-sRmodel="nmBusho" data-sResult="sResult"
+                                  class="SN5" data-format="00"></span>
+                </td>
+
+                <!-- 代理店社員区分名 -->
+                <td>
+                    <span id="nmDairitenShain_sResult" data-sRmodel="kb_shain" data-sResult="sResult"
+                                  class="SN5" data-format="00"></span>
+                </td>
+
+                <!-- 所属長区分名 -->
+                <td>
+                    <span id="nmShozokuchoKb_sResult" data-sRmodel="kbShozokucho" data-sResult="sResult"
+                                  class="SN5" data-format="00"></span>
+                </td>
+
+                <!-- 権限区分名 -->
+                <td>
+                    <span id="nmMc5Kengen_sResult" data-sRmodel="kb_kengen_mc5" data-sResult="sResult"
+                                  class="SN5" data-format="00" readonly></span>
+                </td>
+
+                <!-- 有効フラグチェックボックス -->
+                <td>
+                    <label><input type="checkbox" id="fgDelete_input" data-sRmodel="fgYukou" data-sResult="sResult"
+                                  class="NA" data-format="10" readonly></label>
+                </td>
+            </tr>
+
+        </table>
+
+
+        <!-- フッタ -->
+        <div class="pagination"></div>
+
+    </div>
+
+
+</div>
+<script th:inline="javascript">
+  let shaInModel = /*[[${shaInModel}]]*/ '';
+  let shaInList = [];
+
+  const itemsPerPage = 10; // 1ページあたりに表示するアイテム数
+  let totalItems = 0; // 全アイテム数
+  let totalPages = 0; // 総ページ数を計算
+  let currentPage = 1; // 現在のページ
+
+  console.log(shaInModel);
+
+</script>
+
+<script th:inline="javascript" th:src="@{/static/js/shainlist.js}"></script>
+</body>
+</html>

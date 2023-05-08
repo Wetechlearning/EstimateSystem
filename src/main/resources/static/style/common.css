@@ -1,0 +1,24 @@
+/* フォーマット */
+.SG {
+
+}
+
+.SB {
+
+}
+
+/* ファイル選択ボックス */
+label[data-file-up="label_file_upload"]::after {
+    font-size: 12px; /* ラベルテキストのサイズを指定する */
+    padding-left: 6px; /* ラベルとテキストの左側の余白を指定する */
+    border-radius: 10px; /* ラベルボックスの角丸を指定する */
+    border: 1px solid #999; /* ラベルの境界線を指定する */
+    background-color: #c8c3ff; /* ラベルの背景色を指定する */
+    cursor: pointer; /* マウスカーソルの形を指定する */
+}
+input[data-file-up="text_file_path"] {
+    width: 400px; /* テキスト入力欄の幅を指定する */
+}
+input[data-file-up="button_file_upload"] {
+    display: none; /* ファイル選択ボタンを非表示にする */
+}

@@ -1,0 +1,128 @@
+/*@fileOverview 社員入力画面*/
+/*@name 社員入力画面css　*/
+/*@author　spr*/
+/*@version 1*/
+
+
+/*基本情報*/
+#swKihon::before {
+    content: "基本情報";
+}
+
+/*会社*/
+#cdKaisha::before {
+    content: "会社:";
+}
+
+/*部署コード*/
+#cdBusho::before {
+    content: "部署コード:";
+}
+#btnSearchBusho::before {
+    content: "検索";
+}
+#btnDispBusho::before {
+    content: "表示";
+}
+
+/*上位部門コード*/
+#cdBushoOya::before {
+    content: "上位部門コード:";
+}
+#btnSearchBushoOya::before {
+    content: "検索";
+}
+#btnDispBushoOya::before {
+    content: "表示";
+}
+
+/*社員コード*/
+#cdShain::before {
+    content: "社員コード:";
+}
+
+/*旧社員コード*/
+#cdOldShain::before {
+    content: "旧社員コード:";
+}
+
+/*社員名（カナ）*/
+#nmShainKana::before {
+    content: "社員名（カナ）:";
+}
+
+/*社員名*/
+#nmShain::before {
+    content: "社員名:";
+}
+
+/*印影用名称*/
+#nmInei::before {
+    content: "印影用名称:";
+}
+
+/*社員区分*/
+#kbShain::before {
+    content: "社員区分:";
+}
+
+/*FRUITS権限レベル*/
+#kbFruitsKengen::before {
+    content: "FRUITS権限レベル:";
+}
+
+/*代理店区分*/
+#kbDairi::before {
+    content: "代理店区分:";
+}
+
+/*代理店管轄社員*/
+#cdKankatu::before {
+    content: "代理店管轄社員:";
+}
+#btnDispShain::before {
+    content: "表示";
+}
+#nmKankatu::before {
+    content: "代理店管轄社員名:";
+}
+
+/*所属長区分*/
+#kbShozokucho::before {
+    content: "所属長区分:";
+}
+
+/*権限区分*/
+#kbMc5Kengen::before {
+    content: "権限区分:";
+}
+
+/*申込チェックグループ（就職）*/
+#fgChkShushoku::before {
+    content: "申込チェックグループ（就職）:";
+}
+
+/*申込チェックグループ（教育）*/
+#fgChkKyoiku::before {
+    content: "申込チェックグループ（教育）:";
+}
+
+/*代理店与信超過フラグ区分*/
+#kbFgYoshinDairiten::before {
+    content: "代理店与信超過フラグ区分:";
+}
+
+/*代理店与信超過コメント*/
+#nmYoshinCommentDairiten::before {
+    content: "代理店与信超過コメント:";
+}
+
+/*有効フラグ*/
+#fgYukou::before {
+    content: "有効フラグ:";
+}
+
+/*WEB申込可否区分*/
+#kbWebKahi::before {
+    content: "WEB申込可否区分:";
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Success</title>
+</head>
+<body>
+<h1>Form Submitted Successfully</h1>
+<p>Thank you for submitting the form.</p>
+<div th:each="element, i : ${shaInSearchList}">
+    <p th:text="${element}" th:id="'element-' + ${i.index}"></p>
+</div>
+
+</body>
+
+<script>
+  const dataList = [];
+  const dataCount = /*[[${shaInSearchList.size()}]]*/ 0;
+  for (let i = 0; i < dataCount; i++) {
+    const element = document.getElementById('element-' + i);
+    if (element) {
+      dataList.push(element.innerText);
+    }
+  }
+  console.log(dataList);
+</script>
+
+</html>
