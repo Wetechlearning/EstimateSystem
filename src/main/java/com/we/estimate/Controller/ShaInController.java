@@ -100,8 +100,6 @@ public class ShaInController {
         shaInSearchResult.setCount(count);
         shaInSearchResult.setData(shaInDataBases);
 
-        System.out.println(shaInSearchCondition);
-
         return shaInSearchResult;
     }
 
