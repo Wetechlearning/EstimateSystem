@@ -26,8 +26,11 @@
 
 <body>
 <div>
-    <form action="#" th:action="@{/shaIn/submit}" th:object="${shaIn}" method="post">
-        <button type="submit">submit</button>
+    <form action="#"
+          th:attr="action=${#strings.contains(mode, 'add')}? '/shaIn/sheet' : '',
+                   action=${#strings.contains(mode, 'sheet')}? '/shaIn/submit' : ''"
+          th:object="${shaIn}" method="post">
+        <button type="submit">保存</button>
 
         <table>
             <!-- ヘッド 基本情報 -->
@@ -41,7 +44,9 @@
             <tr data-user-input="cdKaisha">
                 <td class="input_label"><label id="cdKaisha" for="cdKaisha_input"></label></td>
                 <td>
-                    <select id="cdKaisha_input" class="SG" data-format="00" th:field="*{cdKaisha}">
+                    <select id="cdKaisha_input" class="SG" data-format="00" th:field="*{cdKaisha}"
+                            th:disabled="${#strings.contains(mode, 'sheet')
+                           and not #strings.contains(mode, 'cdKaisha')}">
                         <option value="0001">マイナビ</option>
                         <option value="0002">MSC</option>
                     </select>
@@ -52,14 +57,22 @@
             <tr data-user-input="cdBusho">
                 <td class="input_label"><label id="cdBusho" for="cdBusho_input"></label></td>
                 <td>
-                    <input id="cdBusho_input" class="SB" th:field="${shaIn.cdBusho}">
+                    <input id="cdBusho_input" class="SB" th:field="${shaIn.cdBusho}"
+                           th:disabled="${#strings.contains(mode, 'sheet')
+                           and not #strings.contains(mode, 'cdBusho')}">
                     <!-- 検索ボタン（部署コード） -->
-                    <button id="btnSearchBusho_input" class="B"><label id="btnSearchBusho"></label></button>
+                    <button type="button" id="btnSearchBusho_input" class="B"
+                            th:if="${not #strings.contains(mode, 'sheet')}">
+                        <label id="btnSearchBusho"></label></button>
                     <!-- 表示ボタン（部署コード） -->
-                    <button id="btnDispBusho_input" class="B"><label id="btnDispBusho"></label></button>
+                    <button type="button" id="btnDispBusho_input" class="B"
+                            th:if="${not #strings.contains(mode, 'sheet')}">
+                        <label id="btnDispBusho"></label></button>
                     <!-- 部署名 -->
                     <label id="nmBusho" for="nmBusho_input"></label>
-                    <input id="nmBusho_input" class="SN5" th:field="${shaIn.nmBusho}" readonly>
+                    <input id="nmBusho_input" class="SN5" th:field="${shaIn.nmBusho}" readonly
+                           th:disabled="${#strings.contains(mode, 'sheet')
+                           and not #strings.contains(mode, 'nmBusho')}">
                 </td>
             </tr>
 
@@ -67,52 +80,82 @@
             <tr data-user-input="cdBushoOya">
                 <td class="input_label"><label id="cdBushoOya" for="cdBushoOya_input"></label></td>
                 <td>
-                    <input id="cdBushoOya_input" class="SB">
+                    <input id="cdBushoOya_input" class="SB"
+                           th:disabled="${#strings.contains(mode, 'sheet')
+                           and not #strings.contains(mode, 'cdBushoOya')}">
                     <!-- 検索ボタン（上位部門コード） -->
-                    <button id="btnSearchBushoOya_input" class="B"><label id="btnSearchBushoOya"></label></button>
+                    <button type="button" id="btnSearchBushoOya_input" class="B"
+                            th:if="${not #strings.contains(mode, 'sheet')}">
+                        <label id="btnSearchBushoOya"></label></button>
                     <!-- 表示ボタン（上位部門コード） -->
-                    <button id="btnDispBushoOya_input" class="B"><label id="btnDispBushoOya"></label></button>
+                    <button type="button" id="btnDispBushoOya_input" class="B"
+                            th:if="${not #strings.contains(mode, 'sheet')}">
+                        <label id="btnDispBushoOya"></label></button>
                     <!-- 上位部門名 -->
                     <label id="nmBushoOya" for="nmBushoOya_input"></label>
-                    <input id="nmBushoOya_input" class="SN5" readonly>
+                    <input id="nmBushoOya_input" class="SN5" readonly
+                           th:disabled="${#strings.contains(mode, 'sheet')
+                           and not #strings.contains(mode, 'nmBushoOya')}">
                 </td>
             </tr>
 
             <!-- 社員コード -->
             <tr data-user-input="cdShain">
                 <td class="input_label"><label id="cdShain" for="cdShain_input"></label></td>
-                <td><input id="cdShain_input" class="SB" th:field="${shaIn.cdShain}"></td>
+                <td>
+                    <input id="cdShain_input" class="SB" th:field="${shaIn.cdShain}"
+                           th:disabled="${#strings.contains(mode, 'sheet')
+                           and not #strings.contains(mode, 'cdShain')}">
+                </td>
             </tr>
 
             <!-- 旧社員コード -->
             <tr data-user-input="cdOldShain">
                 <td class="input_label"><label id="cdOldShain" for="cdOldShain_input"></label></td>
-                <td><input id="cdOldShain_input" class="NA" th:field="${shaIn.cdOldShain}"></td>
+                <td>
+                    <input id="cdOldShain_input" class="NA" th:field="${shaIn.cdOldShain}"
+                           th:disabled="${#strings.contains(mode, 'sheet')
+                           and not #strings.contains(mode, 'cdOldShain')}">
+                </td>
             </tr>
 
             <!-- 社員名（カナ） -->
             <tr data-user-input="nmShainKana">
                 <td class="input_label"><label id="nmShainKana" for="nmShainKana_input"></label></td>
-                <td><input id="nmShainKana_input" class="SN3" th:field="${shaIn.knShain}"></td>
+                <td>
+                    <input id="nmShainKana_input" class="SN3" th:field="${shaIn.knShain}"
+                           th:disabled="${#strings.contains(mode, 'sheet')
+                           and not #strings.contains(mode, 'nmShainKana')}">
+                </td>
             </tr>
 
             <!-- 社員名 -->
             <tr data-user-input="nmShain">
                 <td class="input_label"><label id="nmShain" for="nmShain_input"></label></td>
-                <td><input id="nmShain_input" class="SN3" th:field="${shaIn.nmShain}"></td>
+                <td>
+                    <input id="nmShain_input" class="SN3" th:field="${shaIn.nmShain}"
+                           th:disabled="${#strings.contains(mode, 'sheet')
+                           and not #strings.contains(mode, 'nmShain')}">
+                </td>
             </tr>
 
             <!-- 印影用名称 -->
             <tr data-user-input="nmInei">
                 <td class="input_label"><label id="nmInei" for="nmInei_input"></label></td>
-                <td><input id="nmInei_input" class="SN5"></td>
+                <td>
+                    <input id="nmInei_input" class="SN5"
+                           th:disabled="${#strings.contains(mode, 'sheet')
+                           and not #strings.contains(mode, 'nmInei')}">
+                </td>
             </tr>
 
             <!-- 社員区分 -->
             <tr data-user-input="kbShain">
                 <td class="input_label"><label id="kbShain" for="kbShain_input"></label></td>
                 <td>
-                    <select id="kbShain_input" class="SG" th:field="${shaIn.kbShain}">
+                    <select id="kbShain_input" class="SG" th:field="${shaIn.kbShain}"
+                            th:disabled="${#strings.contains(mode, 'sheet')
+                           and not #strings.contains(mode, 'kbShain')}">
                         <option value="1">社員</option>
                         <option value="2">代理店</option>
                     </select>
@@ -123,7 +166,9 @@
             <tr data-user-input="kbFruitsKengen">
                 <td class="input_label"><label id="kbFruitsKengen" for="kbFruitsKengen_input"></label></td>
                 <td>
-                    <select id="kbFruitsKengen_input" class="SG">
+                    <select id="kbFruitsKengen_input" class="SG"
+                            th:disabled="${#strings.contains(mode, 'sheet')
+                           and not #strings.contains(mode, 'kbFruitsKengen')}">
                         <option value="営業社員">営業社員</option>
                         <option value="原価社員">原価社員</option>
                     </select>
@@ -134,7 +179,9 @@
             <tr data-user-input="kbDairi">
                 <td class="input_label"><label id="kbDairi" for="kbDairi_input"></label></td>
                 <td>
-                    <select id="kbDairi_input" class="SG" th:field="${shaIn.kbDairi}">
+                    <select id="kbDairi_input" class="SG" th:field="${shaIn.kbDairi}"
+                            th:disabled="${#strings.contains(mode, 'sheet')
+                           and not #strings.contains(mode, 'kbDairi')}">
                         <option value="1">社員</option>
                         <option value="2">代理店</option>
                     </select>
@@ -145,12 +192,18 @@
             <tr data-user-input="cdKankatu">
                 <td class="input_label"><label id="cdKankatu" for="cdKankatu_input"></label></td>
                 <td>
-                    <input id="cdKankatu_input" class="SB" th:field="${shaIn.cdDairiKankatsu}">
+                    <input id="cdKankatu_input" class="SB" th:field="${shaIn.cdDairiKankatsu}"
+                           th:disabled="${#strings.contains(mode, 'sheet')
+                           and not #strings.contains(mode, 'cdKankatu')}">
                     <!-- 表示ボタン（代理店管轄社員コード） -->
-                    <button id="btnDispShain_input" class="B"><label id="btnDispShain"></label></button>
+                    <button type="button" id="btnDispShain_input" class="B"
+                            th:if="${not #strings.contains(mode, 'sheet')}">
+                        <label id="btnDispShain"></label></button>
                     <!-- 代理店管轄社員名 -->
                     <label id="nmKankatu" for="nmKankatu_input"></label>
-                    <input id="nmKankatu_input" class="SN5" readonly>
+                    <input id="nmKankatu_input" class="SN5" readonly
+                           th:disabled="${#strings.contains(mode, 'sheet')
+                           and not #strings.contains(mode, 'nmKankatu')}">
                 </td>
             </tr>
 
@@ -158,7 +211,9 @@
             <tr data-user-input="kbShozokucho">
                 <td class="input_label"><label id="kbShozokucho" for="kbShozokucho_input"></label></td>
                 <td>
-                    <select id="kbShozokucho_input" class="SD" th:field="${shaIn.kbShozokuMc5}">
+                    <select id="kbShozokucho_input" class="SD" th:field="${shaIn.kbShozokuMc5}"
+                            th:disabled="${#strings.contains(mode, 'sheet')
+                           and not #strings.contains(mode, 'kbShozokucho')}">
                         <option value="0">一般</option>
                         <option value="1">所属長</option>
                     </select>
@@ -169,7 +224,9 @@
             <tr data-user-input="kbMc5Kengen">
                 <td class="input_label"><label id="kbMc5Kengen" for="kbMc5Kengen_input"></label></td>
                 <td>
-                    <select id="kbMc5Kengen_input" class="SG" th:field="${shaIn.kbKengenMc5}">
+                    <select id="kbMc5Kengen_input" class="SG" th:field="${shaIn.kbKengenMc5}"
+                            th:disabled="${#strings.contains(mode, 'sheet')
+                           and not #strings.contains(mode, 'kbMc5Kengen')}">
                         <option value="0">通常</option>
                         <option value="1">なし</option>
                     </select>
@@ -180,7 +237,9 @@
             <tr data-user-input="fgChkShushoku">
                 <td class="input_label"><label id="fgChkShushoku" for="fgChkShushoku_input"></label></td>
                 <td>
-                    <select id="fgChkShushoku_input" class="NA" th:field="${shaIn.fgChkShushoku}">
+                    <select id="fgChkShushoku_input" class="NA" th:field="${shaIn.fgChkShushoku}"
+                            th:disabled="${#strings.contains(mode, 'sheet')
+                           and not #strings.contains(mode, 'fgChkShushoku')}">
                         <option value="0">権限なし</option>
                         <option value="1">権限あり</option>
                     </select>
@@ -191,7 +250,9 @@
             <tr data-user-input="fgChkKyoiku">
                 <td class="input_label"><label id="fgChkKyoiku" for="fgChkKyoiku_input"></label></td>
                 <td>
-                    <select id="fgChkKyoiku_input" class="NA" th:field="${shaIn.fgChkKyoiku}">
+                    <select id="fgChkKyoiku_input" class="NA" th:field="${shaIn.fgChkKyoiku}"
+                            th:disabled="${#strings.contains(mode, 'sheet')
+                           and not #strings.contains(mode, 'fgChkKyoiku')}">
                         <option value="0">権限なし</option>
                         <option value="1">権限あり</option>
                     </select>
@@ -202,7 +263,9 @@
             <tr data-user-input="kbFgYoshinDairiten">
                 <td class="input_label"><label id="kbFgYoshinDairiten" for="kbFgYoshinDairiten_input"></label></td>
                 <td>
-                    <select id="kbFgYoshinDairiten_input" class="SG" th:field="${shaIn.fgYoshinDairiten}">
+                    <select id="kbFgYoshinDairiten_input" class="SG" th:field="${shaIn.fgYoshinDairiten}"
+                            th:disabled="${#strings.contains(mode, 'sheet')
+                           and not #strings.contains(mode, 'kbFgYoshinDairiten')}">
                         <option value="0">超過なし</option>
                         <option value="1">超過あり</option>
                     </select>
@@ -212,15 +275,22 @@
             <!-- 代理店与信超過コメント -->
             <tr data-user-input="nmYoshinCommentDairiten">
                 <td class="input_label"><label id="nmYoshinCommentDairiten" for="nmYoshinCommentDairiten_input"></label></td>
-                <td><textarea id="nmYoshinCommentDairiten_input" class="SN5" cols="75" rows="4" maxlength="300"
-                              th:field="${shaIn.nmYoshinCommentDairiten}"></textarea></td>
+                <td>
+                    <textarea id="nmYoshinCommentDairiten_input" class="SN5" cols="75" rows="4" maxlength="300"
+                              th:field="${shaIn.nmYoshinCommentDairiten}"
+                              th:disabled="${#strings.contains(mode, 'sheet')
+                           and not #strings.contains(mode, 'nmYoshinCommentDairiten')}">
+                    </textarea>
+                </td>
             </tr>
 
             <!-- 有効フラグ -->
             <tr data-user-input="fgYukou">
                 <td class="input_label"><label id="fgYukou" for="fgYukou_input"></label></td>
                 <td>
-                    <select id="fgYukou_input" class="SG">
+                    <select id="fgYukou_input" class="SG"
+                            th:disabled="${#strings.contains(mode, 'sheet')
+                           and not #strings.contains(mode, 'fgYukou')}">
                         <option value="有効">有効</option>
                         <option value="無効">無効</option>
                     </select>
@@ -231,7 +301,9 @@
             <tr data-user-input="kbWebKahi">
                 <td class="input_label"><label id="kbWebKahi" for="kbWebKahi_input"></label></td>
                 <td>
-                    <select id="kbWebKahi_input" class="SG" th:field="${shaIn.kbWebKahi}">
+                    <select id="kbWebKahi_input" class="SG" th:field="${shaIn.kbWebKahi}"
+                            th:disabled="${#strings.contains(mode, 'sheet')
+                           and not #strings.contains(mode, 'kbWebKahi')}">
                         <option value="0">否</option>
                         <option value="1">可</option>
                     </select>

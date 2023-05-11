@@ -28,8 +28,13 @@
 <body>
 
 <div>
+    <form th:action="@{/shaIn/add}" th:method="get"
+          th:if="${#strings.contains(mode, 'reference')}">
+        <button type="submit">新規</button>
+    </form>
+
     <!-- CSV取込 -->
-    <div>
+    <div th:if="${#strings.contains(mode, 'reference')}">
         <form>
             <table>
                 <!-- ヘッド CSV取込 -->
@@ -286,10 +291,12 @@
             <tr id="shaIn_model" style="display: none;">
                 <td>
                     <!-- 詳細ボタン -->
-                    <button id="m1BtnDetail_input" class="B" data-format="00">
+                    <button type="button" id="m1BtnDetail_input" class="B" data-format="00"
+                            th:if="${#strings.contains(mode, 'reference')}">
                         <label id="m1BtnDetail">詳細</label></button>
                     <!-- 選択ボタン -->
-                    <button id="btnSelect_input" class="B" data-format="00">
+                    <button type="button" id="btnSelect_input" class="B" data-format="00"
+                            th:if="${#strings.contains(mode, 'popup')}">
                         <label id="btnSelect">選択</label></button>
                 </td>
 

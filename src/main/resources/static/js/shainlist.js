@@ -5,32 +5,32 @@
 
 console.log(2222222222);
 
-
 // displayUpdate(upload_file)　CSV取込
 // file : 表示が必要なデータ (HTML要素のID)
 function fileUpload(upload_file) {
 
   if (typeof upload_file === "string") {
     const fileElement = document.getElementById(`${upload_file}`);
+    if (fileElement) {
+      // 参照ボタン　イベント　ファイル導入
+      fileElement.addEventListener("change", function () {
+        const file = fileElement.files[0];
+        const reader = new FileReader();
 
-    // 参照ボタン　イベント　ファイル導入
-    fileElement.addEventListener("change", function () {
-      const file = fileElement.files[0];
-      const reader = new FileReader();
+        // フイルム　アップロード
+        reader.readAsText(file);
 
-      // フイルム　アップロード
-      reader.readAsText(file);
+        reader.addEventListener("load", function load_file(upload_file) {
+          console.log(reader.result);
 
-      reader.addEventListener("load", function load_file(upload_file) {
-        console.log(reader.result);
+          // 処理完了 reader(load)イベント削除
+          reader.removeEventListener("load", load_file);
+        });
 
-        // 処理完了 reader(load)イベント削除
-        reader.removeEventListener("load", load_file);
-      });
+      })
 
-    })
-
-  }
+    }
+    }
 
 }
 
