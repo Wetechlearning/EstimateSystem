@@ -31,9 +31,6 @@ public class ShaInController {
     @Autowired
     private ShaInService shaInService;
 
-    public ShaInController() {
-    }
-
     // 社員入力画面
     @GetMapping("/add")
     public String showShaInForm(Model model) {
