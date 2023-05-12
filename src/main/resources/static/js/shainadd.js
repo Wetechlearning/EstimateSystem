@@ -1,5 +1,9 @@
 
-console.log(2222)
+// ------ 検索ポップアップ ------
+// windows
+const width = 850;
+const height = 580;
+
 function openSearchBtn() {
   const openSearchBtn = document.getElementById('btnSearchBusho_input');
 
@@ -22,8 +26,15 @@ function openSearchBtn() {
           console.log(response);
           shaInListPage = await response.text();
 
-          const newWindow = window.open("", "newwin", "width=1200,height=800");
+          // ポップアップ画面
+          const newWindow = window.open("", "", `width=${width},height=${height}`);
           newWindow.document.write(shaInListPage);
+          // 主画面がリロードとき、自動的にポップアップ画面も閉じる
+          window.addEventListener('beforeunload', function() {
+            if (newWindow && !newWindow.closed) {
+              newWindow.close();
+            }
+          });
 
         } else {
           console.error("失败");

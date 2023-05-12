@@ -111,7 +111,7 @@
 
     <!-- 検索条件 -->
     <div th:fragment="resultFragment" th:object="${shaInSearch}" id="dataSearch">
-        <form th:action="@{/shaIn/list/search?page=1}" method="post"  id="async-form">
+        <form th:action="@{/shaIn/list/search(page=1)}" method="post"  id="async-form">
             <table>
                 <!-- ヘッド 検索条件 -->
                 <thead>
@@ -359,7 +359,7 @@
   let shaInModel = /*[[${shaInModel}]]*/ '';
   let shaInList = [];
 
-  const itemsPerPage = 10; // 1ページあたりに表示するアイテム数
+  const itemsPerPage = /*[[${pageCount}]]*/ 10; // 1ページあたりに表示するアイテム数
   let totalItems = 0; // 全アイテム数
   let totalPages = 0; // 総ページ数を計算
   let currentPage = 1; // 現在のページ

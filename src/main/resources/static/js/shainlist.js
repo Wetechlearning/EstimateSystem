@@ -142,6 +142,7 @@ function shaInSearchResult() {
     const url = asyncForm.getAttribute("action");
     const formData = new FormData(asyncForm);
 
+    // ページ数取得、ページ1データ取得
     try {
       const response = await fetch(url, {
         method: "POST",
@@ -202,11 +203,13 @@ function shaInSearchResult() {
       item.appendChild(link);
       pagination.appendChild(item);
 
+      // ページ変更
       item.addEventListener("click", async function(event) {
         event.preventDefault();
 
         const url = event.target.getAttribute("href");
 
+        // 検索データ取得
         try {
           const response = await fetch(url);
 
