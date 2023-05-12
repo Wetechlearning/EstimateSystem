@@ -1,0 +1,1073 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.we.estimate.Mapper.ClientMapper">
+  <resultMap id="BaseResultMap" type="com.we.estimate.Entity.Client">
+    <!--@mbg.generated-->
+    <!--@Table CLIENT-->
+    <id column="CD_CLIENT" jdbcType="DECIMAL" property="cdClient" />
+    <result column="TD_INSERT" jdbcType="TIMESTAMP" property="tdInsert" />
+    <result column="ID_USER_I" jdbcType="VARCHAR" property="idUserI" />
+    <result column="ID_COMPUTER_I" jdbcType="VARCHAR" property="idComputerI" />
+    <result column="ID_PG_I" jdbcType="VARCHAR" property="idPgI" />
+    <result column="TD_UPDATE" jdbcType="TIMESTAMP" property="tdUpdate" />
+    <result column="ID_USER_U" jdbcType="VARCHAR" property="idUserU" />
+    <result column="ID_COMPUTER_U" jdbcType="VARCHAR" property="idComputerU" />
+    <result column="ID_PG_U" jdbcType="VARCHAR" property="idPgU" />
+    <result column="TD_DELETE" jdbcType="TIMESTAMP" property="tdDelete" />
+    <result column="ID_USER_D" jdbcType="VARCHAR" property="idUserD" />
+    <result column="ID_COMPUTER_D" jdbcType="VARCHAR" property="idComputerD" />
+    <result column="ID_PG_D" jdbcType="VARCHAR" property="idPgD" />
+    <result column="FG_DELETE" jdbcType="DECIMAL" property="fgDelete" />
+    <result column="TD_BAT" jdbcType="TIMESTAMP" property="tdBat" />
+    <result column="ID_USER_B" jdbcType="VARCHAR" property="idUserB" />
+    <result column="ID_COMPUTER_B" jdbcType="VARCHAR" property="idComputerB" />
+    <result column="ID_PG_B" jdbcType="VARCHAR" property="idPgB" />
+    <result column="ID_USER_GOD_I" jdbcType="VARCHAR" property="idUserGodI" />
+    <result column="ID_USER_GOD_U" jdbcType="VARCHAR" property="idUserGodU" />
+    <result column="ID_USER_GOD_D" jdbcType="VARCHAR" property="idUserGodD" />
+    <result column="ID_USER_GOD_B" jdbcType="VARCHAR" property="idUserGodB" />
+    <result column="KN_CLIENT" jdbcType="CHAR" property="knClient" />
+    <result column="NM_CLIENT" jdbcType="CHAR" property="nmClient" />
+    <result column="NO_YUBIN" jdbcType="DECIMAL" property="noYubin" />
+    <result column="NM_ADDRESS" jdbcType="CHAR" property="nmAddress" />
+    <result column="NO_TEL" jdbcType="CHAR" property="noTel" />
+    <result column="NO_FAX" jdbcType="CHAR" property="noFax" />
+    <result column="NM_CLIENT_BUSHO" jdbcType="CHAR" property="nmClientBusho" />
+    <result column="NM_CLIENT_TANTO" jdbcType="CHAR" property="nmClientTanto" />
+    <result column="CD_GYOSHU" jdbcType="DECIMAL" property="cdGyoshu" />
+    <result column="KB_JOHJOH" jdbcType="DECIMAL" property="kbJohjoh" />
+    <result column="CD_SHOKEN" jdbcType="DECIMAL" property="cdShoken" />
+    <result column="CD_EIGYO_BUSHO" jdbcType="VARCHAR" property="cdEigyoBusho" />
+    <result column="CD_EIGYO_TANTO" jdbcType="VARCHAR" property="cdEigyoTanto" />
+    <result column="KB_TORIHIKI_HONNEN" jdbcType="DECIMAL" property="kbTorihikiHonnen" />
+    <result column="KB_TORIHIKI_ZENNEN" jdbcType="DECIMAL" property="kbTorihikiZennen" />
+    <result column="KB_TORIHIKI_SAKUNEN" jdbcType="DECIMAL" property="kbTorihikiSakunen" />
+    <result column="KB_NYUKIN_KEITAI" jdbcType="DECIMAL" property="kbNyukinKeitai" />
+    <result column="NM_NYUKIN_SITE" jdbcType="DECIMAL" property="nmNyukinSite" />
+    <result column="DT_SHIME" jdbcType="DECIMAL" property="dtShime" />
+    <result column="NM_SEIKYU_TOKKI" jdbcType="CHAR" property="nmSeikyuTokki" />
+    <result column="KB_CLIENT_1" jdbcType="DECIMAL" property="kbClient1" />
+    <result column="KB_CLIENT_2" jdbcType="DECIMAL" property="kbClient2" />
+    <result column="KB_CLIENT_3" jdbcType="DECIMAL" property="kbClient3" />
+    <result column="KB_CLIENT_4" jdbcType="DECIMAL" property="kbClient4" />
+    <result column="KB_JIGYO" jdbcType="DECIMAL" property="kbJigyo" />
+    <result column="NO_YUBIN_7" jdbcType="CHAR" property="noYubin7" />
+    <result column="ID_MAP_KIGYO" jdbcType="DECIMAL" property="idMapKigyo" />
+    <result column="KB_TOROKU_MAE" jdbcType="DECIMAL" property="kbTorokuMae" />
+    <result column="CD_CLIENT_TOROKU_MAE" jdbcType="DECIMAL" property="cdClientTorokuMae" />
+    <result column="CD_SHAIN_DAIRITEN" jdbcType="VARCHAR" property="cdShainDairiten" />
+    <result column="FG_FLAG_1" jdbcType="CHAR" property="fgFlag1" />
+    <result column="FG_FLAG_2" jdbcType="CHAR" property="fgFlag2" />
+    <result column="NM_TOKKI" jdbcType="CHAR" property="nmTokki" />
+    <result column="FG_MINYUKIN" jdbcType="CHAR" property="fgMinyukin" />
+    <result column="FG_JIKO" jdbcType="CHAR" property="fgJiko" />
+    <result column="FG_HIKAZEI" jdbcType="CHAR" property="fgHikazei" />
+    <result column="NM_YOBI" jdbcType="CHAR" property="nmYobi" />
+    <result column="DT_UPDATE" jdbcType="DECIMAL" property="dtUpdate" />
+    <result column="TM_UPDATE" jdbcType="DECIMAL" property="tmUpdate" />
+    <result column="CD_EIGYO_KAISHA" jdbcType="VARCHAR" property="cdEigyoKaisha" />
+    <result column="CD_OLD_CLIENT" jdbcType="DECIMAL" property="cdOldClient" />
+    <result column="KN_KENSAKU_CLIENT" jdbcType="VARCHAR" property="knKensakuClient" />
+    <result column="KN_CLIENT_ZENKAKU" jdbcType="VARCHAR" property="knClientZenkaku" />
+    <result column="FG_HANSHA" jdbcType="DECIMAL" property="fgHansha" />
+    <result column="NM_HANSHA_COMMENT" jdbcType="VARCHAR" property="nmHanshaComment" />
+    <result column="FG_YOSHIN" jdbcType="DECIMAL" property="fgYoshin" />
+    <result column="NM_YOSHIN_COMMENT" jdbcType="VARCHAR" property="nmYoshinComment" />
+    <result column="NM_SEIKYUSHO_INJI_COMMENT" jdbcType="VARCHAR" property="nmSeikyushoInjiComment" />
+    <result column="NO_HANSHA_SHINSA" jdbcType="VARCHAR" property="noHanshaShinsa" />
+    <result column="NM_SEIKYU_MONGON_CL" jdbcType="VARCHAR" property="nmSeikyuMongonCl" />
+    <result column="KB_FURIKOMI_KOZA_HENKO" jdbcType="VARCHAR" property="kbFurikomiKozaHenko" />
+    <result column="CD_FURIKOMI_KOZA" jdbcType="VARCHAR" property="cdFurikomiKoza" />
+    <result column="CD_GINKO_VIRTUAL" jdbcType="VARCHAR" property="cdGinkoVirtual" />
+    <result column="CD_SHITEN_VIRTUAL" jdbcType="VARCHAR" property="cdShitenVirtual" />
+    <result column="NO_KOZA_VIRTUAL" jdbcType="VARCHAR" property="noKozaVirtual" />
+    <result column="FG_WEB_KINSHI" jdbcType="DECIMAL" property="fgWebKinshi" />
+    <result column="NM_WEB_KINSHI_COMMENT" jdbcType="VARCHAR" property="nmWebKinshiComment" />
+    <result column="KB_WEB_KAHI" jdbcType="VARCHAR" property="kbWebKahi" />
+    <result column="KB_CLIENT_STATUS" jdbcType="VARCHAR" property="kbClientStatus" />
+    <result column="CD_CLIENT_GROUP" jdbcType="VARCHAR" property="cdClientGroup" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    CD_CLIENT, TD_INSERT, ID_USER_I, ID_COMPUTER_I, ID_PG_I, TD_UPDATE, ID_USER_U, ID_COMPUTER_U, 
+    ID_PG_U, TD_DELETE, ID_USER_D, ID_COMPUTER_D, ID_PG_D, FG_DELETE, TD_BAT, ID_USER_B, 
+    ID_COMPUTER_B, ID_PG_B, ID_USER_GOD_I, ID_USER_GOD_U, ID_USER_GOD_D, ID_USER_GOD_B, 
+    KN_CLIENT, NM_CLIENT, NO_YUBIN, NM_ADDRESS, NO_TEL, NO_FAX, NM_CLIENT_BUSHO, NM_CLIENT_TANTO, 
+    CD_GYOSHU, KB_JOHJOH, CD_SHOKEN, CD_EIGYO_BUSHO, CD_EIGYO_TANTO, KB_TORIHIKI_HONNEN, 
+    KB_TORIHIKI_ZENNEN, KB_TORIHIKI_SAKUNEN, KB_NYUKIN_KEITAI, NM_NYUKIN_SITE, DT_SHIME, 
+    NM_SEIKYU_TOKKI, KB_CLIENT_1, KB_CLIENT_2, KB_CLIENT_3, KB_CLIENT_4, KB_JIGYO, NO_YUBIN_7, 
+    ID_MAP_KIGYO, KB_TOROKU_MAE, CD_CLIENT_TOROKU_MAE, CD_SHAIN_DAIRITEN, FG_FLAG_1, 
+    FG_FLAG_2, NM_TOKKI, FG_MINYUKIN, FG_JIKO, FG_HIKAZEI, NM_YOBI, DT_UPDATE, TM_UPDATE, 
+    CD_EIGYO_KAISHA, CD_OLD_CLIENT, KN_KENSAKU_CLIENT, KN_CLIENT_ZENKAKU, FG_HANSHA, 
+    NM_HANSHA_COMMENT, FG_YOSHIN, NM_YOSHIN_COMMENT, NM_SEIKYUSHO_INJI_COMMENT, NO_HANSHA_SHINSA, 
+    NM_SEIKYU_MONGON_CL, KB_FURIKOMI_KOZA_HENKO, CD_FURIKOMI_KOZA, CD_GINKO_VIRTUAL, 
+    CD_SHITEN_VIRTUAL, NO_KOZA_VIRTUAL, FG_WEB_KINSHI, NM_WEB_KINSHI_COMMENT, KB_WEB_KAHI, 
+    KB_CLIENT_STATUS, CD_CLIENT_GROUP
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from CLIENT
+    where CD_CLIENT = #{cdClient,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from CLIENT
+    where CD_CLIENT = #{cdClient,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.we.estimate.Entity.Client">
+    <!--@mbg.generated-->
+    insert into CLIENT (CD_CLIENT, TD_INSERT, ID_USER_I, 
+      ID_COMPUTER_I, ID_PG_I, TD_UPDATE, 
+      ID_USER_U, ID_COMPUTER_U, ID_PG_U, 
+      TD_DELETE, ID_USER_D, ID_COMPUTER_D, 
+      ID_PG_D, FG_DELETE, TD_BAT, 
+      ID_USER_B, ID_COMPUTER_B, ID_PG_B, 
+      ID_USER_GOD_I, ID_USER_GOD_U, ID_USER_GOD_D, 
+      ID_USER_GOD_B, KN_CLIENT, NM_CLIENT, 
+      NO_YUBIN, NM_ADDRESS, NO_TEL, 
+      NO_FAX, NM_CLIENT_BUSHO, NM_CLIENT_TANTO, 
+      CD_GYOSHU, KB_JOHJOH, CD_SHOKEN, 
+      CD_EIGYO_BUSHO, CD_EIGYO_TANTO, KB_TORIHIKI_HONNEN, 
+      KB_TORIHIKI_ZENNEN, KB_TORIHIKI_SAKUNEN, KB_NYUKIN_KEITAI, 
+      NM_NYUKIN_SITE, DT_SHIME, NM_SEIKYU_TOKKI, 
+      KB_CLIENT_1, KB_CLIENT_2, KB_CLIENT_3, 
+      KB_CLIENT_4, KB_JIGYO, NO_YUBIN_7, 
+      ID_MAP_KIGYO, KB_TOROKU_MAE, CD_CLIENT_TOROKU_MAE, 
+      CD_SHAIN_DAIRITEN, FG_FLAG_1, FG_FLAG_2, 
+      NM_TOKKI, FG_MINYUKIN, FG_JIKO, 
+      FG_HIKAZEI, NM_YOBI, DT_UPDATE, 
+      TM_UPDATE, CD_EIGYO_KAISHA, CD_OLD_CLIENT, 
+      KN_KENSAKU_CLIENT, KN_CLIENT_ZENKAKU, FG_HANSHA, 
+      NM_HANSHA_COMMENT, FG_YOSHIN, NM_YOSHIN_COMMENT, 
+      NM_SEIKYUSHO_INJI_COMMENT, NO_HANSHA_SHINSA, 
+      NM_SEIKYU_MONGON_CL, KB_FURIKOMI_KOZA_HENKO, 
+      CD_FURIKOMI_KOZA, CD_GINKO_VIRTUAL, CD_SHITEN_VIRTUAL, 
+      NO_KOZA_VIRTUAL, FG_WEB_KINSHI, NM_WEB_KINSHI_COMMENT, 
+      KB_WEB_KAHI, KB_CLIENT_STATUS, CD_CLIENT_GROUP
+      )
+    values (#{cdClient,jdbcType=DECIMAL}, #{tdInsert,jdbcType=TIMESTAMP}, #{idUserI,jdbcType=VARCHAR}, 
+      #{idComputerI,jdbcType=VARCHAR}, #{idPgI,jdbcType=VARCHAR}, #{tdUpdate,jdbcType=TIMESTAMP}, 
+      #{idUserU,jdbcType=VARCHAR}, #{idComputerU,jdbcType=VARCHAR}, #{idPgU,jdbcType=VARCHAR}, 
+      #{tdDelete,jdbcType=TIMESTAMP}, #{idUserD,jdbcType=VARCHAR}, #{idComputerD,jdbcType=VARCHAR}, 
+      #{idPgD,jdbcType=VARCHAR}, #{fgDelete,jdbcType=DECIMAL}, #{tdBat,jdbcType=TIMESTAMP}, 
+      #{idUserB,jdbcType=VARCHAR}, #{idComputerB,jdbcType=VARCHAR}, #{idPgB,jdbcType=VARCHAR}, 
+      #{idUserGodI,jdbcType=VARCHAR}, #{idUserGodU,jdbcType=VARCHAR}, #{idUserGodD,jdbcType=VARCHAR}, 
+      #{idUserGodB,jdbcType=VARCHAR}, #{knClient,jdbcType=CHAR}, #{nmClient,jdbcType=CHAR}, 
+      #{noYubin,jdbcType=DECIMAL}, #{nmAddress,jdbcType=CHAR}, #{noTel,jdbcType=CHAR}, 
+      #{noFax,jdbcType=CHAR}, #{nmClientBusho,jdbcType=CHAR}, #{nmClientTanto,jdbcType=CHAR}, 
+      #{cdGyoshu,jdbcType=DECIMAL}, #{kbJohjoh,jdbcType=DECIMAL}, #{cdShoken,jdbcType=DECIMAL}, 
+      #{cdEigyoBusho,jdbcType=VARCHAR}, #{cdEigyoTanto,jdbcType=VARCHAR}, #{kbTorihikiHonnen,jdbcType=DECIMAL}, 
+      #{kbTorihikiZennen,jdbcType=DECIMAL}, #{kbTorihikiSakunen,jdbcType=DECIMAL}, #{kbNyukinKeitai,jdbcType=DECIMAL}, 
+      #{nmNyukinSite,jdbcType=DECIMAL}, #{dtShime,jdbcType=DECIMAL}, #{nmSeikyuTokki,jdbcType=CHAR}, 
+      #{kbClient1,jdbcType=DECIMAL}, #{kbClient2,jdbcType=DECIMAL}, #{kbClient3,jdbcType=DECIMAL}, 
+      #{kbClient4,jdbcType=DECIMAL}, #{kbJigyo,jdbcType=DECIMAL}, #{noYubin7,jdbcType=CHAR}, 
+      #{idMapKigyo,jdbcType=DECIMAL}, #{kbTorokuMae,jdbcType=DECIMAL}, #{cdClientTorokuMae,jdbcType=DECIMAL}, 
+      #{cdShainDairiten,jdbcType=VARCHAR}, #{fgFlag1,jdbcType=CHAR}, #{fgFlag2,jdbcType=CHAR}, 
+      #{nmTokki,jdbcType=CHAR}, #{fgMinyukin,jdbcType=CHAR}, #{fgJiko,jdbcType=CHAR}, 
+      #{fgHikazei,jdbcType=CHAR}, #{nmYobi,jdbcType=CHAR}, #{dtUpdate,jdbcType=DECIMAL}, 
+      #{tmUpdate,jdbcType=DECIMAL}, #{cdEigyoKaisha,jdbcType=VARCHAR}, #{cdOldClient,jdbcType=DECIMAL}, 
+      #{knKensakuClient,jdbcType=VARCHAR}, #{knClientZenkaku,jdbcType=VARCHAR}, #{fgHansha,jdbcType=DECIMAL}, 
+      #{nmHanshaComment,jdbcType=VARCHAR}, #{fgYoshin,jdbcType=DECIMAL}, #{nmYoshinComment,jdbcType=VARCHAR}, 
+      #{nmSeikyushoInjiComment,jdbcType=VARCHAR}, #{noHanshaShinsa,jdbcType=VARCHAR}, 
+      #{nmSeikyuMongonCl,jdbcType=VARCHAR}, #{kbFurikomiKozaHenko,jdbcType=VARCHAR}, 
+      #{cdFurikomiKoza,jdbcType=VARCHAR}, #{cdGinkoVirtual,jdbcType=VARCHAR}, #{cdShitenVirtual,jdbcType=VARCHAR}, 
+      #{noKozaVirtual,jdbcType=VARCHAR}, #{fgWebKinshi,jdbcType=DECIMAL}, #{nmWebKinshiComment,jdbcType=VARCHAR}, 
+      #{kbWebKahi,jdbcType=VARCHAR}, #{kbClientStatus,jdbcType=VARCHAR}, #{cdClientGroup,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.we.estimate.Entity.Client">
+    <!--@mbg.generated-->
+    insert into CLIENT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cdClient != null">
+        CD_CLIENT,
+      </if>
+      <if test="tdInsert != null">
+        TD_INSERT,
+      </if>
+      <if test="idUserI != null">
+        ID_USER_I,
+      </if>
+      <if test="idComputerI != null">
+        ID_COMPUTER_I,
+      </if>
+      <if test="idPgI != null">
+        ID_PG_I,
+      </if>
+      <if test="tdUpdate != null">
+        TD_UPDATE,
+      </if>
+      <if test="idUserU != null">
+        ID_USER_U,
+      </if>
+      <if test="idComputerU != null">
+        ID_COMPUTER_U,
+      </if>
+      <if test="idPgU != null">
+        ID_PG_U,
+      </if>
+      <if test="tdDelete != null">
+        TD_DELETE,
+      </if>
+      <if test="idUserD != null">
+        ID_USER_D,
+      </if>
+      <if test="idComputerD != null">
+        ID_COMPUTER_D,
+      </if>
+      <if test="idPgD != null">
+        ID_PG_D,
+      </if>
+      <if test="fgDelete != null">
+        FG_DELETE,
+      </if>
+      <if test="tdBat != null">
+        TD_BAT,
+      </if>
+      <if test="idUserB != null">
+        ID_USER_B,
+      </if>
+      <if test="idComputerB != null">
+        ID_COMPUTER_B,
+      </if>
+      <if test="idPgB != null">
+        ID_PG_B,
+      </if>
+      <if test="idUserGodI != null">
+        ID_USER_GOD_I,
+      </if>
+      <if test="idUserGodU != null">
+        ID_USER_GOD_U,
+      </if>
+      <if test="idUserGodD != null">
+        ID_USER_GOD_D,
+      </if>
+      <if test="idUserGodB != null">
+        ID_USER_GOD_B,
+      </if>
+      <if test="knClient != null">
+        KN_CLIENT,
+      </if>
+      <if test="nmClient != null">
+        NM_CLIENT,
+      </if>
+      <if test="noYubin != null">
+        NO_YUBIN,
+      </if>
+      <if test="nmAddress != null">
+        NM_ADDRESS,
+      </if>
+      <if test="noTel != null">
+        NO_TEL,
+      </if>
+      <if test="noFax != null">
+        NO_FAX,
+      </if>
+      <if test="nmClientBusho != null">
+        NM_CLIENT_BUSHO,
+      </if>
+      <if test="nmClientTanto != null">
+        NM_CLIENT_TANTO,
+      </if>
+      <if test="cdGyoshu != null">
+        CD_GYOSHU,
+      </if>
+      <if test="kbJohjoh != null">
+        KB_JOHJOH,
+      </if>
+      <if test="cdShoken != null">
+        CD_SHOKEN,
+      </if>
+      <if test="cdEigyoBusho != null">
+        CD_EIGYO_BUSHO,
+      </if>
+      <if test="cdEigyoTanto != null">
+        CD_EIGYO_TANTO,
+      </if>
+      <if test="kbTorihikiHonnen != null">
+        KB_TORIHIKI_HONNEN,
+      </if>
+      <if test="kbTorihikiZennen != null">
+        KB_TORIHIKI_ZENNEN,
+      </if>
+      <if test="kbTorihikiSakunen != null">
+        KB_TORIHIKI_SAKUNEN,
+      </if>
+      <if test="kbNyukinKeitai != null">
+        KB_NYUKIN_KEITAI,
+      </if>
+      <if test="nmNyukinSite != null">
+        NM_NYUKIN_SITE,
+      </if>
+      <if test="dtShime != null">
+        DT_SHIME,
+      </if>
+      <if test="nmSeikyuTokki != null">
+        NM_SEIKYU_TOKKI,
+      </if>
+      <if test="kbClient1 != null">
+        KB_CLIENT_1,
+      </if>
+      <if test="kbClient2 != null">
+        KB_CLIENT_2,
+      </if>
+      <if test="kbClient3 != null">
+        KB_CLIENT_3,
+      </if>
+      <if test="kbClient4 != null">
+        KB_CLIENT_4,
+      </if>
+      <if test="kbJigyo != null">
+        KB_JIGYO,
+      </if>
+      <if test="noYubin7 != null">
+        NO_YUBIN_7,
+      </if>
+      <if test="idMapKigyo != null">
+        ID_MAP_KIGYO,
+      </if>
+      <if test="kbTorokuMae != null">
+        KB_TOROKU_MAE,
+      </if>
+      <if test="cdClientTorokuMae != null">
+        CD_CLIENT_TOROKU_MAE,
+      </if>
+      <if test="cdShainDairiten != null">
+        CD_SHAIN_DAIRITEN,
+      </if>
+      <if test="fgFlag1 != null">
+        FG_FLAG_1,
+      </if>
+      <if test="fgFlag2 != null">
+        FG_FLAG_2,
+      </if>
+      <if test="nmTokki != null">
+        NM_TOKKI,
+      </if>
+      <if test="fgMinyukin != null">
+        FG_MINYUKIN,
+      </if>
+      <if test="fgJiko != null">
+        FG_JIKO,
+      </if>
+      <if test="fgHikazei != null">
+        FG_HIKAZEI,
+      </if>
+      <if test="nmYobi != null">
+        NM_YOBI,
+      </if>
+      <if test="dtUpdate != null">
+        DT_UPDATE,
+      </if>
+      <if test="tmUpdate != null">
+        TM_UPDATE,
+      </if>
+      <if test="cdEigyoKaisha != null">
+        CD_EIGYO_KAISHA,
+      </if>
+      <if test="cdOldClient != null">
+        CD_OLD_CLIENT,
+      </if>
+      <if test="knKensakuClient != null">
+        KN_KENSAKU_CLIENT,
+      </if>
+      <if test="knClientZenkaku != null">
+        KN_CLIENT_ZENKAKU,
+      </if>
+      <if test="fgHansha != null">
+        FG_HANSHA,
+      </if>
+      <if test="nmHanshaComment != null">
+        NM_HANSHA_COMMENT,
+      </if>
+      <if test="fgYoshin != null">
+        FG_YOSHIN,
+      </if>
+      <if test="nmYoshinComment != null">
+        NM_YOSHIN_COMMENT,
+      </if>
+      <if test="nmSeikyushoInjiComment != null">
+        NM_SEIKYUSHO_INJI_COMMENT,
+      </if>
+      <if test="noHanshaShinsa != null">
+        NO_HANSHA_SHINSA,
+      </if>
+      <if test="nmSeikyuMongonCl != null">
+        NM_SEIKYU_MONGON_CL,
+      </if>
+      <if test="kbFurikomiKozaHenko != null">
+        KB_FURIKOMI_KOZA_HENKO,
+      </if>
+      <if test="cdFurikomiKoza != null">
+        CD_FURIKOMI_KOZA,
+      </if>
+      <if test="cdGinkoVirtual != null">
+        CD_GINKO_VIRTUAL,
+      </if>
+      <if test="cdShitenVirtual != null">
+        CD_SHITEN_VIRTUAL,
+      </if>
+      <if test="noKozaVirtual != null">
+        NO_KOZA_VIRTUAL,
+      </if>
+      <if test="fgWebKinshi != null">
+        FG_WEB_KINSHI,
+      </if>
+      <if test="nmWebKinshiComment != null">
+        NM_WEB_KINSHI_COMMENT,
+      </if>
+      <if test="kbWebKahi != null">
+        KB_WEB_KAHI,
+      </if>
+      <if test="kbClientStatus != null">
+        KB_CLIENT_STATUS,
+      </if>
+      <if test="cdClientGroup != null">
+        CD_CLIENT_GROUP,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cdClient != null">
+        #{cdClient,jdbcType=DECIMAL},
+      </if>
+      <if test="tdInsert != null">
+        #{tdInsert,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idUserI != null">
+        #{idUserI,jdbcType=VARCHAR},
+      </if>
+      <if test="idComputerI != null">
+        #{idComputerI,jdbcType=VARCHAR},
+      </if>
+      <if test="idPgI != null">
+        #{idPgI,jdbcType=VARCHAR},
+      </if>
+      <if test="tdUpdate != null">
+        #{tdUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idUserU != null">
+        #{idUserU,jdbcType=VARCHAR},
+      </if>
+      <if test="idComputerU != null">
+        #{idComputerU,jdbcType=VARCHAR},
+      </if>
+      <if test="idPgU != null">
+        #{idPgU,jdbcType=VARCHAR},
+      </if>
+      <if test="tdDelete != null">
+        #{tdDelete,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idUserD != null">
+        #{idUserD,jdbcType=VARCHAR},
+      </if>
+      <if test="idComputerD != null">
+        #{idComputerD,jdbcType=VARCHAR},
+      </if>
+      <if test="idPgD != null">
+        #{idPgD,jdbcType=VARCHAR},
+      </if>
+      <if test="fgDelete != null">
+        #{fgDelete,jdbcType=DECIMAL},
+      </if>
+      <if test="tdBat != null">
+        #{tdBat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idUserB != null">
+        #{idUserB,jdbcType=VARCHAR},
+      </if>
+      <if test="idComputerB != null">
+        #{idComputerB,jdbcType=VARCHAR},
+      </if>
+      <if test="idPgB != null">
+        #{idPgB,jdbcType=VARCHAR},
+      </if>
+      <if test="idUserGodI != null">
+        #{idUserGodI,jdbcType=VARCHAR},
+      </if>
+      <if test="idUserGodU != null">
+        #{idUserGodU,jdbcType=VARCHAR},
+      </if>
+      <if test="idUserGodD != null">
+        #{idUserGodD,jdbcType=VARCHAR},
+      </if>
+      <if test="idUserGodB != null">
+        #{idUserGodB,jdbcType=VARCHAR},
+      </if>
+      <if test="knClient != null">
+        #{knClient,jdbcType=CHAR},
+      </if>
+      <if test="nmClient != null">
+        #{nmClient,jdbcType=CHAR},
+      </if>
+      <if test="noYubin != null">
+        #{noYubin,jdbcType=DECIMAL},
+      </if>
+      <if test="nmAddress != null">
+        #{nmAddress,jdbcType=CHAR},
+      </if>
+      <if test="noTel != null">
+        #{noTel,jdbcType=CHAR},
+      </if>
+      <if test="noFax != null">
+        #{noFax,jdbcType=CHAR},
+      </if>
+      <if test="nmClientBusho != null">
+        #{nmClientBusho,jdbcType=CHAR},
+      </if>
+      <if test="nmClientTanto != null">
+        #{nmClientTanto,jdbcType=CHAR},
+      </if>
+      <if test="cdGyoshu != null">
+        #{cdGyoshu,jdbcType=DECIMAL},
+      </if>
+      <if test="kbJohjoh != null">
+        #{kbJohjoh,jdbcType=DECIMAL},
+      </if>
+      <if test="cdShoken != null">
+        #{cdShoken,jdbcType=DECIMAL},
+      </if>
+      <if test="cdEigyoBusho != null">
+        #{cdEigyoBusho,jdbcType=VARCHAR},
+      </if>
+      <if test="cdEigyoTanto != null">
+        #{cdEigyoTanto,jdbcType=VARCHAR},
+      </if>
+      <if test="kbTorihikiHonnen != null">
+        #{kbTorihikiHonnen,jdbcType=DECIMAL},
+      </if>
+      <if test="kbTorihikiZennen != null">
+        #{kbTorihikiZennen,jdbcType=DECIMAL},
+      </if>
+      <if test="kbTorihikiSakunen != null">
+        #{kbTorihikiSakunen,jdbcType=DECIMAL},
+      </if>
+      <if test="kbNyukinKeitai != null">
+        #{kbNyukinKeitai,jdbcType=DECIMAL},
+      </if>
+      <if test="nmNyukinSite != null">
+        #{nmNyukinSite,jdbcType=DECIMAL},
+      </if>
+      <if test="dtShime != null">
+        #{dtShime,jdbcType=DECIMAL},
+      </if>
+      <if test="nmSeikyuTokki != null">
+        #{nmSeikyuTokki,jdbcType=CHAR},
+      </if>
+      <if test="kbClient1 != null">
+        #{kbClient1,jdbcType=DECIMAL},
+      </if>
+      <if test="kbClient2 != null">
+        #{kbClient2,jdbcType=DECIMAL},
+      </if>
+      <if test="kbClient3 != null">
+        #{kbClient3,jdbcType=DECIMAL},
+      </if>
+      <if test="kbClient4 != null">
+        #{kbClient4,jdbcType=DECIMAL},
+      </if>
+      <if test="kbJigyo != null">
+        #{kbJigyo,jdbcType=DECIMAL},
+      </if>
+      <if test="noYubin7 != null">
+        #{noYubin7,jdbcType=CHAR},
+      </if>
+      <if test="idMapKigyo != null">
+        #{idMapKigyo,jdbcType=DECIMAL},
+      </if>
+      <if test="kbTorokuMae != null">
+        #{kbTorokuMae,jdbcType=DECIMAL},
+      </if>
+      <if test="cdClientTorokuMae != null">
+        #{cdClientTorokuMae,jdbcType=DECIMAL},
+      </if>
+      <if test="cdShainDairiten != null">
+        #{cdShainDairiten,jdbcType=VARCHAR},
+      </if>
+      <if test="fgFlag1 != null">
+        #{fgFlag1,jdbcType=CHAR},
+      </if>
+      <if test="fgFlag2 != null">
+        #{fgFlag2,jdbcType=CHAR},
+      </if>
+      <if test="nmTokki != null">
+        #{nmTokki,jdbcType=CHAR},
+      </if>
+      <if test="fgMinyukin != null">
+        #{fgMinyukin,jdbcType=CHAR},
+      </if>
+      <if test="fgJiko != null">
+        #{fgJiko,jdbcType=CHAR},
+      </if>
+      <if test="fgHikazei != null">
+        #{fgHikazei,jdbcType=CHAR},
+      </if>
+      <if test="nmYobi != null">
+        #{nmYobi,jdbcType=CHAR},
+      </if>
+      <if test="dtUpdate != null">
+        #{dtUpdate,jdbcType=DECIMAL},
+      </if>
+      <if test="tmUpdate != null">
+        #{tmUpdate,jdbcType=DECIMAL},
+      </if>
+      <if test="cdEigyoKaisha != null">
+        #{cdEigyoKaisha,jdbcType=VARCHAR},
+      </if>
+      <if test="cdOldClient != null">
+        #{cdOldClient,jdbcType=DECIMAL},
+      </if>
+      <if test="knKensakuClient != null">
+        #{knKensakuClient,jdbcType=VARCHAR},
+      </if>
+      <if test="knClientZenkaku != null">
+        #{knClientZenkaku,jdbcType=VARCHAR},
+      </if>
+      <if test="fgHansha != null">
+        #{fgHansha,jdbcType=DECIMAL},
+      </if>
+      <if test="nmHanshaComment != null">
+        #{nmHanshaComment,jdbcType=VARCHAR},
+      </if>
+      <if test="fgYoshin != null">
+        #{fgYoshin,jdbcType=DECIMAL},
+      </if>
+      <if test="nmYoshinComment != null">
+        #{nmYoshinComment,jdbcType=VARCHAR},
+      </if>
+      <if test="nmSeikyushoInjiComment != null">
+        #{nmSeikyushoInjiComment,jdbcType=VARCHAR},
+      </if>
+      <if test="noHanshaShinsa != null">
+        #{noHanshaShinsa,jdbcType=VARCHAR},
+      </if>
+      <if test="nmSeikyuMongonCl != null">
+        #{nmSeikyuMongonCl,jdbcType=VARCHAR},
+      </if>
+      <if test="kbFurikomiKozaHenko != null">
+        #{kbFurikomiKozaHenko,jdbcType=VARCHAR},
+      </if>
+      <if test="cdFurikomiKoza != null">
+        #{cdFurikomiKoza,jdbcType=VARCHAR},
+      </if>
+      <if test="cdGinkoVirtual != null">
+        #{cdGinkoVirtual,jdbcType=VARCHAR},
+      </if>
+      <if test="cdShitenVirtual != null">
+        #{cdShitenVirtual,jdbcType=VARCHAR},
+      </if>
+      <if test="noKozaVirtual != null">
+        #{noKozaVirtual,jdbcType=VARCHAR},
+      </if>
+      <if test="fgWebKinshi != null">
+        #{fgWebKinshi,jdbcType=DECIMAL},
+      </if>
+      <if test="nmWebKinshiComment != null">
+        #{nmWebKinshiComment,jdbcType=VARCHAR},
+      </if>
+      <if test="kbWebKahi != null">
+        #{kbWebKahi,jdbcType=VARCHAR},
+      </if>
+      <if test="kbClientStatus != null">
+        #{kbClientStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="cdClientGroup != null">
+        #{cdClientGroup,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.we.estimate.Entity.Client">
+    <!--@mbg.generated-->
+    update CLIENT
+    <set>
+      <if test="tdInsert != null">
+        TD_INSERT = #{tdInsert,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idUserI != null">
+        ID_USER_I = #{idUserI,jdbcType=VARCHAR},
+      </if>
+      <if test="idComputerI != null">
+        ID_COMPUTER_I = #{idComputerI,jdbcType=VARCHAR},
+      </if>
+      <if test="idPgI != null">
+        ID_PG_I = #{idPgI,jdbcType=VARCHAR},
+      </if>
+      <if test="tdUpdate != null">
+        TD_UPDATE = #{tdUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idUserU != null">
+        ID_USER_U = #{idUserU,jdbcType=VARCHAR},
+      </if>
+      <if test="idComputerU != null">
+        ID_COMPUTER_U = #{idComputerU,jdbcType=VARCHAR},
+      </if>
+      <if test="idPgU != null">
+        ID_PG_U = #{idPgU,jdbcType=VARCHAR},
+      </if>
+      <if test="tdDelete != null">
+        TD_DELETE = #{tdDelete,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idUserD != null">
+        ID_USER_D = #{idUserD,jdbcType=VARCHAR},
+      </if>
+      <if test="idComputerD != null">
+        ID_COMPUTER_D = #{idComputerD,jdbcType=VARCHAR},
+      </if>
+      <if test="idPgD != null">
+        ID_PG_D = #{idPgD,jdbcType=VARCHAR},
+      </if>
+      <if test="fgDelete != null">
+        FG_DELETE = #{fgDelete,jdbcType=DECIMAL},
+      </if>
+      <if test="tdBat != null">
+        TD_BAT = #{tdBat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idUserB != null">
+        ID_USER_B = #{idUserB,jdbcType=VARCHAR},
+      </if>
+      <if test="idComputerB != null">
+        ID_COMPUTER_B = #{idComputerB,jdbcType=VARCHAR},
+      </if>
+      <if test="idPgB != null">
+        ID_PG_B = #{idPgB,jdbcType=VARCHAR},
+      </if>
+      <if test="idUserGodI != null">
+        ID_USER_GOD_I = #{idUserGodI,jdbcType=VARCHAR},
+      </if>
+      <if test="idUserGodU != null">
+        ID_USER_GOD_U = #{idUserGodU,jdbcType=VARCHAR},
+      </if>
+      <if test="idUserGodD != null">
+        ID_USER_GOD_D = #{idUserGodD,jdbcType=VARCHAR},
+      </if>
+      <if test="idUserGodB != null">
+        ID_USER_GOD_B = #{idUserGodB,jdbcType=VARCHAR},
+      </if>
+      <if test="knClient != null">
+        KN_CLIENT = #{knClient,jdbcType=CHAR},
+      </if>
+      <if test="nmClient != null">
+        NM_CLIENT = #{nmClient,jdbcType=CHAR},
+      </if>
+      <if test="noYubin != null">
+        NO_YUBIN = #{noYubin,jdbcType=DECIMAL},
+      </if>
+      <if test="nmAddress != null">
+        NM_ADDRESS = #{nmAddress,jdbcType=CHAR},
+      </if>
+      <if test="noTel != null">
+        NO_TEL = #{noTel,jdbcType=CHAR},
+      </if>
+      <if test="noFax != null">
+        NO_FAX = #{noFax,jdbcType=CHAR},
+      </if>
+      <if test="nmClientBusho != null">
+        NM_CLIENT_BUSHO = #{nmClientBusho,jdbcType=CHAR},
+      </if>
+      <if test="nmClientTanto != null">
+        NM_CLIENT_TANTO = #{nmClientTanto,jdbcType=CHAR},
+      </if>
+      <if test="cdGyoshu != null">
+        CD_GYOSHU = #{cdGyoshu,jdbcType=DECIMAL},
+      </if>
+      <if test="kbJohjoh != null">
+        KB_JOHJOH = #{kbJohjoh,jdbcType=DECIMAL},
+      </if>
+      <if test="cdShoken != null">
+        CD_SHOKEN = #{cdShoken,jdbcType=DECIMAL},
+      </if>
+      <if test="cdEigyoBusho != null">
+        CD_EIGYO_BUSHO = #{cdEigyoBusho,jdbcType=VARCHAR},
+      </if>
+      <if test="cdEigyoTanto != null">
+        CD_EIGYO_TANTO = #{cdEigyoTanto,jdbcType=VARCHAR},
+      </if>
+      <if test="kbTorihikiHonnen != null">
+        KB_TORIHIKI_HONNEN = #{kbTorihikiHonnen,jdbcType=DECIMAL},
+      </if>
+      <if test="kbTorihikiZennen != null">
+        KB_TORIHIKI_ZENNEN = #{kbTorihikiZennen,jdbcType=DECIMAL},
+      </if>
+      <if test="kbTorihikiSakunen != null">
+        KB_TORIHIKI_SAKUNEN = #{kbTorihikiSakunen,jdbcType=DECIMAL},
+      </if>
+      <if test="kbNyukinKeitai != null">
+        KB_NYUKIN_KEITAI = #{kbNyukinKeitai,jdbcType=DECIMAL},
+      </if>
+      <if test="nmNyukinSite != null">
+        NM_NYUKIN_SITE = #{nmNyukinSite,jdbcType=DECIMAL},
+      </if>
+      <if test="dtShime != null">
+        DT_SHIME = #{dtShime,jdbcType=DECIMAL},
+      </if>
+      <if test="nmSeikyuTokki != null">
+        NM_SEIKYU_TOKKI = #{nmSeikyuTokki,jdbcType=CHAR},
+      </if>
+      <if test="kbClient1 != null">
+        KB_CLIENT_1 = #{kbClient1,jdbcType=DECIMAL},
+      </if>
+      <if test="kbClient2 != null">
+        KB_CLIENT_2 = #{kbClient2,jdbcType=DECIMAL},
+      </if>
+      <if test="kbClient3 != null">
+        KB_CLIENT_3 = #{kbClient3,jdbcType=DECIMAL},
+      </if>
+      <if test="kbClient4 != null">
+        KB_CLIENT_4 = #{kbClient4,jdbcType=DECIMAL},
+      </if>
+      <if test="kbJigyo != null">
+        KB_JIGYO = #{kbJigyo,jdbcType=DECIMAL},
+      </if>
+      <if test="noYubin7 != null">
+        NO_YUBIN_7 = #{noYubin7,jdbcType=CHAR},
+      </if>
+      <if test="idMapKigyo != null">
+        ID_MAP_KIGYO = #{idMapKigyo,jdbcType=DECIMAL},
+      </if>
+      <if test="kbTorokuMae != null">
+        KB_TOROKU_MAE = #{kbTorokuMae,jdbcType=DECIMAL},
+      </if>
+      <if test="cdClientTorokuMae != null">
+        CD_CLIENT_TOROKU_MAE = #{cdClientTorokuMae,jdbcType=DECIMAL},
+      </if>
+      <if test="cdShainDairiten != null">
+        CD_SHAIN_DAIRITEN = #{cdShainDairiten,jdbcType=VARCHAR},
+      </if>
+      <if test="fgFlag1 != null">
+        FG_FLAG_1 = #{fgFlag1,jdbcType=CHAR},
+      </if>
+      <if test="fgFlag2 != null">
+        FG_FLAG_2 = #{fgFlag2,jdbcType=CHAR},
+      </if>
+      <if test="nmTokki != null">
+        NM_TOKKI = #{nmTokki,jdbcType=CHAR},
+      </if>
+      <if test="fgMinyukin != null">
+        FG_MINYUKIN = #{fgMinyukin,jdbcType=CHAR},
+      </if>
+      <if test="fgJiko != null">
+        FG_JIKO = #{fgJiko,jdbcType=CHAR},
+      </if>
+      <if test="fgHikazei != null">
+        FG_HIKAZEI = #{fgHikazei,jdbcType=CHAR},
+      </if>
+      <if test="nmYobi != null">
+        NM_YOBI = #{nmYobi,jdbcType=CHAR},
+      </if>
+      <if test="dtUpdate != null">
+        DT_UPDATE = #{dtUpdate,jdbcType=DECIMAL},
+      </if>
+      <if test="tmUpdate != null">
+        TM_UPDATE = #{tmUpdate,jdbcType=DECIMAL},
+      </if>
+      <if test="cdEigyoKaisha != null">
+        CD_EIGYO_KAISHA = #{cdEigyoKaisha,jdbcType=VARCHAR},
+      </if>
+      <if test="cdOldClient != null">
+        CD_OLD_CLIENT = #{cdOldClient,jdbcType=DECIMAL},
+      </if>
+      <if test="knKensakuClient != null">
+        KN_KENSAKU_CLIENT = #{knKensakuClient,jdbcType=VARCHAR},
+      </if>
+      <if test="knClientZenkaku != null">
+        KN_CLIENT_ZENKAKU = #{knClientZenkaku,jdbcType=VARCHAR},
+      </if>
+      <if test="fgHansha != null">
+        FG_HANSHA = #{fgHansha,jdbcType=DECIMAL},
+      </if>
+      <if test="nmHanshaComment != null">
+        NM_HANSHA_COMMENT = #{nmHanshaComment,jdbcType=VARCHAR},
+      </if>
+      <if test="fgYoshin != null">
+        FG_YOSHIN = #{fgYoshin,jdbcType=DECIMAL},
+      </if>
+      <if test="nmYoshinComment != null">
+        NM_YOSHIN_COMMENT = #{nmYoshinComment,jdbcType=VARCHAR},
+      </if>
+      <if test="nmSeikyushoInjiComment != null">
+        NM_SEIKYUSHO_INJI_COMMENT = #{nmSeikyushoInjiComment,jdbcType=VARCHAR},
+      </if>
+      <if test="noHanshaShinsa != null">
+        NO_HANSHA_SHINSA = #{noHanshaShinsa,jdbcType=VARCHAR},
+      </if>
+      <if test="nmSeikyuMongonCl != null">
+        NM_SEIKYU_MONGON_CL = #{nmSeikyuMongonCl,jdbcType=VARCHAR},
+      </if>
+      <if test="kbFurikomiKozaHenko != null">
+        KB_FURIKOMI_KOZA_HENKO = #{kbFurikomiKozaHenko,jdbcType=VARCHAR},
+      </if>
+      <if test="cdFurikomiKoza != null">
+        CD_FURIKOMI_KOZA = #{cdFurikomiKoza,jdbcType=VARCHAR},
+      </if>
+      <if test="cdGinkoVirtual != null">
+        CD_GINKO_VIRTUAL = #{cdGinkoVirtual,jdbcType=VARCHAR},
+      </if>
+      <if test="cdShitenVirtual != null">
+        CD_SHITEN_VIRTUAL = #{cdShitenVirtual,jdbcType=VARCHAR},
+      </if>
+      <if test="noKozaVirtual != null">
+        NO_KOZA_VIRTUAL = #{noKozaVirtual,jdbcType=VARCHAR},
+      </if>
+      <if test="fgWebKinshi != null">
+        FG_WEB_KINSHI = #{fgWebKinshi,jdbcType=DECIMAL},
+      </if>
+      <if test="nmWebKinshiComment != null">
+        NM_WEB_KINSHI_COMMENT = #{nmWebKinshiComment,jdbcType=VARCHAR},
+      </if>
+      <if test="kbWebKahi != null">
+        KB_WEB_KAHI = #{kbWebKahi,jdbcType=VARCHAR},
+      </if>
+      <if test="kbClientStatus != null">
+        KB_CLIENT_STATUS = #{kbClientStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="cdClientGroup != null">
+        CD_CLIENT_GROUP = #{cdClientGroup,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CD_CLIENT = #{cdClient,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.we.estimate.Entity.Client">
+    <!--@mbg.generated-->
+    update CLIENT
+    set TD_INSERT = #{tdInsert,jdbcType=TIMESTAMP},
+      ID_USER_I = #{idUserI,jdbcType=VARCHAR},
+      ID_COMPUTER_I = #{idComputerI,jdbcType=VARCHAR},
+      ID_PG_I = #{idPgI,jdbcType=VARCHAR},
+      TD_UPDATE = #{tdUpdate,jdbcType=TIMESTAMP},
+      ID_USER_U = #{idUserU,jdbcType=VARCHAR},
+      ID_COMPUTER_U = #{idComputerU,jdbcType=VARCHAR},
+      ID_PG_U = #{idPgU,jdbcType=VARCHAR},
+      TD_DELETE = #{tdDelete,jdbcType=TIMESTAMP},
+      ID_USER_D = #{idUserD,jdbcType=VARCHAR},
+      ID_COMPUTER_D = #{idComputerD,jdbcType=VARCHAR},
+      ID_PG_D = #{idPgD,jdbcType=VARCHAR},
+      FG_DELETE = #{fgDelete,jdbcType=DECIMAL},
+      TD_BAT = #{tdBat,jdbcType=TIMESTAMP},
+      ID_USER_B = #{idUserB,jdbcType=VARCHAR},
+      ID_COMPUTER_B = #{idComputerB,jdbcType=VARCHAR},
+      ID_PG_B = #{idPgB,jdbcType=VARCHAR},
+      ID_USER_GOD_I = #{idUserGodI,jdbcType=VARCHAR},
+      ID_USER_GOD_U = #{idUserGodU,jdbcType=VARCHAR},
+      ID_USER_GOD_D = #{idUserGodD,jdbcType=VARCHAR},
+      ID_USER_GOD_B = #{idUserGodB,jdbcType=VARCHAR},
+      KN_CLIENT = #{knClient,jdbcType=CHAR},
+      NM_CLIENT = #{nmClient,jdbcType=CHAR},
+      NO_YUBIN = #{noYubin,jdbcType=DECIMAL},
+      NM_ADDRESS = #{nmAddress,jdbcType=CHAR},
+      NO_TEL = #{noTel,jdbcType=CHAR},
+      NO_FAX = #{noFax,jdbcType=CHAR},
+      NM_CLIENT_BUSHO = #{nmClientBusho,jdbcType=CHAR},
+      NM_CLIENT_TANTO = #{nmClientTanto,jdbcType=CHAR},
+      CD_GYOSHU = #{cdGyoshu,jdbcType=DECIMAL},
+      KB_JOHJOH = #{kbJohjoh,jdbcType=DECIMAL},
+      CD_SHOKEN = #{cdShoken,jdbcType=DECIMAL},
+      CD_EIGYO_BUSHO = #{cdEigyoBusho,jdbcType=VARCHAR},
+      CD_EIGYO_TANTO = #{cdEigyoTanto,jdbcType=VARCHAR},
+      KB_TORIHIKI_HONNEN = #{kbTorihikiHonnen,jdbcType=DECIMAL},
+      KB_TORIHIKI_ZENNEN = #{kbTorihikiZennen,jdbcType=DECIMAL},
+      KB_TORIHIKI_SAKUNEN = #{kbTorihikiSakunen,jdbcType=DECIMAL},
+      KB_NYUKIN_KEITAI = #{kbNyukinKeitai,jdbcType=DECIMAL},
+      NM_NYUKIN_SITE = #{nmNyukinSite,jdbcType=DECIMAL},
+      DT_SHIME = #{dtShime,jdbcType=DECIMAL},
+      NM_SEIKYU_TOKKI = #{nmSeikyuTokki,jdbcType=CHAR},
+      KB_CLIENT_1 = #{kbClient1,jdbcType=DECIMAL},
+      KB_CLIENT_2 = #{kbClient2,jdbcType=DECIMAL},
+      KB_CLIENT_3 = #{kbClient3,jdbcType=DECIMAL},
+      KB_CLIENT_4 = #{kbClient4,jdbcType=DECIMAL},
+      KB_JIGYO = #{kbJigyo,jdbcType=DECIMAL},
+      NO_YUBIN_7 = #{noYubin7,jdbcType=CHAR},
+      ID_MAP_KIGYO = #{idMapKigyo,jdbcType=DECIMAL},
+      KB_TOROKU_MAE = #{kbTorokuMae,jdbcType=DECIMAL},
+      CD_CLIENT_TOROKU_MAE = #{cdClientTorokuMae,jdbcType=DECIMAL},
+      CD_SHAIN_DAIRITEN = #{cdShainDairiten,jdbcType=VARCHAR},
+      FG_FLAG_1 = #{fgFlag1,jdbcType=CHAR},
+      FG_FLAG_2 = #{fgFlag2,jdbcType=CHAR},
+      NM_TOKKI = #{nmTokki,jdbcType=CHAR},
+      FG_MINYUKIN = #{fgMinyukin,jdbcType=CHAR},
+      FG_JIKO = #{fgJiko,jdbcType=CHAR},
+      FG_HIKAZEI = #{fgHikazei,jdbcType=CHAR},
+      NM_YOBI = #{nmYobi,jdbcType=CHAR},
+      DT_UPDATE = #{dtUpdate,jdbcType=DECIMAL},
+      TM_UPDATE = #{tmUpdate,jdbcType=DECIMAL},
+      CD_EIGYO_KAISHA = #{cdEigyoKaisha,jdbcType=VARCHAR},
+      CD_OLD_CLIENT = #{cdOldClient,jdbcType=DECIMAL},
+      KN_KENSAKU_CLIENT = #{knKensakuClient,jdbcType=VARCHAR},
+      KN_CLIENT_ZENKAKU = #{knClientZenkaku,jdbcType=VARCHAR},
+      FG_HANSHA = #{fgHansha,jdbcType=DECIMAL},
+      NM_HANSHA_COMMENT = #{nmHanshaComment,jdbcType=VARCHAR},
+      FG_YOSHIN = #{fgYoshin,jdbcType=DECIMAL},
+      NM_YOSHIN_COMMENT = #{nmYoshinComment,jdbcType=VARCHAR},
+      NM_SEIKYUSHO_INJI_COMMENT = #{nmSeikyushoInjiComment,jdbcType=VARCHAR},
+      NO_HANSHA_SHINSA = #{noHanshaShinsa,jdbcType=VARCHAR},
+      NM_SEIKYU_MONGON_CL = #{nmSeikyuMongonCl,jdbcType=VARCHAR},
+      KB_FURIKOMI_KOZA_HENKO = #{kbFurikomiKozaHenko,jdbcType=VARCHAR},
+      CD_FURIKOMI_KOZA = #{cdFurikomiKoza,jdbcType=VARCHAR},
+      CD_GINKO_VIRTUAL = #{cdGinkoVirtual,jdbcType=VARCHAR},
+      CD_SHITEN_VIRTUAL = #{cdShitenVirtual,jdbcType=VARCHAR},
+      NO_KOZA_VIRTUAL = #{noKozaVirtual,jdbcType=VARCHAR},
+      FG_WEB_KINSHI = #{fgWebKinshi,jdbcType=DECIMAL},
+      NM_WEB_KINSHI_COMMENT = #{nmWebKinshiComment,jdbcType=VARCHAR},
+      KB_WEB_KAHI = #{kbWebKahi,jdbcType=VARCHAR},
+      KB_CLIENT_STATUS = #{kbClientStatus,jdbcType=VARCHAR},
+      CD_CLIENT_GROUP = #{cdClientGroup,jdbcType=VARCHAR}
+    where CD_CLIENT = #{cdClient,jdbcType=DECIMAL}
+  </update>
+
+  <!--<select id="getClients" parameterType="java.util.Map" resultMap="BaseResultMap">
+    SELECT *
+    FROM (
+    SELECT
+    c.*,ROW_NUMBER() OVER (ORDER BY TD_INSERT) no
+    FROM
+    CLIENT c
+    <where>
+      <if test="client.nmClient != null and client.nmClient != '' ">AND nm_client = #{client.nmClient}</if>
+      <if test="client.knClient != null and client.knClient != '' ">AND kn_client = #{client.knClient}</if>
+      <if test="client.cdEigyoBusho != null and client.cdEigyoBusho != '' ">AND cd_eigyoBusho = #{client.cdEigyoBusho}</if>
+      <if test="client.cdEigyoTanto != null and client.cdEigyoTanto != '' ">AND cd_eigyoTanto = #{client.cdEigyoTanto}</if>
+      <if test="client.cdClient != null and client.cdClient != '' ">AND cd_client = #{client.cdClient}</if>
+      <if test="client.kbJigyo != null and client.kbJigyo != '' ">AND kb_jigyo = #{client.kbJigyo}</if>
+      <if test="client.kbClient1 != null and client.kbClient1 != '' ">AND kb_client1 = #{client.kbClient1}</if>
+      <if test="client.kbClient2 != null and client.kbClient2 != '' ">AND kb_client2 = #{client.kbClient2}</if>
+      <if test="client.kbClient3 != null and client.kbClient3 != '' ">AND kb_client3 = #{client.kbClient3}</if>
+      <if test="client.kbClient4 != null and client.kbClient4 != '' ">AND kb_client4 = #{client.kbClient4}</if>
+      <if test="client.fgHansha != null and client.fgHansha != '' ">AND fg_hansha = #{client.fgHansha}</if>
+      <if test="client.fgYoshin != null and client.fgYoshin != '' ">AND fg_yoshin = #{client.fgYoshin}</if>
+      <if test="client.nmYoshinComment != null and client.nmYoshinComment != '' ">AND nm_yoshinComment = #{client.nmYoshinComment}</if>
+      <if test="client.fgDelete != null and client.fgDelete != '' ">AND fg_delete = #{client.fgDelete}</if>
+      <if test="client.fgWebKinshi != null and client.fgWebKinshi != '' ">AND fg_webKinshi = #{client.fgWebKinshi}</if>
+      <if test="client.kbWebKahi != null and client.kbWebKahi != '' ">AND kb_webKahi = #{client.kbWebKahi}</if>
+    </where>
+    )
+    WHERE
+    no BETWEEN
+    (#{offset,jdbcType=NUMERIC}-1)*#{limit,jdbcType=NUMERIC}+1 AND
+    #{offset,jdbcType=NUMERIC}*#{limit,jdbcType=NUMERIC}
+  </select>-->
+  <select id="getClients" parameterType="com.we.estimate.Entity.Client" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM
+    CLIENT
+    <where>
+      <if test="client.nmClient != null and client.nmClient != '' ">AND nm_client = #{client.nmClient}</if>
+      <if test="client.knClient != null and client.knClient != '' ">AND kn_client = #{client.knClient}</if>
+      <if test="client.cdEigyoBusho != null and client.cdEigyoBusho != '' ">AND cd_eigyoBusho = #{client.cdEigyoBusho}</if>
+      <if test="client.cdEigyoTanto != null and client.cdEigyoTanto != '' ">AND cd_eigyoTanto = #{client.cdEigyoTanto}</if>
+      <if test="client.cdClient != null and client.cdClient != '' ">AND cd_client = #{client.cdClient}</if>
+      <if test="client.kbJigyo != null and client.kbJigyo != '' ">AND kb_jigyo = #{client.kbJigyo}</if>
+      <if test="client.kbClient1 != null and client.kbClient1 != '' ">AND kb_client1 = #{client.kbClient1}</if>
+      <if test="client.kbClient2 != null and client.kbClient2 != '' ">AND kb_client2 = #{client.kbClient2}</if>
+      <if test="client.kbClient3 != null and client.kbClient3 != '' ">AND kb_client3 = #{client.kbClient3}</if>
+      <if test="client.kbClient4 != null and client.kbClient4 != '' ">AND kb_client4 = #{client.kbClient4}</if>
+      <if test="client.fgHansha != null and client.fgHansha != '' ">AND fg_hansha = #{client.fgHansha}</if>
+      <if test="client.fgYoshin != null and client.fgYoshin != '' ">AND fg_yoshin = #{client.fgYoshin}</if>
+      <if test="client.nmYoshinComment != null and client.nmYoshinComment != '' ">AND nm_yoshinComment = #{client.nmYoshinComment}</if>
+      <if test="client.fgDelete != null and client.fgDelete != '' ">AND fg_delete = #{client.fgDelete}</if>
+      <if test="client.fgWebKinshi != null and client.fgWebKinshi != '' ">AND fg_webKinshi = #{client.fgWebKinshi}</if>
+      <if test="client.kbWebKahi != null and client.kbWebKahi != '' ">AND kb_webKahi = #{client.kbWebKahi}</if>
+    </where>
+
+  </select>
+</mapper>

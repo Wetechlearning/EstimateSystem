@@ -1,0 +1,88 @@
+/*検索条件*/
+#swSearchJyoken::before {
+    content: "検索条件";
+}
+
+#nmClient::before {
+    content: "クライアント名";
+}
+
+#nmClientKana::before{
+    content: "クライアント名（カナ）";
+}
+
+#cdEigyoBusho::before{
+    content: "営業担当部署";
+}
+
+#btnSearchBusho:before{
+    content: "検索";
+}
+
+#btnDispBusho:before{
+    content: "表示";
+}
+
+#cdEigyoTanto::before{
+    content: "営業担当者";
+}
+
+#btnSearchTanto::before{
+    content: "検索";
+}
+
+#btnDispTanto::before{
+    content: "表示";
+}
+
+#cdClient::before{
+    content: "クライアントコード";
+}
+
+#kbJigyo::before{
+    content: "事業区分";
+}
+
+#fgClientKubun::before{
+    content: "クライアント区分";
+}
+
+#fgGrp::before{
+    content: "グループ会社フラグ";
+}
+
+#fgHansha::before{
+    content: "反社フラグ";
+}
+
+#fgYoshin::before{
+    content: "与信消滅フラグ";
+}
+
+#fgYoshinComment::before{
+    content: "与信消滅フラグコメント";
+}
+
+#fgYukouFlag::before{
+    content: "有効フラグ";
+}
+
+#fgWebKinshi::before{
+    content: "WEB申込禁止フラグ";
+}
+
+#fgWebKahi::before{
+    content: "WEB申込可否区分";
+}
+
+#btnSearch::before{
+    content: "検索";
+}
+
+#btnClear::before{
+    content: "条件クリア";
+}
+
+#searchResults::before{
+    content: "検索結果";
+}

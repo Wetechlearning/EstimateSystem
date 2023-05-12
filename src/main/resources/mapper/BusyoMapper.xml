@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.we.estimate.Mapper.BusyoMapper">
+  <resultMap id="BaseResultMap" type="com.we.estimate.Entity.Busyo">
+    <!--@mbg.generated-->
+    <!--@Table BUSYO-->
+    <id column="CD_KAISHA" jdbcType="CHAR" property="cdKaisha" />
+    <id column="CD_BUSHO" jdbcType="VARCHAR" property="cdBusho" />
+    <result column="TD_INSERT" jdbcType="TIMESTAMP" property="tdInsert" />
+    <result column="ID_USER_I" jdbcType="VARCHAR" property="idUserI" />
+    <result column="ID_COMPUTER_I" jdbcType="VARCHAR" property="idComputerI" />
+    <result column="ID_PG_I" jdbcType="VARCHAR" property="idPgI" />
+    <result column="TD_UPDATE" jdbcType="TIMESTAMP" property="tdUpdate" />
+    <result column="ID_USER_U" jdbcType="VARCHAR" property="idUserU" />
+    <result column="ID_COMPUTER_U" jdbcType="VARCHAR" property="idComputerU" />
+    <result column="ID_PG_U" jdbcType="VARCHAR" property="idPgU" />
+    <result column="TD_DELETE" jdbcType="TIMESTAMP" property="tdDelete" />
+    <result column="ID_USER_D" jdbcType="VARCHAR" property="idUserD" />
+    <result column="ID_COMPUTER_D" jdbcType="VARCHAR" property="idComputerD" />
+    <result column="ID_PG_D" jdbcType="VARCHAR" property="idPgD" />
+    <result column="FG_DELETE" jdbcType="DECIMAL" property="fgDelete" />
+    <result column="TD_BAT" jdbcType="TIMESTAMP" property="tdBat" />
+    <result column="ID_USER_B" jdbcType="VARCHAR" property="idUserB" />
+    <result column="ID_COMPUTER_B" jdbcType="VARCHAR" property="idComputerB" />
+    <result column="ID_PG_B" jdbcType="VARCHAR" property="idPgB" />
+    <result column="ID_USER_GOD_I" jdbcType="VARCHAR" property="idUserGodI" />
+    <result column="ID_USER_GOD_U" jdbcType="VARCHAR" property="idUserGodU" />
+    <result column="ID_USER_GOD_D" jdbcType="VARCHAR" property="idUserGodD" />
+    <result column="ID_USER_GOD_B" jdbcType="VARCHAR" property="idUserGodB" />
+    <result column="NM_BUSHO" jdbcType="CHAR" property="nmBusho" />
+    <result column="NM_BUSHO2" jdbcType="CHAR" property="nmBusho2" />
+    <result column="NM_BUSHO3" jdbcType="CHAR" property="nmBusho3" />
+    <result column="NO_YUBIN" jdbcType="CHAR" property="noYubin" />
+    <result column="NM_SHOZAICHI" jdbcType="CHAR" property="nmShozaichi" />
+    <result column="NO_TEL" jdbcType="CHAR" property="noTel" />
+    <result column="NO_FAX" jdbcType="CHAR" property="noFax" />
+    <result column="NO_HATCHU_BUSHO" jdbcType="VARCHAR" property="noHatchuBusho" />
+    <result column="KB_JIGYO_HOMBU" jdbcType="CHAR" property="kbJigyoHombu" />
+    <result column="KB_JIGYO" jdbcType="DECIMAL" property="kbJigyo" />
+    <result column="KB_HATCHU_LEVEL" jdbcType="DECIMAL" property="kbHatchuLevel" />
+    <result column="CD_BUSHO_OYA" jdbcType="VARCHAR" property="cdBushoOya" />
+    <result column="KB_BUSHO" jdbcType="CHAR" property="kbBusho" />
+    <result column="KB_BUSHO_OYA" jdbcType="CHAR" property="kbBushoOya" />
+    <result column="NO_HYOJI_BUSHO" jdbcType="CHAR" property="noHyojiBusho" />
+    <result column="KB_BUSHO_EIGYO" jdbcType="CHAR" property="kbBushoEigyo" />
+    <result column="CD_JIGYO_MC5" jdbcType="CHAR" property="cdJigyoMc5" />
+    <result column="KB_BUSHO_MC5" jdbcType="CHAR" property="kbBushoMc5" />
+    <result column="CD_SAGYO_BUSHO_DEF1" jdbcType="VARCHAR" property="cdSagyoBushoDef1" />
+    <result column="CD_SAGYO_BUSHO_DEF2" jdbcType="VARCHAR" property="cdSagyoBushoDef2" />
+    <result column="CD_SAGYO_BUSHO_DEF3" jdbcType="VARCHAR" property="cdSagyoBushoDef3" />
+    <result column="NM_YOBI" jdbcType="CHAR" property="nmYobi" />
+    <result column="DT_UPDATE" jdbcType="DECIMAL" property="dtUpdate" />
+    <result column="TM_UPDATE" jdbcType="DECIMAL" property="tmUpdate" />
+    <result column="CD_OLD_BUSHO" jdbcType="DECIMAL" property="cdOldBusho" />
+    <result column="KB_KANKATSU_TOKATSU" jdbcType="VARCHAR" property="kbKankatsuTokatsu" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    CD_KAISHA, CD_BUSHO, TD_INSERT, ID_USER_I, ID_COMPUTER_I, ID_PG_I, TD_UPDATE, ID_USER_U, 
+    ID_COMPUTER_U, ID_PG_U, TD_DELETE, ID_USER_D, ID_COMPUTER_D, ID_PG_D, FG_DELETE, 
+    TD_BAT, ID_USER_B, ID_COMPUTER_B, ID_PG_B, ID_USER_GOD_I, ID_USER_GOD_U, ID_USER_GOD_D, 
+    ID_USER_GOD_B, NM_BUSHO, NM_BUSHO2, NM_BUSHO3, NO_YUBIN, NM_SHOZAICHI, NO_TEL, NO_FAX, 
+    NO_HATCHU_BUSHO, KB_JIGYO_HOMBU, KB_JIGYO, KB_HATCHU_LEVEL, CD_BUSHO_OYA, KB_BUSHO, 
+    KB_BUSHO_OYA, NO_HYOJI_BUSHO, KB_BUSHO_EIGYO, CD_JIGYO_MC5, KB_BUSHO_MC5, CD_SAGYO_BUSHO_DEF1, 
+    CD_SAGYO_BUSHO_DEF2, CD_SAGYO_BUSHO_DEF3, NM_YOBI, DT_UPDATE, TM_UPDATE, CD_OLD_BUSHO, 
+    KB_KANKATSU_TOKATSU
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from BUSYO
+    where CD_KAISHA = #{cdKaisha,jdbcType=CHAR}
+      and CD_BUSHO = #{cdBusho,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from BUSYO
+    where CD_KAISHA = #{cdKaisha,jdbcType=CHAR}
+      and CD_BUSHO = #{cdBusho,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.we.estimate.Entity.Busyo">
+    <!--@mbg.generated-->
+    insert into BUSYO (CD_KAISHA, CD_BUSHO, TD_INSERT, 
+      ID_USER_I, ID_COMPUTER_I, ID_PG_I, 
+      TD_UPDATE, ID_USER_U, ID_COMPUTER_U, 
+      ID_PG_U, TD_DELETE, ID_USER_D, 
+      ID_COMPUTER_D, ID_PG_D, FG_DELETE, 
+      TD_BAT, ID_USER_B, ID_COMPUTER_B, 
+      ID_PG_B, ID_USER_GOD_I, ID_USER_GOD_U, 
+      ID_USER_GOD_D, ID_USER_GOD_B, NM_BUSHO, 
+      NM_BUSHO2, NM_BUSHO3, NO_YUBIN, 
+      NM_SHOZAICHI, NO_TEL, NO_FAX, NO_HATCHU_BUSHO, 
+      KB_JIGYO_HOMBU, KB_JIGYO, KB_HATCHU_LEVEL, 
+      CD_BUSHO_OYA, KB_BUSHO, KB_BUSHO_OYA, 
+      NO_HYOJI_BUSHO, KB_BUSHO_EIGYO, CD_JIGYO_MC5, 
+      KB_BUSHO_MC5, CD_SAGYO_BUSHO_DEF1, CD_SAGYO_BUSHO_DEF2, 
+      CD_SAGYO_BUSHO_DEF3, NM_YOBI, DT_UPDATE, 
+      TM_UPDATE, CD_OLD_BUSHO, KB_KANKATSU_TOKATSU
+      )
+    values (#{cdKaisha,jdbcType=CHAR}, #{cdBusho,jdbcType=VARCHAR}, #{tdInsert,jdbcType=TIMESTAMP}, 
+      #{idUserI,jdbcType=VARCHAR}, #{idComputerI,jdbcType=VARCHAR}, #{idPgI,jdbcType=VARCHAR}, 
+      #{tdUpdate,jdbcType=TIMESTAMP}, #{idUserU,jdbcType=VARCHAR}, #{idComputerU,jdbcType=VARCHAR}, 
+      #{idPgU,jdbcType=VARCHAR}, #{tdDelete,jdbcType=TIMESTAMP}, #{idUserD,jdbcType=VARCHAR}, 
+      #{idComputerD,jdbcType=VARCHAR}, #{idPgD,jdbcType=VARCHAR}, #{fgDelete,jdbcType=DECIMAL}, 
+      #{tdBat,jdbcType=TIMESTAMP}, #{idUserB,jdbcType=VARCHAR}, #{idComputerB,jdbcType=VARCHAR}, 
+      #{idPgB,jdbcType=VARCHAR}, #{idUserGodI,jdbcType=VARCHAR}, #{idUserGodU,jdbcType=VARCHAR}, 
+      #{idUserGodD,jdbcType=VARCHAR}, #{idUserGodB,jdbcType=VARCHAR}, #{nmBusho,jdbcType=CHAR}, 
+      #{nmBusho2,jdbcType=CHAR}, #{nmBusho3,jdbcType=CHAR}, #{noYubin,jdbcType=CHAR}, 
+      #{nmShozaichi,jdbcType=CHAR}, #{noTel,jdbcType=CHAR}, #{noFax,jdbcType=CHAR}, #{noHatchuBusho,jdbcType=VARCHAR}, 
+      #{kbJigyoHombu,jdbcType=CHAR}, #{kbJigyo,jdbcType=DECIMAL}, #{kbHatchuLevel,jdbcType=DECIMAL}, 
+      #{cdBushoOya,jdbcType=VARCHAR}, #{kbBusho,jdbcType=CHAR}, #{kbBushoOya,jdbcType=CHAR}, 
+      #{noHyojiBusho,jdbcType=CHAR}, #{kbBushoEigyo,jdbcType=CHAR}, #{cdJigyoMc5,jdbcType=CHAR}, 
+      #{kbBushoMc5,jdbcType=CHAR}, #{cdSagyoBushoDef1,jdbcType=VARCHAR}, #{cdSagyoBushoDef2,jdbcType=VARCHAR}, 
+      #{cdSagyoBushoDef3,jdbcType=VARCHAR}, #{nmYobi,jdbcType=CHAR}, #{dtUpdate,jdbcType=DECIMAL}, 
+      #{tmUpdate,jdbcType=DECIMAL}, #{cdOldBusho,jdbcType=DECIMAL}, #{kbKankatsuTokatsu,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.we.estimate.Entity.Busyo">
+    <!--@mbg.generated-->
+    insert into BUSYO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cdKaisha != null">
+        CD_KAISHA,
+      </if>
+      <if test="cdBusho != null">
+        CD_BUSHO,
+      </if>
+      <if test="tdInsert != null">
+        TD_INSERT,
+      </if>
+      <if test="idUserI != null">
+        ID_USER_I,
+      </if>
+      <if test="idComputerI != null">
+        ID_COMPUTER_I,
+      </if>
+      <if test="idPgI != null">
+        ID_PG_I,
+      </if>
+      <if test="tdUpdate != null">
+        TD_UPDATE,
+      </if>
+      <if test="idUserU != null">
+        ID_USER_U,
+      </if>
+      <if test="idComputerU != null">
+        ID_COMPUTER_U,
+      </if>
+      <if test="idPgU != null">
+        ID_PG_U,
+      </if>
+      <if test="tdDelete != null">
+        TD_DELETE,
+      </if>
+      <if test="idUserD != null">
+        ID_USER_D,
+      </if>
+      <if test="idComputerD != null">
+        ID_COMPUTER_D,
+      </if>
+      <if test="idPgD != null">
+        ID_PG_D,
+      </if>
+      <if test="fgDelete != null">
+        FG_DELETE,
+      </if>
+      <if test="tdBat != null">
+        TD_BAT,
+      </if>
+      <if test="idUserB != null">
+        ID_USER_B,
+      </if>
+      <if test="idComputerB != null">
+        ID_COMPUTER_B,
+      </if>
+      <if test="idPgB != null">
+        ID_PG_B,
+      </if>
+      <if test="idUserGodI != null">
+        ID_USER_GOD_I,
+      </if>
+      <if test="idUserGodU != null">
+        ID_USER_GOD_U,
+      </if>
+      <if test="idUserGodD != null">
+        ID_USER_GOD_D,
+      </if>
+      <if test="idUserGodB != null">
+        ID_USER_GOD_B,
+      </if>
+      <if test="nmBusho != null">
+        NM_BUSHO,
+      </if>
+      <if test="nmBusho2 != null">
+        NM_BUSHO2,
+      </if>
+      <if test="nmBusho3 != null">
+        NM_BUSHO3,
+      </if>
+      <if test="noYubin != null">
+        NO_YUBIN,
+      </if>
+      <if test="nmShozaichi != null">
+        NM_SHOZAICHI,
+      </if>
+      <if test="noTel != null">
+        NO_TEL,
+      </if>
+      <if test="noFax != null">
+        NO_FAX,
+      </if>
+      <if test="noHatchuBusho != null">
+        NO_HATCHU_BUSHO,
+      </if>
+      <if test="kbJigyoHombu != null">
+        KB_JIGYO_HOMBU,
+      </if>
+      <if test="kbJigyo != null">
+        KB_JIGYO,
+      </if>
+      <if test="kbHatchuLevel != null">
+        KB_HATCHU_LEVEL,
+      </if>
+      <if test="cdBushoOya != null">
+        CD_BUSHO_OYA,
+      </if>
+      <if test="kbBusho != null">
+        KB_BUSHO,
+      </if>
+      <if test="kbBushoOya != null">
+        KB_BUSHO_OYA,
+      </if>
+      <if test="noHyojiBusho != null">
+        NO_HYOJI_BUSHO,
+      </if>
+      <if test="kbBushoEigyo != null">
+        KB_BUSHO_EIGYO,
+      </if>
+      <if test="cdJigyoMc5 != null">
+        CD_JIGYO_MC5,
+      </if>
+      <if test="kbBushoMc5 != null">
+        KB_BUSHO_MC5,
+      </if>
+      <if test="cdSagyoBushoDef1 != null">
+        CD_SAGYO_BUSHO_DEF1,
+      </if>
+      <if test="cdSagyoBushoDef2 != null">
+        CD_SAGYO_BUSHO_DEF2,
+      </if>
+      <if test="cdSagyoBushoDef3 != null">
+        CD_SAGYO_BUSHO_DEF3,
+      </if>
+      <if test="nmYobi != null">
+        NM_YOBI,
+      </if>
+      <if test="dtUpdate != null">
+        DT_UPDATE,
+      </if>
+      <if test="tmUpdate != null">
+        TM_UPDATE,
+      </if>
+      <if test="cdOldBusho != null">
+        CD_OLD_BUSHO,
+      </if>
+      <if test="kbKankatsuTokatsu != null">
+        KB_KANKATSU_TOKATSU,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cdKaisha != null">
+        #{cdKaisha,jdbcType=CHAR},
+      </if>
+      <if test="cdBusho != null">
+        #{cdBusho,jdbcType=VARCHAR},
+      </if>
+      <if test="tdInsert != null">
+        #{tdInsert,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idUserI != null">
+        #{idUserI,jdbcType=VARCHAR},
+      </if>
+      <if test="idComputerI != null">
+        #{idComputerI,jdbcType=VARCHAR},
+      </if>
+      <if test="idPgI != null">
+        #{idPgI,jdbcType=VARCHAR},
+      </if>
+      <if test="tdUpdate != null">
+        #{tdUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idUserU != null">
+        #{idUserU,jdbcType=VARCHAR},
+      </if>
+      <if test="idComputerU != null">
+        #{idComputerU,jdbcType=VARCHAR},
+      </if>
+      <if test="idPgU != null">
+        #{idPgU,jdbcType=VARCHAR},
+      </if>
+      <if test="tdDelete != null">
+        #{tdDelete,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idUserD != null">
+        #{idUserD,jdbcType=VARCHAR},
+      </if>
+      <if test="idComputerD != null">
+        #{idComputerD,jdbcType=VARCHAR},
+      </if>
+      <if test="idPgD != null">
+        #{idPgD,jdbcType=VARCHAR},
+      </if>
+      <if test="fgDelete != null">
+        #{fgDelete,jdbcType=DECIMAL},
+      </if>
+      <if test="tdBat != null">
+        #{tdBat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idUserB != null">
+        #{idUserB,jdbcType=VARCHAR},
+      </if>
+      <if test="idComputerB != null">
+        #{idComputerB,jdbcType=VARCHAR},
+      </if>
+      <if test="idPgB != null">
+        #{idPgB,jdbcType=VARCHAR},
+      </if>
+      <if test="idUserGodI != null">
+        #{idUserGodI,jdbcType=VARCHAR},
+      </if>
+      <if test="idUserGodU != null">
+        #{idUserGodU,jdbcType=VARCHAR},
+      </if>
+      <if test="idUserGodD != null">
+        #{idUserGodD,jdbcType=VARCHAR},
+      </if>
+      <if test="idUserGodB != null">
+        #{idUserGodB,jdbcType=VARCHAR},
+      </if>
+      <if test="nmBusho != null">
+        #{nmBusho,jdbcType=CHAR},
+      </if>
+      <if test="nmBusho2 != null">
+        #{nmBusho2,jdbcType=CHAR},
+      </if>
+      <if test="nmBusho3 != null">
+        #{nmBusho3,jdbcType=CHAR},
+      </if>
+      <if test="noYubin != null">
+        #{noYubin,jdbcType=CHAR},
+      </if>
+      <if test="nmShozaichi != null">
+        #{nmShozaichi,jdbcType=CHAR},
+      </if>
+      <if test="noTel != null">
+        #{noTel,jdbcType=CHAR},
+      </if>
+      <if test="noFax != null">
+        #{noFax,jdbcType=CHAR},
+      </if>
+      <if test="noHatchuBusho != null">
+        #{noHatchuBusho,jdbcType=VARCHAR},
+      </if>
+      <if test="kbJigyoHombu != null">
+        #{kbJigyoHombu,jdbcType=CHAR},
+      </if>
+      <if test="kbJigyo != null">
+        #{kbJigyo,jdbcType=DECIMAL},
+      </if>
+      <if test="kbHatchuLevel != null">
+        #{kbHatchuLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="cdBushoOya != null">
+        #{cdBushoOya,jdbcType=VARCHAR},
+      </if>
+      <if test="kbBusho != null">
+        #{kbBusho,jdbcType=CHAR},
+      </if>
+      <if test="kbBushoOya != null">
+        #{kbBushoOya,jdbcType=CHAR},
+      </if>
+      <if test="noHyojiBusho != null">
+        #{noHyojiBusho,jdbcType=CHAR},
+      </if>
+      <if test="kbBushoEigyo != null">
+        #{kbBushoEigyo,jdbcType=CHAR},
+      </if>
+      <if test="cdJigyoMc5 != null">
+        #{cdJigyoMc5,jdbcType=CHAR},
+      </if>
+      <if test="kbBushoMc5 != null">
+        #{kbBushoMc5,jdbcType=CHAR},
+      </if>
+      <if test="cdSagyoBushoDef1 != null">
+        #{cdSagyoBushoDef1,jdbcType=VARCHAR},
+      </if>
+      <if test="cdSagyoBushoDef2 != null">
+        #{cdSagyoBushoDef2,jdbcType=VARCHAR},
+      </if>
+      <if test="cdSagyoBushoDef3 != null">
+        #{cdSagyoBushoDef3,jdbcType=VARCHAR},
+      </if>
+      <if test="nmYobi != null">
+        #{nmYobi,jdbcType=CHAR},
+      </if>
+      <if test="dtUpdate != null">
+        #{dtUpdate,jdbcType=DECIMAL},
+      </if>
+      <if test="tmUpdate != null">
+        #{tmUpdate,jdbcType=DECIMAL},
+      </if>
+      <if test="cdOldBusho != null">
+        #{cdOldBusho,jdbcType=DECIMAL},
+      </if>
+      <if test="kbKankatsuTokatsu != null">
+        #{kbKankatsuTokatsu,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.we.estimate.Entity.Busyo">
+    <!--@mbg.generated-->
+    update BUSYO
+    <set>
+      <if test="tdInsert != null">
+        TD_INSERT = #{tdInsert,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idUserI != null">
+        ID_USER_I = #{idUserI,jdbcType=VARCHAR},
+      </if>
+      <if test="idComputerI != null">
+        ID_COMPUTER_I = #{idComputerI,jdbcType=VARCHAR},
+      </if>
+      <if test="idPgI != null">
+        ID_PG_I = #{idPgI,jdbcType=VARCHAR},
+      </if>
+      <if test="tdUpdate != null">
+        TD_UPDATE = #{tdUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idUserU != null">
+        ID_USER_U = #{idUserU,jdbcType=VARCHAR},
+      </if>
+      <if test="idComputerU != null">
+        ID_COMPUTER_U = #{idComputerU,jdbcType=VARCHAR},
+      </if>
+      <if test="idPgU != null">
+        ID_PG_U = #{idPgU,jdbcType=VARCHAR},
+      </if>
+      <if test="tdDelete != null">
+        TD_DELETE = #{tdDelete,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idUserD != null">
+        ID_USER_D = #{idUserD,jdbcType=VARCHAR},
+      </if>
+      <if test="idComputerD != null">
+        ID_COMPUTER_D = #{idComputerD,jdbcType=VARCHAR},
+      </if>
+      <if test="idPgD != null">
+        ID_PG_D = #{idPgD,jdbcType=VARCHAR},
+      </if>
+      <if test="fgDelete != null">
+        FG_DELETE = #{fgDelete,jdbcType=DECIMAL},
+      </if>
+      <if test="tdBat != null">
+        TD_BAT = #{tdBat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idUserB != null">
+        ID_USER_B = #{idUserB,jdbcType=VARCHAR},
+      </if>
+      <if test="idComputerB != null">
+        ID_COMPUTER_B = #{idComputerB,jdbcType=VARCHAR},
+      </if>
+      <if test="idPgB != null">
+        ID_PG_B = #{idPgB,jdbcType=VARCHAR},
+      </if>
+      <if test="idUserGodI != null">
+        ID_USER_GOD_I = #{idUserGodI,jdbcType=VARCHAR},
+      </if>
+      <if test="idUserGodU != null">
+        ID_USER_GOD_U = #{idUserGodU,jdbcType=VARCHAR},
+      </if>
+      <if test="idUserGodD != null">
+        ID_USER_GOD_D = #{idUserGodD,jdbcType=VARCHAR},
+      </if>
+      <if test="idUserGodB != null">
+        ID_USER_GOD_B = #{idUserGodB,jdbcType=VARCHAR},
+      </if>
+      <if test="nmBusho != null">
+        NM_BUSHO = #{nmBusho,jdbcType=CHAR},
+      </if>
+      <if test="nmBusho2 != null">
+        NM_BUSHO2 = #{nmBusho2,jdbcType=CHAR},
+      </if>
+      <if test="nmBusho3 != null">
+        NM_BUSHO3 = #{nmBusho3,jdbcType=CHAR},
+      </if>
+      <if test="noYubin != null">
+        NO_YUBIN = #{noYubin,jdbcType=CHAR},
+      </if>
+      <if test="nmShozaichi != null">
+        NM_SHOZAICHI = #{nmShozaichi,jdbcType=CHAR},
+      </if>
+      <if test="noTel != null">
+        NO_TEL = #{noTel,jdbcType=CHAR},
+      </if>
+      <if test="noFax != null">
+        NO_FAX = #{noFax,jdbcType=CHAR},
+      </if>
+      <if test="noHatchuBusho != null">
+        NO_HATCHU_BUSHO = #{noHatchuBusho,jdbcType=VARCHAR},
+      </if>
+      <if test="kbJigyoHombu != null">
+        KB_JIGYO_HOMBU = #{kbJigyoHombu,jdbcType=CHAR},
+      </if>
+      <if test="kbJigyo != null">
+        KB_JIGYO = #{kbJigyo,jdbcType=DECIMAL},
+      </if>
+      <if test="kbHatchuLevel != null">
+        KB_HATCHU_LEVEL = #{kbHatchuLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="cdBushoOya != null">
+        CD_BUSHO_OYA = #{cdBushoOya,jdbcType=VARCHAR},
+      </if>
+      <if test="kbBusho != null">
+        KB_BUSHO = #{kbBusho,jdbcType=CHAR},
+      </if>
+      <if test="kbBushoOya != null">
+        KB_BUSHO_OYA = #{kbBushoOya,jdbcType=CHAR},
+      </if>
+      <if test="noHyojiBusho != null">
+        NO_HYOJI_BUSHO = #{noHyojiBusho,jdbcType=CHAR},
+      </if>
+      <if test="kbBushoEigyo != null">
+        KB_BUSHO_EIGYO = #{kbBushoEigyo,jdbcType=CHAR},
+      </if>
+      <if test="cdJigyoMc5 != null">
+        CD_JIGYO_MC5 = #{cdJigyoMc5,jdbcType=CHAR},
+      </if>
+      <if test="kbBushoMc5 != null">
+        KB_BUSHO_MC5 = #{kbBushoMc5,jdbcType=CHAR},
+      </if>
+      <if test="cdSagyoBushoDef1 != null">
+        CD_SAGYO_BUSHO_DEF1 = #{cdSagyoBushoDef1,jdbcType=VARCHAR},
+      </if>
+      <if test="cdSagyoBushoDef2 != null">
+        CD_SAGYO_BUSHO_DEF2 = #{cdSagyoBushoDef2,jdbcType=VARCHAR},
+      </if>
+      <if test="cdSagyoBushoDef3 != null">
+        CD_SAGYO_BUSHO_DEF3 = #{cdSagyoBushoDef3,jdbcType=VARCHAR},
+      </if>
+      <if test="nmYobi != null">
+        NM_YOBI = #{nmYobi,jdbcType=CHAR},
+      </if>
+      <if test="dtUpdate != null">
+        DT_UPDATE = #{dtUpdate,jdbcType=DECIMAL},
+      </if>
+      <if test="tmUpdate != null">
+        TM_UPDATE = #{tmUpdate,jdbcType=DECIMAL},
+      </if>
+      <if test="cdOldBusho != null">
+        CD_OLD_BUSHO = #{cdOldBusho,jdbcType=DECIMAL},
+      </if>
+      <if test="kbKankatsuTokatsu != null">
+        KB_KANKATSU_TOKATSU = #{kbKankatsuTokatsu,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CD_KAISHA = #{cdKaisha,jdbcType=CHAR}
+      and CD_BUSHO = #{cdBusho,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.we.estimate.Entity.Busyo">
+    <!--@mbg.generated-->
+    update BUSYO
+    set TD_INSERT = #{tdInsert,jdbcType=TIMESTAMP},
+      ID_USER_I = #{idUserI,jdbcType=VARCHAR},
+      ID_COMPUTER_I = #{idComputerI,jdbcType=VARCHAR},
+      ID_PG_I = #{idPgI,jdbcType=VARCHAR},
+      TD_UPDATE = #{tdUpdate,jdbcType=TIMESTAMP},
+      ID_USER_U = #{idUserU,jdbcType=VARCHAR},
+      ID_COMPUTER_U = #{idComputerU,jdbcType=VARCHAR},
+      ID_PG_U = #{idPgU,jdbcType=VARCHAR},
+      TD_DELETE = #{tdDelete,jdbcType=TIMESTAMP},
+      ID_USER_D = #{idUserD,jdbcType=VARCHAR},
+      ID_COMPUTER_D = #{idComputerD,jdbcType=VARCHAR},
+      ID_PG_D = #{idPgD,jdbcType=VARCHAR},
+      FG_DELETE = #{fgDelete,jdbcType=DECIMAL},
+      TD_BAT = #{tdBat,jdbcType=TIMESTAMP},
+      ID_USER_B = #{idUserB,jdbcType=VARCHAR},
+      ID_COMPUTER_B = #{idComputerB,jdbcType=VARCHAR},
+      ID_PG_B = #{idPgB,jdbcType=VARCHAR},
+      ID_USER_GOD_I = #{idUserGodI,jdbcType=VARCHAR},
+      ID_USER_GOD_U = #{idUserGodU,jdbcType=VARCHAR},
+      ID_USER_GOD_D = #{idUserGodD,jdbcType=VARCHAR},
+      ID_USER_GOD_B = #{idUserGodB,jdbcType=VARCHAR},
+      NM_BUSHO = #{nmBusho,jdbcType=CHAR},
+      NM_BUSHO2 = #{nmBusho2,jdbcType=CHAR},
+      NM_BUSHO3 = #{nmBusho3,jdbcType=CHAR},
+      NO_YUBIN = #{noYubin,jdbcType=CHAR},
+      NM_SHOZAICHI = #{nmShozaichi,jdbcType=CHAR},
+      NO_TEL = #{noTel,jdbcType=CHAR},
+      NO_FAX = #{noFax,jdbcType=CHAR},
+      NO_HATCHU_BUSHO = #{noHatchuBusho,jdbcType=VARCHAR},
+      KB_JIGYO_HOMBU = #{kbJigyoHombu,jdbcType=CHAR},
+      KB_JIGYO = #{kbJigyo,jdbcType=DECIMAL},
+      KB_HATCHU_LEVEL = #{kbHatchuLevel,jdbcType=DECIMAL},
+      CD_BUSHO_OYA = #{cdBushoOya,jdbcType=VARCHAR},
+      KB_BUSHO = #{kbBusho,jdbcType=CHAR},
+      KB_BUSHO_OYA = #{kbBushoOya,jdbcType=CHAR},
+      NO_HYOJI_BUSHO = #{noHyojiBusho,jdbcType=CHAR},
+      KB_BUSHO_EIGYO = #{kbBushoEigyo,jdbcType=CHAR},
+      CD_JIGYO_MC5 = #{cdJigyoMc5,jdbcType=CHAR},
+      KB_BUSHO_MC5 = #{kbBushoMc5,jdbcType=CHAR},
+      CD_SAGYO_BUSHO_DEF1 = #{cdSagyoBushoDef1,jdbcType=VARCHAR},
+      CD_SAGYO_BUSHO_DEF2 = #{cdSagyoBushoDef2,jdbcType=VARCHAR},
+      CD_SAGYO_BUSHO_DEF3 = #{cdSagyoBushoDef3,jdbcType=VARCHAR},
+      NM_YOBI = #{nmYobi,jdbcType=CHAR},
+      DT_UPDATE = #{dtUpdate,jdbcType=DECIMAL},
+      TM_UPDATE = #{tmUpdate,jdbcType=DECIMAL},
+      CD_OLD_BUSHO = #{cdOldBusho,jdbcType=DECIMAL},
+      KB_KANKATSU_TOKATSU = #{kbKankatsuTokatsu,jdbcType=VARCHAR}
+    where CD_KAISHA = #{cdKaisha,jdbcType=CHAR}
+      and CD_BUSHO = #{cdBusho,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectByBusyoCode" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from BUSYO
+    where CD_BUSHO = #{cdBusho,jdbcType=VARCHAR}
+    </select>
+</mapper>

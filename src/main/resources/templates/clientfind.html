@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>クライアント一覧</title>
+    <!--　テキスト表示　-->
+    <link rel="stylesheet" href="../static/style/clientfind.css" />
+    <!-- 様式 -->
+    <link rel="stylesheet" href="../static/style/common.css" />
+</head>
+
+<style>
+    body{
+        background: url("../static/img/back.jpg");
+    }
+
+</style>
+
+
+<body>
+
+<div>
+    <!--検索条件-->
+    <div th:fragment="resultFragment" id="dataSearch">
+        <form th:action="@{/client/search/clients/pageIndex=1}" th:object="${clientSearch}" method="post" id="async-form">
+            <table>
+                <thead>
+                <tr>
+                    <th id="swSearchJyoken"></th>
+                </tr>
+                </thead>
+
+                <!-- クライアント名 -->
+                <tr data-user-input="nmClient">
+                    <td class="input_label"><label id="nmClient"></label></td>
+                    <td>
+                        <input id="nmClient_input" class="SB" th:field="*{nmClient}">
+                    </td>
+                </tr>
+
+                <!--クライアント名（カナ）-->
+                <tr data-user-input="nmClientKana">
+                    <td class="input_label"><label id="nmClientKana"></label></td>
+                    <td>
+                        <input id="nmClientKana_input" class="SB" th:field="*{knClient}">
+                        <input type="checkbox" id="fgZenpoIcchi" name="fgZenpoIcchi" value="前方一致">前方一致
+                    </td>
+                </tr>
+
+                <!--営業担当部署-->
+                <tr data-user-input="cdEigyoBusho">
+                    <td class="input_label"><label id="cdEigyoBusho"></label></td>
+                    <td>
+                        <input id="cdEigyoBusho_input" class="SB" th:field="*{cdEigyoBusho}">
+                        <!-- 検索ボタン(部署) -->
+                        <button id="btnSearchBusho_input" class="B"><label id="btnSearchBusho"></label></button>
+                        <!-- 表示ボタン(部署) -->
+                        <button id="btnDispBusho_input" class="B"><label id="btnDispBusho"></label></button>
+                        <!--営業担当部署名-->
+                        <input id="nmEigyoBusho" class="SB" disabled>
+                    </td>
+                </tr>
+
+                <!--営業担当者-->
+                <tr data-user-input="cdEigyoTanto">
+                    <td class="input_label"><label id="cdEigyoTanto"></label></td>
+                    <td>
+                        <input id="cdEigyoTanto_input" class="SB" th:field="*{cdEigyoTanto}">
+                        <!-- 検索ボタン(担当) -->
+                        <button id="btnSearchTanto_input" class="B"><label id="btnSearchTanto"></label></button>
+                        <!-- 表示ボタン(担当) -->
+                        <button id="btnDispTanto_input" class="B"><label id="btnDispTanto"></label></button>
+                        <!--営業担当者署名-->
+                        <input id="nmEigyoTanto" class="SB" disabled>
+                    </td>
+                </tr>
+
+                <!--クライアントコード-->
+                <tr data-user-input="cdClient">
+                    <td class="input_label"><label id="cdClient"></label></td>
+                    <td>
+                        <input id="cdClient_input" class="SB" th:field="*{cdClient}">
+                    </td>
+                </tr>
+
+                <!--事業区分-->
+                <tr data-user-input="kbJigyo">
+                    <td class="input_label"><label id="kbJigyo"></label></td>
+                    <td>
+                        <select id="kbJigyo_input" class="SG" data-format="00" th:field="*{kbJigyo}">
+                            <option value="1">就職</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <!--クライアント区分-->
+                <tr data-user-input="fgClientKubun">
+                    <td class="input_label"><label id="fgClientKubun"></label></td>
+                    <td>
+                        <input type="checkbox" id="kbKeisai" name="kbKeisai" value="掲載" th:field="*{kbClient1}">掲載
+                        <input type="checkbox" id="kbJinji" name="kbJinji" value="人事" th:field="*{kbClient2}">人事
+                        <input type="checkbox" id="kbSeikyu" name="kbSeikyu" value="請求先" th:field="*{kbClient3}">請求先
+                    </td>
+                </tr>
+
+                <!--グループ会社フラグ-->
+                <tr data-user-input="fgGrp">
+                    <td class="input_label"><label id="fgGrp"></label></td>
+                    <td>
+                        <input type="checkbox" id="kbGrpGai" name="kbGrpGai" value="グループ外">グループ外
+                        <input type="checkbox" id="kbGrpMynavi" name="kbGrpMynavi" value="マイナビ">マイナビ
+                        <input type="checkbox" id="kbGrpKanrenKogaisha" name="kbGrpKanrenKogaisha" value="関係会社（マイナビ冠）">関係会社（マイナビ冠）
+                        <input type="checkbox" id="kbGrpSonotaKogaisha" name="kbGrpSonotaKogaisha" value="関係会社（買収企業）">関係会社（買収企業）
+                    </td>
+                </tr>
+
+                <!--反社フラグ-->
+                <tr data-user-input="fgHansha">
+                    <td class="input_label"><label id="fgHansha"></label></td>
+                    <td>
+                        <input type="radio" id="kbHanshaAri" value="該当" th:field="*{fgHansha}">該当
+                        <input type="radio" id="kbHanshaNashi" value="該当しない" th:field="*{fgHansha}">該当しない
+                    </td>
+                </tr>
+
+                <!--与信消滅フラグ-->
+                <tr data-user-input="fgYoshin">
+                    <td class="input_label"><label id="fgYoshin"></label></td>
+                    <td>
+                        <input type="radio" id="kbYoshinAri" value="該当" th:field="*{fgYoshin}">該当
+                        <input type="radio" id="kbYoshinNashi" value="該当しない" th:field="*{fgYoshin}">該当しない
+                    </td>
+                </tr>
+
+                <!--与信消滅フラグコメント-->
+                <tr data-user-input="fgYoshinComment">
+                    <td class="input_label"><label id="fgYoshinComment"></label></td>
+                    <td>
+                        <input type="radio" id="kbYoshinCommentAri" value="有" th:field="*{nmYoshinComment}">有
+                        <input type="radio" id="kbYoshinCommentNashi" value="無" th:field="*{nmYoshinComment}">無
+                    </td>
+                </tr>
+
+                <!--有効フラグ-->
+                <tr data-user-input="fgYukouFlag">
+                    <td class="input_label"><label id="fgYukouFlag"></label></td>
+                    <td>
+                        <input type="radio" id="kbYukou" value="有効" name="kbYukou">有効
+                        <input type="radio" id="kbMukou" value="無効" name="kbMukou">無効
+                    </td>
+                </tr>
+
+                <!--WEB申込禁止フラグ-->
+                <tr data-user-input="fgWebKinshi">
+                    <td class="input_label"><label id="fgWebKinshi"></label></td>
+                    <td>
+                        <input type="radio" id="fgWebKinshiKinshi" value="禁止" th:field="*{fgWebKinshi}">禁止
+                        <input type="radio" id="fgWebKinshiIgai" value="禁止以外" th:field="*{fgWebKinshi}">禁止以外
+                    </td>
+                </tr>
+
+                <!--WEB申込可否区分-->
+                <tr data-user-input="fgWebKahi">
+                    <td class="input_label"><label id="fgWebKahi"></label></td>
+                    <td>
+                        <input type="radio" id="fgWebKahiKa"value="可" th:field="*{kbWebKahi}">可
+                        <input type="radio" id="fgWebKahiHi"value="否" th:field="*{kbWebKahi}">否
+                    </td>
+
+                    <td>
+                        <!--検索区分-->
+                        <label id="kbSearch" for="kbSearch_input"></label>
+                        <select id="kbSearch_input" class="SG" data-format="00">
+                            <option value="検索">検索</option>
+                        </select>
+                        <!-- 検索実行ボタン -->
+                        <!--<button id="btnSearch_input" class="B" data-format="00">
+                            <label id="btnSearch"></label></button >-->
+                        <input type="submit" value="検索">
+                        <!-- ダウンロードボタン -->
+                        <!-- <button id="btnDownload_input" class="B" data-format="00"><label id="btnDownload"></label></button> -->
+                        <!-- 条件クリアボタン -->
+                        <button id="btnClear_input" class="B" data-format="00"><label id="btnClear"></label></button>
+                    </td>
+                </tr>
+
+
+            </table>
+        </form>
+    </div>
+
+    <!-- 検索結果 -->
+    <div>
+        <form>
+            <table id="client_data_container" style=" text-align: center">
+                <!-- 検索結果 -->
+                <thead>
+                <tr>
+                    <th id="searchResults"></th>
+                </tr>
+                <tr>
+                    <td rowspan="4" colspan="2">
+                        <label></label>
+                    </td>
+
+                    <td colspan="11">
+                        <label>クライアント</label>
+                    </td>
+
+                    <td colspan="3">
+                        <label>LBCコード</label>
+                    </td>
+
+                    <td rowspan="4">
+                        <label>事故履歴あり</label>
+                    </td>
+
+                    <td rowspan="4">
+                        <label>未入金あり</label>
+                    </td>
+
+                    <td>
+                        <label>反社</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="11">
+                        <label>住所</label>
+                    </td>
+
+                    <td colspan="3">
+                        <label>WEB申込</label>
+                    </td>
+                    <td>
+                        <label>与信</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td rowspan="2" colspan="4">
+                        <label>クライアント担当部署</label>
+                    </td>
+                    <td rowspan="2" colspan="4">
+                        <label>クライアント担当者</label>
+                    </td>
+                    <td rowspan="2" colspan="3">
+                        <label>営業部署</label>
+                    </td>
+                    <td rowspan="2" colspan="3">
+                        <label>営業担当者</label>
+                    </td>
+                    <td>
+                        <label>コメント</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label>無効</label>
+                    </td>
+                </tr>
+
+
+                </thead>
+            </table>
+
+        </form>
+
+        <table>
+            <tr id="client_model" style="display: none" th:each="client : ${page.list}">
+                <tr rowspan="4" colspan="2">
+                    <td>
+                        <!-- 詳細ボタン -->
+                        <button id="m1BtnDetail_input" class="B" data-format="00">
+                            <label id="m1BtnDetail">詳細</label></button>
+                        <!-- 選択ボタン -->
+                        <button id="btnSelect_input" class="B" data-format="00">
+                            <label id="btnSelect">選択</label></button>
+                    </td>
+                    <td colspan="11" th:text="${client.cdClient}+${client.nmClient}"></td>
+
+                    <td colspan="3">
+                        <label>LBCコード</label>
+                    </td>
+
+                    <td rowspan="4">
+                        <div th:if="${client.fgJiko eq '有'}">
+                            <input type="checkbox" checked>
+                        </div>
+                        <div th:if="${client.fgJiko eq '無'}">
+                            <input type="checkbox" >
+                        </div>
+                    </td>
+
+                    <td rowspan="4">
+                        <div th:if="${client.fgMinyukin eq '有'}">
+                            <input type="checkbox" checked>
+                        </div>
+                        <div th:if="${client.fgMinyukin eq '無'}">
+                            <input type="checkbox" >
+                        </div>
+                    </td>
+
+                    <td>
+                        <div th:if="${client.fgHansha eq '該当'}">
+                            <input type="checkbox" checked>
+                        </div>
+                        <div th:if="${client.fgHansha eq '該当しない'}">
+                            <input type="checkbox" >
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="11" th:text="${client.nmAddress}"></td>
+
+                    <td colspan="3">
+                        <div  th:if="${client.fgWebKinshi eq '禁止'}">
+                            <label th:text="${client.fgWebKinshi}"></label>
+                        </div>
+                        <div  th:if="${client.fgWebKinshi eq '禁止以外'}">
+                            <label th:text="${client.fgWebKahi}"></label>
+                        </div>
+
+                    </td>
+
+                    <td>
+                        <div th:if="${client.fgYoshin eq '該当'}">
+                            <input type="checkbox" checked>
+                        </div>
+                        <div th:if="${client.fgYoshin eq '該当しない'}">
+                            <input type="checkbox" >
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td rowspan="2" colspan="4" th:text="${client.nmClientBusho}"></td>
+                    <td rowspan="2" colspan="4" th:text="${client.nmClientTanto}"></td>
+                    <td colspan="3" th:text="${client.cdEigyoBusho}"></td>
+                    <td colspan="3" th:text="${client.cdEigyoTanto}"></td>
+                    <td>
+                        <div th:if="${client.nmYoshinComment eq '有'}">
+                            <input type="checkbox" checked>
+                        </div>
+                        <div th:if="${client.nmYoshinComment eq '無'}">
+                            <input type="checkbox" >
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <!--<td colspan="3" th:text="${}"></td>
+                    <td colspan="3" th:text="${}"></td>-->
+                    <td>
+                        <div th:if="${client.fgDelete eq '有効'}">
+                            <input type="checkbox" checked>
+                        </div>
+                        <div th:if="${client.fgDelete eq '無効'}">
+                            <input type="checkbox" checked>
+                        </div>
+                    </td>
+                </tr>
+
+            </tr>
+        </table>
+
+        <div>
+            <div style="float: left">
+                当前第<span th:text="${page.pageNum}"></span>页
+                总记录数<span th:text="${page.total}"></span>
+            </div>
+            <div style="float: right">
+                <a th:text="首页" th:if="${page.pageNum>1}" th:href="@{${path}}"></a>
+                <a th:text="上一页" th:if="${page.pageNum>1}" th:href="@{${path}+${page.pageNum-1}}"></a>
+                <a th:href="@{${path}+${i}}" th:each="i:${#numbers.sequence(1,page.pages)}" th:text="${i}"
+
+                   th:class="${page.pageNum==i}? 'page active':'page'"></a>
+                <a th:text="下一页" th:if="${page.pageNum<page.pages}" th:href="@{${path}+${page.pageNum+1}}"></a>
+                <a th:text="尾页" th:if="${page.pageNum<page.pages}" th:href="@{${path}+${page.pages}}"></a>
+            </div>
+        </div>
+        <!-- フッタ -->
+        <div class="pagination"></div>
+
+    </div>
+</div>
+<script src="../static/js/Jquery.js"></script>
+<script>
+    /*$("#btnSearch_input").on("click",function() {
+        let clientDataContainer = document.getElementById("client_model");
+        clientDataContainer.style.display = "";
+    })*/
+</script>
+</body>
+</html>
