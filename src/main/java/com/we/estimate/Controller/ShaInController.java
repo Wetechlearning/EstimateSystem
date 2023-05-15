@@ -111,11 +111,19 @@ public class ShaInController {
 
     // 新規社員入力処理
     @PostMapping("/submit")
-    public String submitShaInForm(HttpSession session) {
+    public String submitShaInForm(Model model,
+                                  HttpSession session) {
+        // エラーメッセージ初期化
+        model.addAttribute("error", "");
         // 从 session 中获取数据
         ShaIn newshaIn = (ShaIn) session.getAttribute("shaIn");
 
-        System.out.println(newshaIn);
+        if (newshaIn == null) {
+            // シートモード　表示
+            model.addAttribute("error", "入力するデータがありません");
+            return "success2";
+        }
+
 
         // Mybatis引数タイプ データ保存
         List<ShaIn> shaInsList = new ArrayList<>();
@@ -127,8 +135,12 @@ public class ShaInController {
         // Listにデータ追加
         shaInsList.add(newshaIn);
 
-        //　データ保存
-        shaInService.saveShaIn(shaInsList);
+        try {
+            //　データ保存
+            shaInService.saveShaIn(shaInsList);
+        } catch (Exception e) {
+            model.addAttribute("error", e.toString());
+        }
 
         return "success2";
     }
