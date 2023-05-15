@@ -25,6 +25,7 @@ public class ShaInDataBase {
     private String id_user_god_u; // 更新ユーザID(GOD)
     private String id_user_god_d; // 削除ユーザID(GOD)
     private String id_user_god_b; // バッチユーザID(GOD)
+
     private String cd_kaisha; // 会社コード
     private String cd_busho; // 部署コード
     private String cd_shain; // 社員コード
