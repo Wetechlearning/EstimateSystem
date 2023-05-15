@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -53,12 +55,14 @@ public class ShaInController {
         return "shainadd";
     }
 
-    // 社員入力画面 シートモデル
-    @PostMapping("/sheet")
-    public String showShaInFormSheet(Model model,
-                                     @ModelAttribute("shaIn") ShaIn newshaIn) {
-        // shaIn　入力データ保存モデル
-        model.addAttribute("shaIn", newshaIn);
+    // 社員入力画面 入力チェック
+    @PostMapping("/add")
+    public String showShaInFormError(Model model,
+                                     HttpSession session,
+                                     @ModelAttribute("shaIn") ShaIn newshaIn,
+                                     HttpServletResponse response) throws IOException {
+        // shaIn　入力データ読み取り
+        session.setAttribute("shaIn", newshaIn);
 
         try {
             validationException.checkNullOrEmpty(
@@ -76,6 +80,27 @@ public class ShaInController {
             return "shainadd";
         }
 
+        response.sendRedirect("sheet");
+
+        return null;
+    }
+
+
+    // 社員入力画面 シートモデル
+    @GetMapping("/sheet")
+    public String showShaInFormSheet(Model model,
+                                     HttpSession session) {
+        // shaIn　入力データ保存モデル
+        // session から読み取り
+        ShaIn newshaIn = (ShaIn) session.getAttribute("shaIn");
+
+        // 如果 newshaIn 为 null，创建一个新的 ShaIn 实例
+        if (newshaIn == null) {
+            newshaIn = new ShaIn();
+        }
+
+        model.addAttribute("shaIn", newshaIn);
+
         // シートモード　表示
         model.addAttribute("mode", "sheet");
         // エラーメッセージ
@@ -86,7 +111,9 @@ public class ShaInController {
 
     // 新規社員入力処理
     @PostMapping("/submit")
-    public String submitShaInForm(@ModelAttribute("shaIn") ShaIn newshaIn) {
+    public String submitShaInForm(HttpSession session) {
+        // 从 session 中获取数据
+        ShaIn newshaIn = (ShaIn) session.getAttribute("shaIn");
 
         System.out.println(newshaIn);
 
