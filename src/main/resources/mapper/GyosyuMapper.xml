@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.we.estimate.Mapper.GyosyuMapper">
+  <resultMap id="BaseResultMap" type="com.we.estimate.Entity.Gyosyu">
+    <!--@mbg.generated-->
+    <!--@Table GYOSYU-->
+    <id column="CD_GYOSHU" jdbcType="DECIMAL" property="cdGyoshu" />
+    <result column="NM_GYOSHU" jdbcType="CHAR" property="nmGyoshu" />
+    <result column="DT_UPDATE" jdbcType="DECIMAL" property="dtUpdate" />
+    <result column="TM_UPDATE" jdbcType="DECIMAL" property="tmUpdate" />
+    <result column="NM_YOBI" jdbcType="CHAR" property="nmYobi" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    CD_GYOSHU, NM_GYOSHU, DT_UPDATE, TM_UPDATE, NM_YOBI
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from GYOSYU
+    where CD_GYOSHU = #{cdGyoshu,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from GYOSYU
+    where CD_GYOSHU = #{cdGyoshu,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.we.estimate.Entity.Gyosyu">
+    <!--@mbg.generated-->
+    insert into GYOSYU (CD_GYOSHU, NM_GYOSHU, DT_UPDATE, 
+      TM_UPDATE, NM_YOBI)
+    values (#{cdGyoshu,jdbcType=DECIMAL}, #{nmGyoshu,jdbcType=CHAR}, #{dtUpdate,jdbcType=DECIMAL}, 
+      #{tmUpdate,jdbcType=DECIMAL}, #{nmYobi,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.we.estimate.Entity.Gyosyu">
+    <!--@mbg.generated-->
+    insert into GYOSYU
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cdGyoshu != null">
+        CD_GYOSHU,
+      </if>
+      <if test="nmGyoshu != null">
+        NM_GYOSHU,
+      </if>
+      <if test="dtUpdate != null">
+        DT_UPDATE,
+      </if>
+      <if test="tmUpdate != null">
+        TM_UPDATE,
+      </if>
+      <if test="nmYobi != null">
+        NM_YOBI,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cdGyoshu != null">
+        #{cdGyoshu,jdbcType=DECIMAL},
+      </if>
+      <if test="nmGyoshu != null">
+        #{nmGyoshu,jdbcType=CHAR},
+      </if>
+      <if test="dtUpdate != null">
+        #{dtUpdate,jdbcType=DECIMAL},
+      </if>
+      <if test="tmUpdate != null">
+        #{tmUpdate,jdbcType=DECIMAL},
+      </if>
+      <if test="nmYobi != null">
+        #{nmYobi,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.we.estimate.Entity.Gyosyu">
+    <!--@mbg.generated-->
+    update GYOSYU
+    <set>
+      <if test="nmGyoshu != null">
+        NM_GYOSHU = #{nmGyoshu,jdbcType=CHAR},
+      </if>
+      <if test="dtUpdate != null">
+        DT_UPDATE = #{dtUpdate,jdbcType=DECIMAL},
+      </if>
+      <if test="tmUpdate != null">
+        TM_UPDATE = #{tmUpdate,jdbcType=DECIMAL},
+      </if>
+      <if test="nmYobi != null">
+        NM_YOBI = #{nmYobi,jdbcType=CHAR},
+      </if>
+    </set>
+    where CD_GYOSHU = #{cdGyoshu,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.we.estimate.Entity.Gyosyu">
+    <!--@mbg.generated-->
+    update GYOSYU
+    set NM_GYOSHU = #{nmGyoshu,jdbcType=CHAR},
+      DT_UPDATE = #{dtUpdate,jdbcType=DECIMAL},
+      TM_UPDATE = #{tmUpdate,jdbcType=DECIMAL},
+      NM_YOBI = #{nmYobi,jdbcType=CHAR}
+    where CD_GYOSHU = #{cdGyoshu,jdbcType=DECIMAL}
+  </update>
+</mapper>

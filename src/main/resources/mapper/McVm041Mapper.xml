@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.we.estimate.Mapper.McVm041Mapper">
+  <resultMap id="BaseResultMap" type="com.we.estimate.Entity.McVm041">
+    <!--@mbg.generated-->
+    <!--@Table MC_VM041-->
+    <result column="CD_FURIKOMI_KOZA" jdbcType="VARCHAR" property="cdFurikomiKoza" />
+    <result column="NM_FURIKOMI_KOZA" jdbcType="VARCHAR" property="nmFurikomiKoza" />
+    <result column="NO_HYOJI" jdbcType="DECIMAL" property="noHyoji" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    CD_FURIKOMI_KOZA, NM_FURIKOMI_KOZA, NO_HYOJI
+  </sql>
+  <insert id="insert" parameterType="com.we.estimate.Entity.McVm041">
+    <!--@mbg.generated-->
+    insert into MC_VM041 (CD_FURIKOMI_KOZA, NM_FURIKOMI_KOZA, NO_HYOJI
+      )
+    values (#{cdFurikomiKoza,jdbcType=VARCHAR}, #{nmFurikomiKoza,jdbcType=VARCHAR}, #{noHyoji,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.we.estimate.Entity.McVm041">
+    <!--@mbg.generated-->
+    insert into MC_VM041
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cdFurikomiKoza != null">
+        CD_FURIKOMI_KOZA,
+      </if>
+      <if test="nmFurikomiKoza != null">
+        NM_FURIKOMI_KOZA,
+      </if>
+      <if test="noHyoji != null">
+        NO_HYOJI,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cdFurikomiKoza != null">
+        #{cdFurikomiKoza,jdbcType=VARCHAR},
+      </if>
+      <if test="nmFurikomiKoza != null">
+        #{nmFurikomiKoza,jdbcType=VARCHAR},
+      </if>
+      <if test="noHyoji != null">
+        #{noHyoji,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+</mapper>
