@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.we.estimate.Mapper.McVm042Mapper">
+  <resultMap id="BaseResultMap" type="com.we.estimate.Entity.McVm042">
+    <!--@mbg.generated-->
+    <!--@Table MC_VM042-->
+    <result column="CD_GINKO_VIRTUAL" jdbcType="VARCHAR" property="cdGinkoVirtual" />
+    <result column="CD_SHITEN_VIRTUAL" jdbcType="VARCHAR" property="cdShitenVirtual" />
+    <result column="KB_JIGYO" jdbcType="VARCHAR" property="kbJigyo" />
+    <result column="CD_GINKO_SHITEN_VIRTUAL" jdbcType="VARCHAR" property="cdGinkoShitenVirtual" />
+    <result column="NM_GINKO_SHITEN_VIRTUAL" jdbcType="VARCHAR" property="nmGinkoShitenVirtual" />
+    <result column="NO_HYOJI" jdbcType="DECIMAL" property="noHyoji" />
+    <result column="FG_SAIBAN_KANO" jdbcType="DECIMAL" property="fgSaibanKano" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    CD_GINKO_VIRTUAL, CD_SHITEN_VIRTUAL, KB_JIGYO, CD_GINKO_SHITEN_VIRTUAL, NM_GINKO_SHITEN_VIRTUAL, 
+    NO_HYOJI, FG_SAIBAN_KANO
+  </sql>
+  <insert id="insert" parameterType="com.we.estimate.Entity.McVm042">
+    <!--@mbg.generated-->
+    insert into MC_VM042 (CD_GINKO_VIRTUAL, CD_SHITEN_VIRTUAL, 
+      KB_JIGYO, CD_GINKO_SHITEN_VIRTUAL, NM_GINKO_SHITEN_VIRTUAL, 
+      NO_HYOJI, FG_SAIBAN_KANO)
+    values (#{cdGinkoVirtual,jdbcType=VARCHAR}, #{cdShitenVirtual,jdbcType=VARCHAR}, 
+      #{kbJigyo,jdbcType=VARCHAR}, #{cdGinkoShitenVirtual,jdbcType=VARCHAR}, #{nmGinkoShitenVirtual,jdbcType=VARCHAR}, 
+      #{noHyoji,jdbcType=DECIMAL}, #{fgSaibanKano,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.we.estimate.Entity.McVm042">
+    <!--@mbg.generated-->
+    insert into MC_VM042
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cdGinkoVirtual != null">
+        CD_GINKO_VIRTUAL,
+      </if>
+      <if test="cdShitenVirtual != null">
+        CD_SHITEN_VIRTUAL,
+      </if>
+      <if test="kbJigyo != null">
+        KB_JIGYO,
+      </if>
+      <if test="cdGinkoShitenVirtual != null">
+        CD_GINKO_SHITEN_VIRTUAL,
+      </if>
+      <if test="nmGinkoShitenVirtual != null">
+        NM_GINKO_SHITEN_VIRTUAL,
+      </if>
+      <if test="noHyoji != null">
+        NO_HYOJI,
+      </if>
+      <if test="fgSaibanKano != null">
+        FG_SAIBAN_KANO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cdGinkoVirtual != null">
+        #{cdGinkoVirtual,jdbcType=VARCHAR},
+      </if>
+      <if test="cdShitenVirtual != null">
+        #{cdShitenVirtual,jdbcType=VARCHAR},
+      </if>
+      <if test="kbJigyo != null">
+        #{kbJigyo,jdbcType=VARCHAR},
+      </if>
+      <if test="cdGinkoShitenVirtual != null">
+        #{cdGinkoShitenVirtual,jdbcType=VARCHAR},
+      </if>
+      <if test="nmGinkoShitenVirtual != null">
+        #{nmGinkoShitenVirtual,jdbcType=VARCHAR},
+      </if>
+      <if test="noHyoji != null">
+        #{noHyoji,jdbcType=DECIMAL},
+      </if>
+      <if test="fgSaibanKano != null">
+        #{fgSaibanKano,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="selectByNmGinkoShitenVirtual" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from MC_VM042
+    where CD_GINKO_VIRTUAL = #{param1,jdbcType=VARCHAR}
+    and CD_SHITEN_VIRTUAL = #{param2,jdbcType=VARCHAR}
+    </select>
+</mapper>

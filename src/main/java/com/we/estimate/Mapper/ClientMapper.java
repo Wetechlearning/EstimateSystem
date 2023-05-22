@@ -1,6 +1,7 @@
 package com.we.estimate.Mapper;
 
 import com.we.estimate.Entity.Client;
+import com.we.estimate.Search.ClientVo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -21,6 +22,6 @@ public interface ClientMapper {
     int updateByPrimaryKey(Client record);
 
     //List<Client> getClients(Map<String, Object> paramMap);
-    List<Client> getClients(Client client);
+    List<Client> getClients(ClientVo clientVo);
 
 }

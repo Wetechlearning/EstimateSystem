@@ -1,23 +1,21 @@
 package com.we.estimate.Entity;
 
 import java.util.Date;
-
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
-    * クライアントマスタ
+    * クライアントマスタワーク
     */
 @Data
-@Getter
-@Setter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class Client {
+public class McTm010 {
     /**
-    * クライアントコード
+    * 仮クライアントコード
     */
-    private Integer cdClient;
+    private Integer cdClientKari;
 
     /**
     * 追加日時
@@ -125,6 +123,51 @@ public class Client {
     private String idUserGodB;
 
     /**
+    * 版数
+    */
+    private Short noHan;
+
+    /**
+    * 承認ステータス区分
+    */
+    private String kbWfStatus;
+
+    /**
+    * 承認ステータスNO
+    */
+    private Short noWfSt;
+
+    /**
+    * 申請者コード
+    */
+    private String cdShinsei;
+
+    /**
+    * 申請日
+    */
+    private Integer dtShinsei;
+
+    /**
+    * 承認者コード
+    */
+    private String cdShonin;
+
+    /**
+    * 承認日
+    */
+    private Integer dtShonin;
+
+    /**
+    * クライアントコード
+    */
+    private Integer cdClient;
+
+    /**
+    * 登録種別
+    */
+    private String kbShubetsu;
+
+    /**
     * カナ社名
     */
     private String knClient;
@@ -212,7 +255,7 @@ public class Client {
     /**
     * 入金サイト
     */
-    private Short nmNyukinSite;
+    private Short noNyukinSite;
 
     /**
     * 締日
@@ -290,6 +333,11 @@ public class Client {
     private String nmTokki;
 
     /**
+    * LBCコード
+    */
+    private Long cdLbc;
+
+    /**
     * 未入金フラグ
     */
     private String fgMinyukin;
@@ -305,39 +353,19 @@ public class Client {
     private String fgHikazei;
 
     /**
-    * 予備
-    */
-    private String nmYobi;
-
-    /**
-    * 更新日付
-    */
-    private Integer dtUpdate;
-
-    /**
-    * 更新時刻
-    */
-    private Integer tmUpdate;
-
-    /**
     * 営業担当会社コード
     */
     private String cdEigyoKaisha;
 
     /**
-    * 旧クライアントコード
-    */
-    private Integer cdOldClient;
-
-    /**
-    * 検索用クライアント
-    */
-    private String knKensakuClient;
-
-    /**
     * クライアント名カナ全角
     */
     private String knClientZenkaku;
+
+    /**
+    * 経理保留フラグ
+    */
+    private Short fgHoryuKeiri;
 
     /**
     * 反社フラグ
@@ -365,9 +393,19 @@ public class Client {
     private String nmSeikyushoInjiComment;
 
     /**
+    * 部分修正フラグ
+    */
+    private Short fgPartModify;
+
+    /**
     * 反社審査No
     */
     private String noHanshaShinsa;
+
+    /**
+    * 企業審査保留フラグ
+    */
+    private Short fgHoryuKigyo;
 
     /**
     * 請求文言（CL固定）
@@ -384,19 +422,10 @@ public class Client {
     */
     private String cdFurikomiKoza;
 
-    /**
-    * バーチャル銀行コード
-    */
     private String cdGinkoVirtual;
 
-    /**
-    * バーチャル支店コード
-    */
     private String cdShitenVirtual;
 
-    /**
-    * バーチャル口座番号
-    */
     private String noKozaVirtual;
 
     /**
@@ -413,11 +442,6 @@ public class Client {
     * WEB申込可否区分
     */
     private String kbWebKahi;
-
-    /**
-    * WEB申込ステータス区分
-    */
-    private String kbClientStatus;
 
     /**
     * グループコード

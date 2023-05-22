@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.we.estimate.Mapper.McTm120Mapper">
+  <resultMap id="BaseResultMap" type="com.we.estimate.Entity.McTm120">
+    <!--@mbg.generated-->
+    <!--@Table MC_TM120-->
+    <id column="CD_FURIKOMI_KOZA" jdbcType="VARCHAR" property="cdFurikomiKoza" />
+    <result column="TD_INSERT" jdbcType="TIMESTAMP" property="tdInsert" />
+    <result column="ID_USER_I" jdbcType="VARCHAR" property="idUserI" />
+    <result column="ID_COMPUTER_I" jdbcType="VARCHAR" property="idComputerI" />
+    <result column="ID_PG_I" jdbcType="VARCHAR" property="idPgI" />
+    <result column="TD_UPDATE" jdbcType="TIMESTAMP" property="tdUpdate" />
+    <result column="ID_USER_U" jdbcType="VARCHAR" property="idUserU" />
+    <result column="ID_COMPUTER_U" jdbcType="VARCHAR" property="idComputerU" />
+    <result column="ID_PG_U" jdbcType="VARCHAR" property="idPgU" />
+    <result column="TD_DELETE" jdbcType="TIMESTAMP" property="tdDelete" />
+    <result column="ID_USER_D" jdbcType="VARCHAR" property="idUserD" />
+    <result column="ID_COMPUTER_D" jdbcType="VARCHAR" property="idComputerD" />
+    <result column="ID_PG_D" jdbcType="VARCHAR" property="idPgD" />
+    <result column="FG_DELETE" jdbcType="DECIMAL" property="fgDelete" />
+    <result column="TD_BAT" jdbcType="TIMESTAMP" property="tdBat" />
+    <result column="ID_USER_B" jdbcType="VARCHAR" property="idUserB" />
+    <result column="ID_COMPUTER_B" jdbcType="VARCHAR" property="idComputerB" />
+    <result column="ID_PG_B" jdbcType="VARCHAR" property="idPgB" />
+    <result column="ID_USER_GOD_I" jdbcType="VARCHAR" property="idUserGodI" />
+    <result column="ID_USER_GOD_U" jdbcType="VARCHAR" property="idUserGodU" />
+    <result column="ID_USER_GOD_D" jdbcType="VARCHAR" property="idUserGodD" />
+    <result column="ID_USER_GOD_B" jdbcType="VARCHAR" property="idUserGodB" />
+    <result column="NM_GINKO" jdbcType="VARCHAR" property="nmGinko" />
+    <result column="NM_SHITEN" jdbcType="VARCHAR" property="nmShiten" />
+    <result column="NM_YOKINSHU" jdbcType="VARCHAR" property="nmYokinshu" />
+    <result column="NO_KOZA" jdbcType="VARCHAR" property="noKoza" />
+    <result column="NM_KOZA" jdbcType="VARCHAR" property="nmKoza" />
+    <result column="NO_HYOJI" jdbcType="DECIMAL" property="noHyoji" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    CD_FURIKOMI_KOZA, TD_INSERT, ID_USER_I, ID_COMPUTER_I, ID_PG_I, TD_UPDATE, ID_USER_U, 
+    ID_COMPUTER_U, ID_PG_U, TD_DELETE, ID_USER_D, ID_COMPUTER_D, ID_PG_D, FG_DELETE, 
+    TD_BAT, ID_USER_B, ID_COMPUTER_B, ID_PG_B, ID_USER_GOD_I, ID_USER_GOD_U, ID_USER_GOD_D, 
+    ID_USER_GOD_B, NM_GINKO, NM_SHITEN, NM_YOKINSHU, NO_KOZA, NM_KOZA, NO_HYOJI
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from MC_TM120
+    where CD_FURIKOMI_KOZA = #{cdFurikomiKoza,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from MC_TM120
+    where CD_FURIKOMI_KOZA = #{cdFurikomiKoza,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.we.estimate.Entity.McTm120">
+    <!--@mbg.generated-->
+    insert into MC_TM120 (CD_FURIKOMI_KOZA, TD_INSERT, ID_USER_I, 
+      ID_COMPUTER_I, ID_PG_I, TD_UPDATE, 
+      ID_USER_U, ID_COMPUTER_U, ID_PG_U, 
+      TD_DELETE, ID_USER_D, ID_COMPUTER_D, 
+      ID_PG_D, FG_DELETE, TD_BAT, 
+      ID_USER_B, ID_COMPUTER_B, ID_PG_B, 
+      ID_USER_GOD_I, ID_USER_GOD_U, ID_USER_GOD_D, 
+      ID_USER_GOD_B, NM_GINKO, NM_SHITEN, 
+      NM_YOKINSHU, NO_KOZA, NM_KOZA, 
+      NO_HYOJI)
+    values (#{cdFurikomiKoza,jdbcType=VARCHAR}, #{tdInsert,jdbcType=TIMESTAMP}, #{idUserI,jdbcType=VARCHAR}, 
+      #{idComputerI,jdbcType=VARCHAR}, #{idPgI,jdbcType=VARCHAR}, #{tdUpdate,jdbcType=TIMESTAMP}, 
+      #{idUserU,jdbcType=VARCHAR}, #{idComputerU,jdbcType=VARCHAR}, #{idPgU,jdbcType=VARCHAR}, 
+      #{tdDelete,jdbcType=TIMESTAMP}, #{idUserD,jdbcType=VARCHAR}, #{idComputerD,jdbcType=VARCHAR}, 
+      #{idPgD,jdbcType=VARCHAR}, #{fgDelete,jdbcType=DECIMAL}, #{tdBat,jdbcType=TIMESTAMP}, 
+      #{idUserB,jdbcType=VARCHAR}, #{idComputerB,jdbcType=VARCHAR}, #{idPgB,jdbcType=VARCHAR}, 
+      #{idUserGodI,jdbcType=VARCHAR}, #{idUserGodU,jdbcType=VARCHAR}, #{idUserGodD,jdbcType=VARCHAR}, 
+      #{idUserGodB,jdbcType=VARCHAR}, #{nmGinko,jdbcType=VARCHAR}, #{nmShiten,jdbcType=VARCHAR}, 
+      #{nmYokinshu,jdbcType=VARCHAR}, #{noKoza,jdbcType=VARCHAR}, #{nmKoza,jdbcType=VARCHAR}, 
+      #{noHyoji,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.we.estimate.Entity.McTm120">
+    <!--@mbg.generated-->
+    insert into MC_TM120
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cdFurikomiKoza != null">
+        CD_FURIKOMI_KOZA,
+      </if>
+      <if test="tdInsert != null">
+        TD_INSERT,
+      </if>
+      <if test="idUserI != null">
+        ID_USER_I,
+      </if>
+      <if test="idComputerI != null">
+        ID_COMPUTER_I,
+      </if>
+      <if test="idPgI != null">
+        ID_PG_I,
+      </if>
+      <if test="tdUpdate != null">
+        TD_UPDATE,
+      </if>
+      <if test="idUserU != null">
+        ID_USER_U,
+      </if>
+      <if test="idComputerU != null">
+        ID_COMPUTER_U,
+      </if>
+      <if test="idPgU != null">
+        ID_PG_U,
+      </if>
+      <if test="tdDelete != null">
+        TD_DELETE,
+      </if>
+      <if test="idUserD != null">
+        ID_USER_D,
+      </if>
+      <if test="idComputerD != null">
+        ID_COMPUTER_D,
+      </if>
+      <if test="idPgD != null">
+        ID_PG_D,
+      </if>
+      <if test="fgDelete != null">
+        FG_DELETE,
+      </if>
+      <if test="tdBat != null">
+        TD_BAT,
+      </if>
+      <if test="idUserB != null">
+        ID_USER_B,
+      </if>
+      <if test="idComputerB != null">
+        ID_COMPUTER_B,
+      </if>
+      <if test="idPgB != null">
+        ID_PG_B,
+      </if>
+      <if test="idUserGodI != null">
+        ID_USER_GOD_I,
+      </if>
+      <if test="idUserGodU != null">
+        ID_USER_GOD_U,
+      </if>
+      <if test="idUserGodD != null">
+        ID_USER_GOD_D,
+      </if>
+      <if test="idUserGodB != null">
+        ID_USER_GOD_B,
+      </if>
+      <if test="nmGinko != null">
+        NM_GINKO,
+      </if>
+      <if test="nmShiten != null">
+        NM_SHITEN,
+      </if>
+      <if test="nmYokinshu != null">
+        NM_YOKINSHU,
+      </if>
+      <if test="noKoza != null">
+        NO_KOZA,
+      </if>
+      <if test="nmKoza != null">
+        NM_KOZA,
+      </if>
+      <if test="noHyoji != null">
+        NO_HYOJI,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cdFurikomiKoza != null">
+        #{cdFurikomiKoza,jdbcType=VARCHAR},
+      </if>
+      <if test="tdInsert != null">
+        #{tdInsert,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idUserI != null">
+        #{idUserI,jdbcType=VARCHAR},
+      </if>
+      <if test="idComputerI != null">
+        #{idComputerI,jdbcType=VARCHAR},
+      </if>
+      <if test="idPgI != null">
+        #{idPgI,jdbcType=VARCHAR},
+      </if>
+      <if test="tdUpdate != null">
+        #{tdUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idUserU != null">
+        #{idUserU,jdbcType=VARCHAR},
+      </if>
+      <if test="idComputerU != null">
+        #{idComputerU,jdbcType=VARCHAR},
+      </if>
+      <if test="idPgU != null">
+        #{idPgU,jdbcType=VARCHAR},
+      </if>
+      <if test="tdDelete != null">
+        #{tdDelete,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idUserD != null">
+        #{idUserD,jdbcType=VARCHAR},
+      </if>
+      <if test="idComputerD != null">
+        #{idComputerD,jdbcType=VARCHAR},
+      </if>
+      <if test="idPgD != null">
+        #{idPgD,jdbcType=VARCHAR},
+      </if>
+      <if test="fgDelete != null">
+        #{fgDelete,jdbcType=DECIMAL},
+      </if>
+      <if test="tdBat != null">
+        #{tdBat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idUserB != null">
+        #{idUserB,jdbcType=VARCHAR},
+      </if>
+      <if test="idComputerB != null">
+        #{idComputerB,jdbcType=VARCHAR},
+      </if>
+      <if test="idPgB != null">
+        #{idPgB,jdbcType=VARCHAR},
+      </if>
+      <if test="idUserGodI != null">
+        #{idUserGodI,jdbcType=VARCHAR},
+      </if>
+      <if test="idUserGodU != null">
+        #{idUserGodU,jdbcType=VARCHAR},
+      </if>
+      <if test="idUserGodD != null">
+        #{idUserGodD,jdbcType=VARCHAR},
+      </if>
+      <if test="idUserGodB != null">
+        #{idUserGodB,jdbcType=VARCHAR},
+      </if>
+      <if test="nmGinko != null">
+        #{nmGinko,jdbcType=VARCHAR},
+      </if>
+      <if test="nmShiten != null">
+        #{nmShiten,jdbcType=VARCHAR},
+      </if>
+      <if test="nmYokinshu != null">
+        #{nmYokinshu,jdbcType=VARCHAR},
+      </if>
+      <if test="noKoza != null">
+        #{noKoza,jdbcType=VARCHAR},
+      </if>
+      <if test="nmKoza != null">
+        #{nmKoza,jdbcType=VARCHAR},
+      </if>
+      <if test="noHyoji != null">
+        #{noHyoji,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.we.estimate.Entity.McTm120">
+    <!--@mbg.generated-->
+    update MC_TM120
+    <set>
+      <if test="tdInsert != null">
+        TD_INSERT = #{tdInsert,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idUserI != null">
+        ID_USER_I = #{idUserI,jdbcType=VARCHAR},
+      </if>
+      <if test="idComputerI != null">
+        ID_COMPUTER_I = #{idComputerI,jdbcType=VARCHAR},
+      </if>
+      <if test="idPgI != null">
+        ID_PG_I = #{idPgI,jdbcType=VARCHAR},
+      </if>
+      <if test="tdUpdate != null">
+        TD_UPDATE = #{tdUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idUserU != null">
+        ID_USER_U = #{idUserU,jdbcType=VARCHAR},
+      </if>
+      <if test="idComputerU != null">
+        ID_COMPUTER_U = #{idComputerU,jdbcType=VARCHAR},
+      </if>
+      <if test="idPgU != null">
+        ID_PG_U = #{idPgU,jdbcType=VARCHAR},
+      </if>
+      <if test="tdDelete != null">
+        TD_DELETE = #{tdDelete,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idUserD != null">
+        ID_USER_D = #{idUserD,jdbcType=VARCHAR},
+      </if>
+      <if test="idComputerD != null">
+        ID_COMPUTER_D = #{idComputerD,jdbcType=VARCHAR},
+      </if>
+      <if test="idPgD != null">
+        ID_PG_D = #{idPgD,jdbcType=VARCHAR},
+      </if>
+      <if test="fgDelete != null">
+        FG_DELETE = #{fgDelete,jdbcType=DECIMAL},
+      </if>
+      <if test="tdBat != null">
+        TD_BAT = #{tdBat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idUserB != null">
+        ID_USER_B = #{idUserB,jdbcType=VARCHAR},
+      </if>
+      <if test="idComputerB != null">
+        ID_COMPUTER_B = #{idComputerB,jdbcType=VARCHAR},
+      </if>
+      <if test="idPgB != null">
+        ID_PG_B = #{idPgB,jdbcType=VARCHAR},
+      </if>
+      <if test="idUserGodI != null">
+        ID_USER_GOD_I = #{idUserGodI,jdbcType=VARCHAR},
+      </if>
+      <if test="idUserGodU != null">
+        ID_USER_GOD_U = #{idUserGodU,jdbcType=VARCHAR},
+      </if>
+      <if test="idUserGodD != null">
+        ID_USER_GOD_D = #{idUserGodD,jdbcType=VARCHAR},
+      </if>
+      <if test="idUserGodB != null">
+        ID_USER_GOD_B = #{idUserGodB,jdbcType=VARCHAR},
+      </if>
+      <if test="nmGinko != null">
+        NM_GINKO = #{nmGinko,jdbcType=VARCHAR},
+      </if>
+      <if test="nmShiten != null">
+        NM_SHITEN = #{nmShiten,jdbcType=VARCHAR},
+      </if>
+      <if test="nmYokinshu != null">
+        NM_YOKINSHU = #{nmYokinshu,jdbcType=VARCHAR},
+      </if>
+      <if test="noKoza != null">
+        NO_KOZA = #{noKoza,jdbcType=VARCHAR},
+      </if>
+      <if test="nmKoza != null">
+        NM_KOZA = #{nmKoza,jdbcType=VARCHAR},
+      </if>
+      <if test="noHyoji != null">
+        NO_HYOJI = #{noHyoji,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where CD_FURIKOMI_KOZA = #{cdFurikomiKoza,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.we.estimate.Entity.McTm120">
+    <!--@mbg.generated-->
+    update MC_TM120
+    set TD_INSERT = #{tdInsert,jdbcType=TIMESTAMP},
+      ID_USER_I = #{idUserI,jdbcType=VARCHAR},
+      ID_COMPUTER_I = #{idComputerI,jdbcType=VARCHAR},
+      ID_PG_I = #{idPgI,jdbcType=VARCHAR},
+      TD_UPDATE = #{tdUpdate,jdbcType=TIMESTAMP},
+      ID_USER_U = #{idUserU,jdbcType=VARCHAR},
+      ID_COMPUTER_U = #{idComputerU,jdbcType=VARCHAR},
+      ID_PG_U = #{idPgU,jdbcType=VARCHAR},
+      TD_DELETE = #{tdDelete,jdbcType=TIMESTAMP},
+      ID_USER_D = #{idUserD,jdbcType=VARCHAR},
+      ID_COMPUTER_D = #{idComputerD,jdbcType=VARCHAR},
+      ID_PG_D = #{idPgD,jdbcType=VARCHAR},
+      FG_DELETE = #{fgDelete,jdbcType=DECIMAL},
+      TD_BAT = #{tdBat,jdbcType=TIMESTAMP},
+      ID_USER_B = #{idUserB,jdbcType=VARCHAR},
+      ID_COMPUTER_B = #{idComputerB,jdbcType=VARCHAR},
+      ID_PG_B = #{idPgB,jdbcType=VARCHAR},
+      ID_USER_GOD_I = #{idUserGodI,jdbcType=VARCHAR},
+      ID_USER_GOD_U = #{idUserGodU,jdbcType=VARCHAR},
+      ID_USER_GOD_D = #{idUserGodD,jdbcType=VARCHAR},
+      ID_USER_GOD_B = #{idUserGodB,jdbcType=VARCHAR},
+      NM_GINKO = #{nmGinko,jdbcType=VARCHAR},
+      NM_SHITEN = #{nmShiten,jdbcType=VARCHAR},
+      NM_YOKINSHU = #{nmYokinshu,jdbcType=VARCHAR},
+      NO_KOZA = #{noKoza,jdbcType=VARCHAR},
+      NM_KOZA = #{nmKoza,jdbcType=VARCHAR},
+      NO_HYOJI = #{noHyoji,jdbcType=DECIMAL}
+    where CD_FURIKOMI_KOZA = #{cdFurikomiKoza,jdbcType=VARCHAR}
+  </update>
+</mapper>
