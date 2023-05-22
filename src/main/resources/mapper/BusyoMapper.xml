@@ -621,10 +621,10 @@
       and CD_BUSHO = #{cdBusho,jdbcType=VARCHAR}
   </update>
 
-  <select id="selectByBusyoCode" parameterType="map" resultMap="BaseResultMap">
+  <select id="selectByBusyoCode" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from BUSYO
-    where CD_BUSHO = #{cdBusho,jdbcType=VARCHAR}
+    where CD_BUSHO = #{busyoCode,jdbcType=VARCHAR}
     </select>
 </mapper>

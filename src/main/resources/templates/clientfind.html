@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>クライアント一覧</title>
     <!--　テキスト表示　-->
-    <link rel="stylesheet" href="../static/style/clientfind.css" />
+    <link rel="stylesheet" type="text/css" th:href="@{../static/style/clientfind.css}" />
     <!-- 様式 -->
-    <link rel="stylesheet" href="../static/style/common.css" />
+    <link rel="stylesheet" type="text/css" th:href="@{../static/style/common.css}" />
 </head>
 
 <style>
@@ -23,7 +23,7 @@
 <div>
     <!--検索条件-->
     <div th:fragment="resultFragment" id="dataSearch">
-        <form th:action="@{/client/search/clients/pageIndex=1}" th:object="${clientSearch}" method="post" id="async-form">
+        <form th:action="@{/search/clients?pageIndex=1}" th:object="${clientSearch}" method="post" id="async-form">
             <table>
                 <thead>
                 <tr>
@@ -54,11 +54,12 @@
                     <td>
                         <input id="cdEigyoBusho_input" class="SB" th:field="*{cdEigyoBusho}">
                         <!-- 検索ボタン(部署) -->
-                        <button id="btnSearchBusho_input" class="B"><label id="btnSearchBusho"></label></button>
+                        <button id="btnSearchBusho_input" class="B"><label id="btnSearchBusho"></label></button><!-- th:href="@{/search/clientBusho?busyoCode=${clientSearch.cdEigyoBusho}}"-->
                         <!-- 表示ボタン(部署) -->
                         <button id="btnDispBusho_input" class="B"><label id="btnDispBusho"></label></button>
                         <!--営業担当部署名-->
-                        <input id="nmEigyoBusho" class="SB" disabled>
+                        <input id="nmEigyoBusho" class="SB" disabled >
+
                     </td>
                 </tr>
 
@@ -119,8 +120,8 @@
                 <tr data-user-input="fgHansha">
                     <td class="input_label"><label id="fgHansha"></label></td>
                     <td>
-                        <input type="radio" id="kbHanshaAri" value="該当" th:field="*{fgHansha}">該当
-                        <input type="radio" id="kbHanshaNashi" value="該当しない" th:field="*{fgHansha}">該当しない
+                        <input type="radio" id="kbHanshaAri" value="1" th:field="*{fgHansha}">該当
+                        <input type="radio" id="kbHanshaNashi" value="0" th:field="*{fgHansha}">該当しない
                     </td>
                 </tr>
 
@@ -128,8 +129,8 @@
                 <tr data-user-input="fgYoshin">
                     <td class="input_label"><label id="fgYoshin"></label></td>
                     <td>
-                        <input type="radio" id="kbYoshinAri" value="該当" th:field="*{fgYoshin}">該当
-                        <input type="radio" id="kbYoshinNashi" value="該当しない" th:field="*{fgYoshin}">該当しない
+                        <input type="radio" id="kbYoshinAri" value="1" th:field="*{fgYoshin}">該当
+                        <input type="radio" id="kbYoshinNashi" value="0" th:field="*{fgYoshin}">該当しない
                     </td>
                 </tr>
 
@@ -137,8 +138,8 @@
                 <tr data-user-input="fgYoshinComment">
                     <td class="input_label"><label id="fgYoshinComment"></label></td>
                     <td>
-                        <input type="radio" id="kbYoshinCommentAri" value="有" th:field="*{nmYoshinComment}">有
-                        <input type="radio" id="kbYoshinCommentNashi" value="無" th:field="*{nmYoshinComment}">無
+                        <input type="radio" id="kbYoshinCommentAri" value="1" th:field="*{nmYoshinComment}">有
+                        <input type="radio" id="kbYoshinCommentNashi" value="0" th:field="*{nmYoshinComment}">無
                     </td>
                 </tr>
 
@@ -155,8 +156,8 @@
                 <tr data-user-input="fgWebKinshi">
                     <td class="input_label"><label id="fgWebKinshi"></label></td>
                     <td>
-                        <input type="radio" id="fgWebKinshiKinshi" value="禁止" th:field="*{fgWebKinshi}">禁止
-                        <input type="radio" id="fgWebKinshiIgai" value="禁止以外" th:field="*{fgWebKinshi}">禁止以外
+                        <input type="radio" id="fgWebKinshiKinshi" value="1" th:field="*{fgWebKinshi}">禁止
+                        <input type="radio" id="fgWebKinshiIgai" value="0" th:field="*{fgWebKinshi}">禁止以外
                     </td>
                 </tr>
 
@@ -164,8 +165,8 @@
                 <tr data-user-input="fgWebKahi">
                     <td class="input_label"><label id="fgWebKahi"></label></td>
                     <td>
-                        <input type="radio" id="fgWebKahiKa"value="可" th:field="*{kbWebKahi}">可
-                        <input type="radio" id="fgWebKahiHi"value="否" th:field="*{kbWebKahi}">否
+                        <input type="radio" id="fgWebKahiKa"value="1" th:field="*{kbWebKahi}">可
+                        <input type="radio" id="fgWebKahiHi"value="0" th:field="*{kbWebKahi}">否
                     </td>
 
                     <td>
@@ -191,11 +192,12 @@
     </div>
 
     <!-- 検索結果 -->
-    <div>
-        <form>
+    <div th:if="${not #lists.isEmpty(page.list)}">
+
             <table id="client_data_container" style=" text-align: center">
                 <!-- 検索結果 -->
                 <thead>
+                <tr>
                 <tr>
                     <th id="searchResults"></th>
                 </tr>
@@ -204,7 +206,7 @@
                         <label></label>
                     </td>
 
-                    <td colspan="11">
+                    <td colspan="11" style="text-align: left">
                         <label>クライアント</label>
                     </td>
 
@@ -226,7 +228,7 @@
                 </tr>
 
                 <tr>
-                    <td colspan="11">
+                    <td colspan="11" style="text-align: left">
                         <label>住所</label>
                     </td>
 
@@ -262,90 +264,95 @@
                     </td>
                 </tr>
 
-
+                </tr>
                 </thead>
-            </table>
 
-        </form>
-
-        <table>
-            <tr id="client_model" style="display: none" th:each="client : ${page.list}">
-                <tr rowspan="4" colspan="2">
-                    <td>
+                <tbody  th:each="client:${page.list}">
+                <tr id="client_model">
+                <tr>
+                    <td rowspan="4" colspan="1">
                         <!-- 詳細ボタン -->
-                        <button id="m1BtnDetail_input" class="B" data-format="00">
+                        <button th:onclick="clientFind([[${client.getCdClient}]])" th:name="${client.getCdClient}" class="B" data-format="00" th:value="${client.getCdClient}">
+                            <!--<a th:text="${client.getCdClient}" id="syosaiClientCode" style="display: none"></a>-->
                             <label id="m1BtnDetail">詳細</label></button>
+                    </td>
+                    <td rowspan="4" colspan="1">
                         <!-- 選択ボタン -->
                         <button id="btnSelect_input" class="B" data-format="00">
                             <label id="btnSelect">選択</label></button>
                     </td>
-                    <td colspan="11" th:text="${client.cdClient}+${client.nmClient}"></td>
+                    <td colspan="11" th:text="${client.getNmClient()}" style="text-align: left"></td>
 
                     <td colspan="3">
                         <label>LBCコード</label>
                     </td>
 
                     <td rowspan="4">
-                        <div th:if="${client.fgJiko eq '有'}">
+                        <div th:if="${client.getFgJiko() eq '1'}">
                             <input type="checkbox" checked>
                         </div>
-                        <div th:if="${client.fgJiko eq '無'}">
+                        <div th:if="${client.getFgJiko() eq '0'}">
                             <input type="checkbox" >
                         </div>
                     </td>
 
                     <td rowspan="4">
-                        <div th:if="${client.fgMinyukin eq '有'}">
+                        <div th:if="${client.getFgMinyukin() eq '1'}">
                             <input type="checkbox" checked>
                         </div>
-                        <div th:if="${client.fgMinyukin eq '無'}">
+                        <div th:if="${client.getFgMinyukin() eq '0'}">
                             <input type="checkbox" >
                         </div>
                     </td>
 
                     <td>
-                        <div th:if="${client.fgHansha eq '該当'}">
+                        <div th:if="${client.getFgHansha() eq 1}">
                             <input type="checkbox" checked>
                         </div>
-                        <div th:if="${client.fgHansha eq '該当しない'}">
+                        <div th:if="${client.getFgHansha() eq 0}">
                             <input type="checkbox" >
                         </div>
                     </td>
                 </tr>
 
                 <tr>
-                    <td colspan="11" th:text="${client.nmAddress}"></td>
+                    <td colspan="11" th:text="${client.getNmAddress()}" style="text-align: left"></td>
 
                     <td colspan="3">
-                        <div  th:if="${client.fgWebKinshi eq '禁止'}">
-                            <label th:text="${client.fgWebKinshi}"></label>
+                        <div  th:if="${client.getFgWebKinshi() eq 1}">
+                            <label>禁止</label>
                         </div>
-                        <div  th:if="${client.fgWebKinshi eq '禁止以外'}">
-                            <label th:text="${client.fgWebKahi}"></label>
+                        <div  th:if="${client.getFgWebKinshi() eq 0}">
+                            <div th:if="${client.getKbWebKahi() eq '1'}">
+                                <label>可</label>
+                            </div>
+                            <div th:if="${client.getKbWebKahi() eq '0'}">
+                                <label>否</label>
+                            </div>
                         </div>
 
                     </td>
 
                     <td>
-                        <div th:if="${client.fgYoshin eq '該当'}">
+                        <div th:if="${client.getFgYoshin() eq 1}">
                             <input type="checkbox" checked>
                         </div>
-                        <div th:if="${client.fgYoshin eq '該当しない'}">
+                        <div th:if="${client.getFgYoshin() eq 0}">
                             <input type="checkbox" >
                         </div>
                     </td>
                 </tr>
 
                 <tr>
-                    <td rowspan="2" colspan="4" th:text="${client.nmClientBusho}"></td>
-                    <td rowspan="2" colspan="4" th:text="${client.nmClientTanto}"></td>
-                    <td colspan="3" th:text="${client.cdEigyoBusho}"></td>
-                    <td colspan="3" th:text="${client.cdEigyoTanto}"></td>
+                    <td rowspan="2" colspan="4" th:text="${client.getNmClientBusho()}" style="text-align: left"></td>
+                    <td rowspan="2" colspan="4" th:text="${client.getNmClientTanto()}" style="text-align: left"></td>
+                    <td rowspan="2" colspan="3" th:text="${client.getCdEigyoBusho()}"></td>
+                    <td rowspan="2" colspan="3" th:text="${client.getCdEigyoTanto()}"></td>
                     <td>
-                        <div th:if="${client.nmYoshinComment eq '有'}">
+                        <div th:if="${not #lists.isEmpty(client.getNmYoshinComment())}">
                             <input type="checkbox" checked>
                         </div>
-                        <div th:if="${client.nmYoshinComment eq '無'}">
+                        <div th:if="${#lists.isEmpty(client.getNmYoshinComment())}">
                             <input type="checkbox" >
                         </div>
                     </td>
@@ -355,17 +362,26 @@
                     <!--<td colspan="3" th:text="${}"></td>
                     <td colspan="3" th:text="${}"></td>-->
                     <td>
-                        <div th:if="${client.fgDelete eq '有効'}">
+                        <div th:if="${client.getFgDelete() eq 1}">
                             <input type="checkbox" checked>
                         </div>
-                        <div th:if="${client.fgDelete eq '無効'}">
+                        <div th:if="${client.getFgDelete() eq 0}">
                             <input type="checkbox" checked>
                         </div>
                     </td>
                 </tr>
 
-            </tr>
-        </table>
+                </tr>
+
+                </tbody>
+
+            </table>
+
+
+
+        <!--<table style=" text-align: center" id="kensakuKeka">
+
+        </table>-->
 
         <div>
             <div style="float: left">
@@ -373,13 +389,13 @@
                 总记录数<span th:text="${page.total}"></span>
             </div>
             <div style="float: right">
-                <a th:text="首页" th:if="${page.pageNum>1}" th:href="@{${path}}"></a>
-                <a th:text="上一页" th:if="${page.pageNum>1}" th:href="@{${path}+${page.pageNum-1}}"></a>
-                <a th:href="@{${path}+${i}}" th:each="i:${#numbers.sequence(1,page.pages)}" th:text="${i}"
+                <a th:text="首页" th:if="${page.pageNum>1}" th:href="@{${path}+'&nmClient='+${clientSearch.getNmClient()}+'&fgJiko='+${clientSearch.getFgJiko()}}"></a>
+                <a th:text="上一页" th:if="${page.pageNum>1}" th:href="@{${path}+${page.pageNum-1}+'&nmClient='+${clientSearch.getNmClient()}+'&fgJiko='+${clientSearch.getFgJiko()}}"></a>
+                <a th:href="@{${path}+${i}+'&nmClient='+${clientSearch.getNmClient()}+'&fgJiko='+${clientSearch.getFgJiko()}}" th:each="i:${#numbers.sequence(1,page.pages)}" th:text="${i}"
 
                    th:class="${page.pageNum==i}? 'page active':'page'"></a>
-                <a th:text="下一页" th:if="${page.pageNum<page.pages}" th:href="@{${path}+${page.pageNum+1}}"></a>
-                <a th:text="尾页" th:if="${page.pageNum<page.pages}" th:href="@{${path}+${page.pages}}"></a>
+                <a th:text="下一页" th:if="${page.pageNum<page.pages}" th:href="@{${path}+${page.pageNum+1}+'&nmClient='+${clientSearch.getNmClient()}+'&fgJiko='+${clientSearch.getFgJiko()}}"></a>
+                <a th:text="尾页" th:if="${page.pageNum<page.pages}" th:href="@{${path}+${page.pages}+'&nmClient='+${clientSearch.getNmClient()}+'&fgJiko='+${clientSearch.getFgJiko()}}"></a>
             </div>
         </div>
         <!-- フッタ -->
@@ -387,7 +403,8 @@
 
     </div>
 </div>
-<script src="../static/js/Jquery.js"></script>
+<script th:inline="javascript" th:src="@{../static/js/Jquery.js}"></script>
+<script th:inline="javascript" th:src="@{../static/js/clientfind.js}"></script>
 <script>
     /*$("#btnSearch_input").on("click",function() {
         let clientDataContainer = document.getElementById("client_model");

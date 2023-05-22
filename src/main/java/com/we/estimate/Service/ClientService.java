@@ -2,6 +2,7 @@ package com.we.estimate.Service;
 
 import com.github.pagehelper.PageInfo;
 import com.we.estimate.Entity.Client;
+import com.we.estimate.Search.ClientVo;
 
 import java.util.List;
 import java.util.Map;
@@ -21,5 +22,5 @@ public interface ClientService{
 
     int updateByPrimaryKey(Client record);
 
-    PageInfo<Client> selectByConditions(Integer pageIndex, Integer pageSize, Client client);
+    PageInfo<Client> selectByConditions(Integer pageIndex, Integer pageSize, ClientVo clientVo);
 }

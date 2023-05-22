@@ -1,0 +1,201 @@
+
+#cdClient::after{
+    content: "クライアントコード";
+}
+
+#cdClientKana::after{
+    content: "仮コード";
+}
+
+#nmClient::after{
+    content: "クライアント名（漢字）\A法人表記あり・すべて全角";
+    white-space: pre;
+}
+
+#nmClientKana::before{
+    content: "クライアント名（カナ）";
+}
+
+#nmShurui::before{
+    content: "種類";
+}
+
+#noYubin::before{
+    content: "郵便番号";
+}
+
+#nmAddress::before{
+    content: "所在地";
+}
+
+#nmClientBusho::before{
+    content: "クライアント担当部署";
+}
+
+#nmClientTanto::before{
+    content: "クライアント担当者";
+}
+
+#noTel::before{
+    content: "電話番号";
+}
+
+#noFax::before{
+    content: "FAX番号";
+}
+
+#cdGyoshu::before{
+    content: "業種";
+}
+
+#nmJojo::before{
+    content: "上場区分";
+}
+
+#cdShoken::before{
+    content: "証券コード";
+}
+
+#cdEigyoBusho::before{
+    content: "営業担当部署";
+}
+
+#cdEigyoTanto::before{
+    content: "営業担当者";
+}
+
+#nmTorihiki::before{
+    content: "取引区分";
+}
+
+#nmNyukinKeitai::before{
+    content: "入金形態区分名";
+}
+
+#dtShime::before{
+    content: "支払規定";
+}
+
+#nmSeikyuTokki::before{
+    content: "請求特記事項";
+}
+
+#kbClientKubun::before{
+    content: "クライアント区分";
+}
+
+#kbKaishaGrp::before{
+    content: "グループ会社フラグ";
+}
+
+#idMapKigyo::before{
+    content: "マップ企業ID";
+}
+
+#nmHikitsugi::before{
+    content: "引き継ぎ区分";
+}
+
+#cdHikitsugiNavi::before{
+    content: "引き継ぎナビ掲載ID";
+}
+
+#nmJigyo::before{
+    content: "事業区分";
+}
+
+#nmTokki::before{
+    content: "特記事項";
+}
+
+#cdLbc::before{
+    content: "LBCコード";
+}
+
+#fgHikazei::before{
+    content: "非課税";
+}
+
+#fgJiko::before{
+    content: "事故履歴あり";
+}
+
+#fgMinyukin::before{
+    content: "未入金あり";
+}
+
+#nmShainDairiten::before{
+    content: "代理店社員";
+}
+
+#fgHoryuKeiri::before{
+    content: "経理保留フラグ";
+}
+
+#nmSeikyushoInjiComment::before{
+    content: "請求書印字コメント（経理）";
+}
+
+#nmSeikyuMongon::before{
+    content: "請求文言（CL固定）";
+}
+
+#kbFurikomiKozaHenko::before{
+    content: "振込先口座変更区分";
+}
+
+#cdFurikomiKoza::before{
+    content: "振込先口座コード";
+}
+
+#nmGinkoShitenVirtual::before{
+    content: "バーチャル銀行支店";
+}
+
+#noKozaVirtual::before{
+    content: "バーチャル口座番号";
+}
+
+#noHanshaShinsa::before{
+    content: "反社審査No";
+}
+
+#fgHoryuKigyoShinsa::before{
+    content: "企業審査保留フラグ";
+}
+
+#fgHansha::before{
+    content: "反社フラグ";
+}
+
+#nmHanshaComment::before{
+    content: "反社フラグコメント";
+}
+
+#fgYoshin::before{
+    content: "与信消滅フラグ";
+}
+
+#nmYoshinComment::before{
+    content: "与信消滅フラグコメント";
+}
+
+#nmYukouFg::before{
+    content: "有効フラグ";
+}
+
+#fgWebKinshi::before{
+    content: "WEB申込禁止フラグ";
+}
+
+#nmWebKinshiComment::before{
+    content: "WEB申込用コメント";
+}
+
+#nmWebKahi::before{
+    content: "WEB申込可否区分";
+}
+
+#cdClientGroup::before{
+    content: "グループコード";
+}

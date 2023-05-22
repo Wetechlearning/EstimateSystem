@@ -1045,28 +1045,29 @@
     (#{offset,jdbcType=NUMERIC}-1)*#{limit,jdbcType=NUMERIC}+1 AND
     #{offset,jdbcType=NUMERIC}*#{limit,jdbcType=NUMERIC}
   </select>-->
-  <select id="getClients" parameterType="com.we.estimate.Entity.Client" resultMap="BaseResultMap">
+  <select id="getClients" parameterType="com.we.estimate.Search.ClientVo" resultMap="BaseResultMap">
     SELECT
     <include refid="Base_Column_List" />
     FROM
     CLIENT
     <where>
-      <if test="client.nmClient != null and client.nmClient != '' ">AND nm_client = #{client.nmClient}</if>
-      <if test="client.knClient != null and client.knClient != '' ">AND kn_client = #{client.knClient}</if>
-      <if test="client.cdEigyoBusho != null and client.cdEigyoBusho != '' ">AND cd_eigyoBusho = #{client.cdEigyoBusho}</if>
-      <if test="client.cdEigyoTanto != null and client.cdEigyoTanto != '' ">AND cd_eigyoTanto = #{client.cdEigyoTanto}</if>
-      <if test="client.cdClient != null and client.cdClient != '' ">AND cd_client = #{client.cdClient}</if>
-      <if test="client.kbJigyo != null and client.kbJigyo != '' ">AND kb_jigyo = #{client.kbJigyo}</if>
-      <if test="client.kbClient1 != null and client.kbClient1 != '' ">AND kb_client1 = #{client.kbClient1}</if>
-      <if test="client.kbClient2 != null and client.kbClient2 != '' ">AND kb_client2 = #{client.kbClient2}</if>
-      <if test="client.kbClient3 != null and client.kbClient3 != '' ">AND kb_client3 = #{client.kbClient3}</if>
-      <if test="client.kbClient4 != null and client.kbClient4 != '' ">AND kb_client4 = #{client.kbClient4}</if>
-      <if test="client.fgHansha != null and client.fgHansha != '' ">AND fg_hansha = #{client.fgHansha}</if>
-      <if test="client.fgYoshin != null and client.fgYoshin != '' ">AND fg_yoshin = #{client.fgYoshin}</if>
-      <if test="client.nmYoshinComment != null and client.nmYoshinComment != '' ">AND nm_yoshinComment = #{client.nmYoshinComment}</if>
-      <if test="client.fgDelete != null and client.fgDelete != '' ">AND fg_delete = #{client.fgDelete}</if>
-      <if test="client.fgWebKinshi != null and client.fgWebKinshi != '' ">AND fg_webKinshi = #{client.fgWebKinshi}</if>
-      <if test="client.kbWebKahi != null and client.kbWebKahi != '' ">AND kb_webKahi = #{client.kbWebKahi}</if>
+      <if test="client.nmClient != null and client.nmClient != '' ">AND NM_CLIENT = #{client.nmClient}</if>
+      <if test="client.knClient != null and client.knClient != '' ">AND KN_CLIENT = #{client.knClient}</if>
+      <if test="client.cdEigyoBusho != null and client.cdEigyoBusho != '' ">AND CD_EIGYO_BUSHO = #{client.cdEigyoBusho}</if>
+      <if test="client.cdEigyoTanto != null and client.cdEigyoTanto != '' ">AND CD_EIGYO_TANTO = #{client.cdEigyoTanto}</if>
+      <if test="client.cdClient != null and client.cdClient != '' ">AND CD_CLIENT = #{client.cdClient}</if>
+      <if test="client.kbJigyo != null and client.kbJigyo != '' ">AND KB_JIGYO = #{client.kbJigyo}</if>
+      <if test="client.kbClient1 != null and client.kbClient1 != '' ">AND KB_CLIENT1 = #{client.kbClient1}</if>
+      <if test="client.kbClient2 != null and client.kbClient2 != '' ">AND KB_CLIENT2 = #{client.kbClient2}</if>
+      <if test="client.kbClient3 != null and client.kbClient3 != '' ">AND KB_CLIENT3 = #{client.kbClient3}</if>
+      <if test="client.kbClient4 != null and client.kbClient4 != '' ">AND KB_CLIENT4 = #{client.kbClient4}</if>
+      <if test="client.fgHansha != null and client.fgHansha != '' ">AND FG_HANSHA = #{client.fgHansha}</if>
+      <if test="client.fgYoshin != null and client.fgYoshin != '' ">AND FG_YOSHIN = #{client.fgYoshin}</if>
+      <if test="client.nmYoshinComment != null and client.nmYoshinComment != '' and client.nmYoshinComment != 0">AND NM_YOSHIN_COMMENT IS NOT NULL </if>
+      <if test="client.nmYoshinComment != null and client.nmYoshinComment != '' and client.nmYoshinComment != 1">AND NM_YOSHIN_COMMENT IS NULL </if>
+      <if test="client.fgDelete != null and client.fgDelete != '' ">AND FG_DELETE = #{client.fgDelete}</if>
+      <if test="client.fgWebKinshi != null and client.fgWebKinshi != '' ">AND FG_WEB_KINSHI = #{client.fgWebKinshi}</if>
+      <if test="client.kbWebKahi != null and client.kbWebKahi != '' ">AND KB_WEB_KAHI = #{client.kbWebKahi}</if>
     </where>
 
   </select>

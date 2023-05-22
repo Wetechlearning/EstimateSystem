@@ -2,17 +2,20 @@ package com.we.estimate.Service.Impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.we.estimate.Search.ClientVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import com.we.estimate.Mapper.ClientMapper;
 import com.we.estimate.Entity.Client;
 import com.we.estimate.Service.ClientService;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
 
 @Service
+@Transactional
 public class ClientServiceImpl implements ClientService{
 
     @Autowired
@@ -54,10 +57,10 @@ public class ClientServiceImpl implements ClientService{
     }*/
 
     @Override
-    public PageInfo<Client> selectByConditions(Integer pageIndex,Integer pageSize,Client client) {
+    public PageInfo<Client> selectByConditions(Integer pageIndex, Integer pageSize, ClientVo clientVo) {
         PageHelper.startPage(pageIndex,pageSize);
-        List<Client> clients = clientMapper.getClients(client);
-        System.out.println(clients);
+        List<Client> clients = clientMapper.getClients(clientVo);
+        //System.out.println(clients);
         PageInfo<Client> pageInfo = new PageInfo<>(clients);
         return pageInfo;
     }

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>クライアントシート</title>
+    <!--　テキスト表示　-->
+    <link rel="stylesheet" type="text/css" th:href="@{../static/style/clientsheet.css}" />
+    <!-- 様式 -->
+    <link rel="stylesheet" type="text/css" th:href="@{../static/style/common.css}" />
+</head>
+<style>
+    body{
+        background: url("../static/img/back.jpg");
+    }
+
+</style>
+<body>
+<div>
+    <table>
+        <!--クライアントコード-->
+        <tr data-user-input="cdClient">
+            <td class=""><label id="cdClient"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getCdClient()}" id="cdClient_input" class="SB" >
+            </td>
+            <!--仮コード-->
+            <td><label id="cdClientKana"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getCdClientKari()}" id="cdClientKana_input" class="SB">
+            </td>
+        </tr>
+
+        <!--クライアント名（漢字）　　法人表記あり・すべて全角-->
+        <tr data-user-input="nmClient">
+            <td><label id="nmClient"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getNmClient()}" id="nmClient_input" class="SB">
+            </td>
+        </tr>
+
+        <!--クライアント名（カナ）-->
+        <tr data-user-input="nmClientKana">
+            <td><label id="nmClientKana"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getKnClient()}" id="nmClientKana_input" class="SB">
+            </td>
+        </tr>
+
+        <!--種類-->
+        <tr data-user-input="nmShurui">
+            <td><label id="nmShurui"></label></td>
+            <td>
+                <input id="nmShurui_input" class="SB">
+            </td>
+        </tr>
+
+        <!--郵便番号-->
+        <tr data-user-input="noYubin">
+            <td><label id="noYubin"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getNoYubin()}" id="noYubin_input" class="SB">
+            </td>
+        </tr>
+
+        <!--所在地-->
+        <tr data-user-input="nmAddress">
+            <td><label id="nmAddress"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getNmAddress()}" id="nmAddress_input" class="SB">
+            </td>
+        </tr>
+
+        <!--クライアント担当部署-->
+        <tr data-user-input="nmClientBusho">
+            <td><label id="nmClientBusho"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getNmClientBusho()}" id="nmClientBusho_input" class="SB">
+            </td>
+        </tr>
+
+        <!--クライアント担当者-->
+        <tr data-user-input="nmClientTanto">
+            <td><label id="nmClientTanto"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getNmClientTanto()}" id="nmClientTanto_input" class="SB">
+            </td>
+        </tr>
+
+        <!--電話番号-->
+        <tr data-user-input="noTel">
+            <td><label id="noTel"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getNoTel()}" id="noTel_input" class="SB">
+            </td>
+            <!--FAX番号-->
+            <td><label id="noFax"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getNoFax()}" id="noFax_input" class="SB">
+            </td>
+        </tr>
+
+        <!--業種-->
+        <tr data-user-input="nmGyoshu">
+            <td><label id="cdGyoshu"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getCdGyoshu()}" id="cdGyoshu_input" class="SB">
+                <input th:value="${clientShosai.getNmGyoshu()}" id="nmGyoshu_input" class="SB">
+            </td>
+        </tr>
+
+        <!--上場区分-->
+        <tr data-user-input="nmJojo">
+            <td><label id="nmJojo"></label></td>
+            <td>
+                <input  th:value="${clientShosai.mcTm010.getKbJohjoh()}" id="nmJojo_input" class="SB">
+            </td>
+            <!--証券コード-->
+            <td><label id="cdShoken"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getCdShoken()}" id="cdShoken_input" class="SB">
+            </td>
+        </tr>
+
+        <!--営業担当-->
+        <tr data-user-input="cdEigyo">
+            <!--営業担当部署-->
+            <td><label id="cdEigyoBusho"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getCdEigyoBusho()}" id="cdEigyoBusho_input" class="SB">
+                <input th:value="${clientShosai.getNmEigyoBusho()}" id="nmEigyoBusho_input" class="SB">
+            </td>
+            <!--営業担当者-->
+            <td><label id="cdEigyoTanto"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getCdEigyoTanto()}" id="cdEigyoTanto_input" class="SB">
+                <input th:value="${clientShosai.getNmEigyoTanto()}" id="nmEigyoTanto_input" class="SB">
+            </td>
+        </tr>
+
+        <!--取引区分-->
+        <tr data-user-input="nmTorihiki">
+            <td><label id="nmTorihiki"></label></td>
+            <td>
+                本年度<input th:value="${clientShosai.mcTm010.getKbTorihikiHonnen()} == 1 ? '有':'無'" id="nmTorihikiHonnen_input" class="SB">昨年度<input th:value="${clientShosai.mcTm010.getKbTorihikiSakunen()} == 1 ? '有':'無'" id="nmTorihikiSakunen_input" class="SB">一昨年度<input th:value="${clientShosai.mcTm010.getKbTorihikiZennen()} == 1 ? '有':'無'" id="nmTorihikiIssaknen_input" class="SB">
+            </td>
+        </tr>
+
+        <!--入金形態区分名-->
+        <tr data-user-input="nmNyukinKeitai">
+            <td><label id="nmNyukinKeitai"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getKbNyukinKeitai()}" id="nmNyukinKeitai_input">
+            </td>
+        </tr>
+
+        <!--支払規定-->
+        <tr data-user-input="dtShime">
+            <td><label id="dtShime"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getDtShime()}" id="dtShime1_input">日締め、<input id="dtShime2_input">月後の<input id="dtShime3_input">日支払い
+            </td>
+        </tr>
+
+        <!--請求特記事項-->
+        <tr data-user-input="nmSeikyuTokki">
+            <td><label id="nmSeikyuTokki"></label></td>
+            <td>
+                <input  th:value="${clientShosai.mcTm010.getNmSeikyuTokki()}" id="nmSeikyuTokki_input">
+            </td>
+        </tr>
+
+        <!--クライアント区分-->
+        <tr data-user-input="kbClientKubun">
+            <td><label id="kbClientKubun"></label></td>
+            <td>
+                <input type="checkbox" id="kbEigyo" th:checked="${not #lists.isEmpty(clientShosai.mcTm010.getKbClient1())}">営業先<input type="checkbox" id="kbSeikyu" th:checked="${not #lists.isEmpty(clientShosai.mcTm010.getKbClient2())}">請求先<input type="checkbox" id="kbKeisai" th:checked="${not #lists.isEmpty(clientShosai.mcTm010.getKbClient3())}">掲載先<input type="checkbox" id="kbSofu" th:checked="${not #lists.isEmpty(clientShosai.mcTm010.getKbClient4())}">月ゴミ送付先
+            </td>
+        </tr>
+
+        <!--グループ会社フラグ-->
+        <tr data-user-input="kbKaishaGrp">
+            <td><label id="kbKaishaGrp"></label></td>
+            <td>
+                <input id="kbKaishaGrp_input">
+            </td>
+        </tr>
+
+        <!--マップ企業ID-->
+        <tr data-user-input="idMapKigyo">
+            <td><label id="idMapKigyo"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getIdMapKigyo()}" id="idMapKigyo_input">
+            </td>
+        </tr>
+
+        <!--引き継ぎ区分-->
+        <tr data-user-input="nmHikitsugi">
+            <td><label id="nmHikitsugi"></label></td>
+            <td>
+                <input id="nmHikitsugi_input">※就職情報のみ
+            </td>
+        </tr>
+
+        <!--引き継ぎナビ掲載ID-->
+        <tr data-user-input="cdHikitsugiNavi">
+            <td><label id="cdHikitsugiNavi"></label></td>
+            <td>
+                <input id="idHikitsugiNavi_input"><input id="nmHikitsugiNavi_input">※就職情報のみ
+            </td>
+        </tr>
+
+        <!--事業区分-->
+        <tr data-user-input="nmJigyo">
+            <td><label id="nmJigyo"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getKbJigyo()}" id="nmJigyo_input">
+            </td>
+        </tr>
+
+        <!--特記事項-->
+        <tr data-user-input="nmTokki">
+            <td><label id="nmTokki"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getNmTokki()}" id="nmTokki_input">
+            </td>
+        </tr>
+
+        <tr data-user-input="cdLbc">
+            <!--LBCコード-->
+            <td><label id="cdLbc"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getCdLbc()}" id="cdLbc_input">
+            </td>
+            <!--非課税-->
+            <td><label id="fgHikazei"></label></td>
+            <td>
+                <input id="fgHikazei_input" type="checkbox" th:checked="${clientShosai.mcTm010.getFgHikazei() eq '1'}">
+            </td>
+        </tr>
+
+        <tr data-user-input="fgJiko">
+            <!--事故履歴あり-->
+            <td><label id="fgJiko"></label></td>
+            <td>
+                <input id="fgJiko_input" type="checkbox" th:checked="${clientShosai.mcTm010.getFgJiko() eq '1'}">
+            </td>
+            <!--未入金あり-->
+            <td><label id="fgMinyukin"></label></td>
+            <td>
+                <input id="fgMinyukin_input" type="checkbox" th:checked="${clientShosai.mcTm010.getFgMinyukin() eq '1'}">
+            </td>
+        </tr>
+
+        <!--代理店社員-->
+        <tr data-user-input="nmShainDairiten">
+            <td><label id="nmShainDairiten"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getCdShainDairiten()}" id="cdShainDairiten_input">
+                <input th:value="${clientShosai.getNmShainDairiten()}" id="nmShainDairiten_input">
+            </td>
+            <!--経理保留フラグ-->
+            <td><label id="fgHoryuKeiri"></label></td>
+            <td>
+                <input id="fgHoryuKeiri_input" type="checkbox" th:checked="${clientShosai.mcTm010.getFgHoryuKeiri() eq 1}">
+            </td>
+        </tr>
+
+        <!--請求書印字コメント（経理）-->
+        <tr data-user-input="nmSeikyushoInjiComment">
+            <td><label id="nmSeikyushoInjiComment"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getNmSeikyushoInjiComment()}" id="nmSeikyushoInjiComment_input">
+            </td>
+        </tr>
+
+        <!--請求文言（CL固定）-->
+        <tr data-user-input="nmSeikyuMongon">
+            <td><label id="nmSeikyuMongon"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getNmSeikyuMongonCl()}" id="nmSeikyuMongon_input">
+            </td>
+        </tr>
+
+        <!--振込先口座変更区分-->
+        <tr data-user-input="kbFurikomiKozaHenko">
+            <td><label id="kbFurikomiKozaHenko"></label></td>
+            <td>
+                <input type="checkbox" id="kbFurikomiKozaHenkoNashi" th:checked="${clientShosai.mcTm010.getKbFurikomiKozaHenko() eq '0'}">なし<input type="checkbox" id="kbFurikomiKozaHenkoAri" th:value="${clientShosai.mcTm010.getKbFurikomiKozaHenko() eq '1'}">あり<input type="checkbox" id="kbFurikomiKozaHenkoBatyaru" th:checked="${clientShosai.mcTm010.getKbFurikomiKozaHenko() eq '2'}">バーチャル
+            </td>
+        </tr>
+
+        <!--振込先口座コード-->
+        <tr data-user-input="cdFurikomiKoza">
+            <td><label id="cdFurikomiKoza"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getCdFurikomiKoza()}" id="cdFurikomiKoza_input">
+            </td>
+        </tr>
+
+        <!--バーチャル銀行支店-->
+        <tr data-user-input="nmGinkoShitenVirtual">
+            <td><label id="nmGinkoShitenVirtual"></label></td>
+            <td>
+                <input th:value="${clientShosai.getNmGinkoShitenVirtual()}" id="nmGinkoShitenVirtual_input">
+            </td>
+        </tr>
+
+        <!--バーチャル口座番号-->
+        <tr data-user-input="noKozaVirtual">
+            <td><label id="noKozaVirtual"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getNoKozaVirtual()}" id="noKozaVirtual_input">
+            </td>
+        </tr>
+
+        <!--反社審査No-->
+        <tr data-user-input="noHanshaShinsa">
+            <td><label id="noHanshaShinsa"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getNoHanshaShinsa()}" id="noHanshaShinsa_input">
+            </td>
+        </tr>
+
+        <!--企業審査保留フラグ-->
+        <tr data-user-input="fgHoryuKigyoShinsa">
+            <td><label id="fgHoryuKigyoShinsa"></label></td>
+            <td>
+                <input id="fgHoryuKigyoShinsa_input" type="checkbox" th:checked="${clientShosai.mcTm010.getFgHoryuKigyo() eq 1}">
+            </td>
+        </tr>
+
+        <!--反社フラグ-->
+        <tr data-user-input="fgHansha">
+            <td><label id="fgHansha"></label></td>
+            <td>
+                <input id="fgHansha_input" type="checkbox" th:checked="${clientShosai.mcTm010.getFgHansha() eq 1}">
+            </td>
+        </tr>
+
+        <!--反社フラグコメント-->
+        <tr data-user-input="nmHanshaComment">
+            <td><label id="nmHanshaComment"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getNmHanshaComment()}" id="nmHanshaComment_input">
+            </td>
+        </tr>
+
+        <!--与信消滅フラグ-->
+        <tr data-user-input="fgYoshin">
+            <td><label id="fgYoshin"></label></td>
+            <td>
+                <input id="fgYoshin_input" type="checkbox" th:checked="${clientShosai.mcTm010.getFgYoshin() eq 1}">
+            </td>
+        </tr>
+
+        <!--与信消滅フラグコメント-->
+        <tr data-user-input="nmYoshinComment">
+            <td><label id="nmYoshinComment"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getNmYoshinComment()}" id="nmYoshinComment_input">
+            </td>
+        </tr>
+
+        <!--有効フラグ-->
+        <tr data-user-input="nmYukouFg">
+            <td><label id="nmYukouFg"></label></td>
+            <td>
+                <input id="nmYukouFg_input" th:value="${clientShosai.mcTm010.getFgDelete()}==1 ? '有効':'無効'">
+            </td>
+        </tr>
+
+        <!--WEB申込禁止フラグ-->
+        <tr data-user-input="fgWebKinshi">
+            <td><label id="fgWebKinshi"></label></td>
+            <td>
+                <input id="fgWebKinshi_input" type="checkbox" th:checked="${clientShosai.mcTm010.getFgWebKinshi() eq 1}">
+            </td>
+        </tr>
+
+        <!--WEB申込用コメント-->
+        <tr data-user-input="nmWebKinshiComment">
+            <td><label id="nmWebKinshiComment"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getNmWebKinshiComment()}" id="nmWebKinshiComment_input">
+            </td>
+        </tr>
+
+        <!--WEB申込可否区分-->
+        <tr data-user-input="nmWebKahi">
+            <td><label id="nmWebKahi"></label></td>
+            <td>
+                <input id="nmWebKahi_input" th:value="${clientShosai.mcTm010.getKbWebKahi()}==1 ? '可':'否'">
+            </td>
+        </tr>
+
+        <!--グループコード-->
+        <tr data-user-input="cdClientGroup">
+            <td><label id="cdClientGroup"></label></td>
+            <td>
+                <input th:value="${clientShosai.mcTm010.getCdClientGroup()}" id="cdClientGroup_input">
+            </td>
+        </tr>
+
+    </table>
+</div>
+</body>
+</html>
