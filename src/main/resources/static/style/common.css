@@ -22,3 +22,9 @@ input[data-file-up="text_file_path"] {
 input[data-file-up="button_file_upload"] {
     display: none; /* ファイル選択ボタンを非表示にする */
 }
+
+
+.input-error {
+    border: 1px solid red;
+}
+

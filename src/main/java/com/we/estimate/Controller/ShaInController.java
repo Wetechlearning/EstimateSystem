@@ -1,48 +1,130 @@
 package com.we.estimate.Controller;
 
 import com.we.estimate.Entity.ShaIn;
-import com.we.estimate.Entity.ShaInDataBase;
-import com.we.estimate.Search.ShaInSearchModel;
-import com.we.estimate.Search.ShaInSearchResult;
+import com.we.estimate.InputCheckMessage.ShaInInputCheck;
 import com.we.estimate.Service.ShaInService;
+import com.we.estimate.Tools.UserTools;
+import com.we.estimate.Tools.ValidationException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 @Controller
 @RequestMapping("/shaIn")
+@Slf4j
 public class ShaInController {
-
-    private ShaIn shaInSearchCondition = new ShaIn();
 
     @Autowired
     private ShaInService shaInService;
 
-    public ShaInController() {
-    }
+    private final UserTools userTools = new UserTools();
+    private final ValidationException validationException = new ValidationException(new HashMap<>());
+    private final ShaInInputCheck shaInInputCheck = new ShaInInputCheck();
 
     // 社員入力画面
     @GetMapping("/add")
-    public String showShaInForm(Model model) {
+    public String showShaInForm(Model model, HttpServletResponse response) {
+
+        // キャッシュ禁用
+        userTools.disableCache(response);
 
         // shaIn　入力データ保存モデル
         model.addAttribute("shaIn", new ShaIn());
+        
+        // 新規モード
+        model.addAttribute("mode", "add");
+
+        // エラーメッセージ
+        model.addAttribute("error", new HashMap<>());
+
+        return "shainadd";
+    }
+
+    // 社員入力画面 入力チェック
+    @PostMapping("/add")
+    public String showShaInFormError(Model model,
+                                     HttpSession session,
+                                     @ModelAttribute("shaIn") ShaIn newshaIn,
+                                     HttpServletResponse response) throws IOException {
+        // shaIn　入力データ読み取り
+        session.setAttribute("shaIn", newshaIn);
+
+        try {
+            validationException.checkNullOrEmpty(
+                    newshaIn,
+                    shaInInputCheck.isNullOrEmptyCheckingKeys,
+                    shaInInputCheck.errorMap
+            );
+        } catch (ValidationException e) {
+
+            // 新規モード　表示
+            model.addAttribute("mode", "add");
+            // エラーメッセージ
+            model.addAttribute("error", e.getErrorMessages());
+
+            return "shainadd";
+        }
+
+        response.sendRedirect("sheet");
+
+        return null;
+    }
+
+
+    // 社員入力画面 シートモデル
+    @GetMapping("/sheet")
+    public String showShaInFormSheet(Model model,
+                                     HttpSession session) {
+        // shaIn　入力データ保存モデル
+        // session から読み取り
+        ShaIn newshaIn = (ShaIn) session.getAttribute("shaIn");
+
+        // 如果 newshaIn 为 null，创建一个新的 ShaIn 实例
+        if (newshaIn == null) {
+            newshaIn = new ShaIn();
+        }
+
+        model.addAttribute("shaIn", newshaIn);
+
+        // シートモード　表示
+        model.addAttribute("mode", "sheet");
+        // エラーメッセージ
+        model.addAttribute("error", new HashMap<>());
 
         return "shainadd";
     }
 
     // 新規社員入力処理
     @PostMapping("/submit")
-    public String submitShaInForm(@ModelAttribute("shaIn") ShaIn newshaIn) {
+    public String submitShaInForm(Model model,
+                                  HttpSession session) {
+        // エラーメッセージ初期化
+        model.addAttribute("error", "");
+        // 从 session 中获取数据
+        ShaIn newshaIn = (ShaIn) session.getAttribute("shaIn");
+
+        if (newshaIn == null) {
+            // シートモード　表示
+            model.addAttribute("error", "入力するデータがありません");
+            return "success2";
+        }
+
+
         // Mybatis引数タイプ データ保存
         List<ShaIn> shaInsList = new ArrayList<>();
 
@@ -53,84 +135,15 @@ public class ShaInController {
         // Listにデータ追加
         shaInsList.add(newshaIn);
 
-        //　データ保存
-        shaInService.saveShaIn(shaInsList);
+        try {
+            //　データ保存
+            shaInService.saveShaIn(shaInsList);
+        } catch (Exception e) {
+            model.addAttribute("error", e.toString());
+        }
 
         return "success2";
     }
-
-    // 社員一覧画面
-    @GetMapping("/list")
-    public String showShaInList(Model model) {
-
-        // shaInSearch 検索条件のモデル
-        // shaInModel 検索データのモデル
-        model.addAttribute("shaInSearch", new ShaIn());
-        model.addAttribute("shaInModel", new ShaInDataBase());
-
-        return "shainlist";
-    }
-
-    @PostMapping("list/search")
-    @ResponseBody
-    public ShaInSearchResult shaInSearchResult(@ModelAttribute("shaInSearch") ShaIn shaIn) {
-
-        // Mybatis引数タイプ 検索
-        Map<String, Object> paramMap = new HashMap<>();
-
-        ShaInSearchResult shaInSearchResult = new ShaInSearchResult();
-        // 検索条件保存　@GetMapping("list/search/page")ページング検索用
-        shaInSearchCondition = shaIn;
-
-        // ページ1
-        Integer searchOffset = 1;
-        Integer searchLimit = 10;
-
-        // ページング検索　引数
-        // offset オフセット
-        // limit 検索最大数
-        //　shaIn　検索条件
-        paramMap.put("offset", searchOffset);
-        paramMap.put("limit", searchLimit);
-        paramMap.put("shaIn", shaInSearchCondition);
-
-        int count = shaInService.searchCount(shaIn);
-        List<ShaInDataBase> shaInDataBases = shaInService.getShaIns(paramMap);
-
-        shaInSearchResult.setCount(count);
-        shaInSearchResult.setData(shaInDataBases);
-
-        System.out.println(shaInSearchCondition);
-
-        return shaInSearchResult;
-    }
-
-    @GetMapping("list/search/page")
-    @ResponseBody
-    public ShaInSearchResult shaInSearchResultPage(@RequestParam(name = "page") int pageNum) {
-
-        Map<String, Object> paramMap = new HashMap<>();
-
-        ShaInSearchResult shaInSearchResult = new ShaInSearchResult();
-
-        Integer searchOffset = 10*(pageNum-1)+1;
-        Integer searchLimit = 10*pageNum;
-
-        paramMap.put("offset", searchOffset);
-        paramMap.put("limit", searchLimit);
-        paramMap.put("shaIn", shaInSearchCondition);
-
-        int count = shaInService.searchCount(shaInSearchCondition);
-        List<ShaInDataBase> shaInDataBases = shaInService.getShaIns(paramMap);
-
-        shaInSearchResult.setCount(count);
-        shaInSearchResult.setData(shaInDataBases);
-
-        System.out.println(shaInSearchCondition);
-
-        return shaInSearchResult;
-    }
-
 
 }
 

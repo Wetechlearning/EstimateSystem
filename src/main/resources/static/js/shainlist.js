@@ -5,32 +5,32 @@
 
 console.log(2222222222);
 
-
 // displayUpdate(upload_file)　CSV取込
 // file : 表示が必要なデータ (HTML要素のID)
 function fileUpload(upload_file) {
 
   if (typeof upload_file === "string") {
     const fileElement = document.getElementById(`${upload_file}`);
+    if (fileElement) {
+      // 参照ボタン　イベント　ファイル導入
+      fileElement.addEventListener("change", function () {
+        const file = fileElement.files[0];
+        const reader = new FileReader();
 
-    // 参照ボタン　イベント　ファイル導入
-    fileElement.addEventListener("change", function () {
-      const file = fileElement.files[0];
-      const reader = new FileReader();
+        // フイルム　アップロード
+        reader.readAsText(file);
 
-      // フイルム　アップロード
-      reader.readAsText(file);
+        reader.addEventListener("load", function load_file(upload_file) {
+          console.log(reader.result);
 
-      reader.addEventListener("load", function load_file(upload_file) {
-        console.log(reader.result);
+          // 処理完了 reader(load)イベント削除
+          reader.removeEventListener("load", load_file);
+        });
 
-        // 処理完了 reader(load)イベント削除
-        reader.removeEventListener("load", load_file);
-      });
+      })
 
-    })
-
-  }
+    }
+    }
 
 }
 
@@ -142,6 +142,7 @@ function shaInSearchResult() {
     const url = asyncForm.getAttribute("action");
     const formData = new FormData(asyncForm);
 
+    // ページ数取得、ページ1データ取得
     try {
       const response = await fetch(url, {
         method: "POST",
@@ -202,11 +203,13 @@ function shaInSearchResult() {
       item.appendChild(link);
       pagination.appendChild(item);
 
+      // ページ変更
       item.addEventListener("click", async function(event) {
         event.preventDefault();
 
         const url = event.target.getAttribute("href");
 
+        // 検索データ取得
         try {
           const response = await fetch(url);
 

@@ -5,8 +5,13 @@
   <title>Success</title>
 </head>
 <body>
-<h1>Form Submitted Successfully</h1>
-<p>Thank you for submitting the form.</p>
+
+<div th:if="${#strings.isEmpty(error)}">
+  <h1>Form Submitted Successfully</h1>
+  <p>Thank you for submitting the form.</p>
+</div>
+
+<span th:if="${not #strings.isEmpty(error)}" th:text="${error}"></span>
 
 </body>
 </html>
