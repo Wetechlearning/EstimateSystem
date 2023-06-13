@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>部署シート</title>
+    <!--　テキスト表示　-->
+    <link rel="stylesheet" type="text/css" th:href="@{../static/style/bushosheet.css}" />
+    <!-- 様式 -->
+    <link rel="stylesheet" type="text/css" th:href="@{../static/style/common.css}" />
+</head>
+<style>
+    body{
+        background: url("../static/img/back.jpg");
+    }
+
+</style>
+<body>
+    <div>
+        <table>
+            <!--会社-->
+            <tr data-user-input="nmKaisha">
+                <td><label id="nmKaisha"></label></td>
+                <td>
+                    <input th:value="${busyoShosai.busyo.cdKaisha}" id="cdKaisha_input" class="SB">
+                </td>
+            </tr>
+            <!--部署コード-->
+            <tr data-user-input="cdBusho">
+                <td><label id="cdBusho"></label></td>
+                <td>
+                    <input th:value="${busyoShosai.busyo.cdBusho}" id="cdBusho_input" class="SB">
+                </td>
+            </tr>
+            <!--旧部署コード-->
+            <tr data-user-input="cdOldBusho">
+                <td><label id="cdOldBusho"></label></td>
+                <td>
+                    <input th:value="${busyoShosai.busyo.cdOldBusho}" id="cdOldBusho_input" class="SB">
+                </td>
+            </tr>
+            <!--部署名1-->
+            <tr data-user-input="nmBusho">
+                <td><label id="nmBusho"></label></td>
+                <td>
+                    <input th:value="${busyoShosai.busyo.nmBusho}" id="nmBusho_input" class="SB">
+                </td>
+            </tr>
+            <!--部署名2-->
+            <tr data-user-input="nmBusho2">
+                <td><label id="nmBusho2"></label></td>
+                <td>
+                    <input th:value="${busyoShosai.busyo.nmBusho2}" id="nmBusho2_input" class="SB">
+                </td>
+            </tr>
+            <!--部署名3-->
+            <tr data-user-input="nmBusho3">
+                <td><label id="nmBusho3"></label></td>
+                <td>
+                    <input th:value="${busyoShosai.busyo.nmBusho3}" id="nmBusho3_input" class="SB">
+                </td>
+            </tr>
+            <!--所在地-->
+            <tr data-user-input="address">
+                <td><label id="address"></label></td>
+                <td>
+                    <input th:value="${busyoShosai.busyo.getNoYubin()}">
+                    <input th:value="${busyoShosai.busyo.nmShozaichi}" id="address_input" class="SB">
+                </td>
+            </tr>
+            <!--電話（TEL）-->
+            <tr data-user-input="noTel">
+                <td><label id="noTel"></label></td>
+                <td>
+                    <input th:value="${busyoShosai.busyo.noTel}" id="noTel_input" class="SB">
+                </td>
+            </tr>
+            <!--事業本部区分-->
+            <tr data-user-input="kbJigyoHombu">
+                <td><label id="kbJigyoHombu"></label></td>
+                <td>
+                    <input th:value="${busyoShosai.busyo.kbJigyoHombu}" id="kbJigyoHombu_input" class="SB">
+                </td>
+            </tr>
+            <!--事業区分-->
+            <tr data-user-input="kbJigyo">
+                <td><label id="kbJigyo"></label></td>
+                <td>
+                    <input th:value="${busyoShosai.busyo.kbJigyo}" id="kbJigyo_input" class="SB">
+                </td>
+            </tr>
+            <!--センター発注権限レベル-->
+            <tr data-user-input="kbHatchuLevel">
+                <td><label id="kbHatchuLevel"></label></td>
+                <td>
+                    <input th:value="${busyoShosai.busyo.kbHatchuLevel}" id="kbHatchuLevel_input" class="SB">※事業本部区分＝就職・教育の場合のみ
+                </td>
+            </tr>
+            <!--親部署コード-->
+            <tr data-user-input="cdBushoOya">
+                <td rowspan="2"><label id="cdBushoOya"></label></td>
+                <td>
+                    <input th:value="${busyoShosai.busyo.cdBushoOya}" id="cdBushoOya_input" class="SB">
+                </td>
+            </tr>
+            <tr>
+                <td><a>組織図で一つ上位の部署。Fortune予算で利用</a></td>
+            </tr>
+            <!--部署区分-->
+            <tr data-user-input="kbBusho">
+                <td><label id="kbBusho"></label></td>
+                <td>
+                    <input th:value="${busyoShosai.busyo.kbBusho}" id="kbBusho_input" class="SB">Fortune予算で利用
+                </td>
+            </tr>
+            <!--上位部門区分-->
+            <tr data-user-input="kbBushoOya">
+                <td><label id="kbBushoOya"></label></td>
+                <td>
+                    <input th:value="${busyoShosai.busyo.kbBushoOya}" id="kbBushoOya_input" class="SB">Fortune予算で利用
+                </td>
+            </tr>
+            <!--部署表示順（就職管理）-->
+            <tr data-user-input="noHyojiBusho">
+                <td><label id="noHyojiBusho"></label></td>
+                <td>
+                    <input th:value="${busyoShosai.busyo.noHyojiBusho}" id="noHyojiBusho_input" class="SB">Fortune予算で利用
+                </td>
+            </tr>
+            <!--営業部署区分-->
+            <tr data-user-input="kbBushoEigyo">
+                <td rowspan="2"><label id="kbBushoEigyo"></label></td>
+                <td>
+                    <input th:value="${busyoShosai.busyo.kbBushoEigyo}" id="kbBushoEigyo_input" class="SB">
+                </td>
+            </tr>
+            <tr>
+                <td><a>※就職教育の集計部門で下位に営業部門を含めば”営業”</a></td>
+            </tr>
+            <!--事業部-->
+            <!--<tr data-user-input="nmBusho3">
+                <td><label id="nmBusho3"></label></td>
+                <td>
+                    <input th:value="${busyoShosai.busyo.nmBusho3}" id="nmBusho3_input" class="SB">
+                </td>
+            </tr>-->
+            <!--Fortune部署区分-->
+            <tr data-user-input="kbBushoMc5">
+                <td><label id="kbBushoMc5"></label></td>
+                <td>
+                    <input th:value="${busyoShosai.busyo.kbBushoMc5}" id="kbBushoMc5_input" class="SB">
+                </td>
+            </tr>
+            <!--作業部署初期値1-->
+            <tr data-user-input="cdSagyoBushoDef1">
+                <td><label id="cdSagyoBushoDef1"></label></td>
+                <td>
+                    <input th:value="${busyoShosai.busyo.cdSagyoBushoDef1}" id="cdSagyoBushoDef1_input" class="SB">
+                </td>
+            </tr>
+            <!--作業部署初期値2-->
+            <tr data-user-input="cdSagyoBushoDef2">
+                <td><label id="cdSagyoBushoDef2"></label></td>
+                <td>
+                    <input th:value="${busyoShosai.busyo.cdSagyoBushoDef2}" id="cdSagyoBushoDef2_input" class="SB">
+                </td>
+            </tr>
+            <!--作業部署初期値3-->
+            <tr data-user-input="cdSagyoBushoDef3">
+                <td><label id="cdSagyoBushoDef3"></label></td>
+                <td>
+                    <input th:value="${busyoShosai.busyo.cdSagyoBushoDef3}" id="cdSagyoBushoDef3_input" class="SB">
+                </td>
+            </tr>
+            <!--管轄統括部区分-->
+            <tr data-user-input="kbKankatsuTokatsu">
+                <td><label id="kbKankatsuTokatsu"></label></td>
+                <td>
+                    <input th:value="${busyoShosai.busyo.kbKankatsuTokatsu}" id="kbKankatsuTokatsu_input" class="SB">
+                </td>
+            </tr>
+            <!--有効フラグ-->
+            <tr data-user-input="fgDelete">
+                <td><label id="fgDelete"></label></td>
+                <td>
+                    <input th:value="${busyoShosai.busyo.fgDelete}" id="fgDelete_input" class="SB">
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -23,7 +23,7 @@
 <div>
     <!--検索条件-->
     <div th:fragment="resultFragment" id="dataSearch">
-        <form th:action="@{/search/clients?pageIndex=1}" th:object="${clientSearch}" method="post" id="async-form">
+        <form th:action="@{/search/clients?pageIndex=1}" th:object="${clientSearch}" method="get" id="async-form">
             <table>
                 <thead>
                 <tr>

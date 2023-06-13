@@ -1,8 +1,11 @@
 package com.we.estimate.Mapper;
 
 import com.we.estimate.Entity.Busyo;
+import com.we.estimate.Search.BusyoVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 @Mapper
 public interface BusyoMapper {
@@ -19,4 +22,8 @@ public interface BusyoMapper {
     int updateByPrimaryKey(Busyo record);
 
     Busyo selectByBusyoCode(String busyoCode);
+
+    List<Busyo> getBusyos(BusyoVo busyoVo);
+
+    List<Busyo> selectByIds(List cdBushoList);
 }

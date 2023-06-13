@@ -1,0 +1,72 @@
+/*検索条件*/
+#swSearchJyoken1::before{
+    content: "検索条件";
+}
+
+#swSearchJyoken::before{
+    content: "検索条件";
+}
+
+#selKaisha1::before{
+    content: "会社";
+}
+
+#selKaisha::before{
+    content: "会社";
+}
+
+#cdJigyoMc5::before{
+    content: "事業部";
+}
+
+#cdJigyoMc51::before{
+    content: "事業部";
+}
+
+#kbMc5Busho1::before{
+    content: "Fortune部署区分";
+}
+
+#kbMc5Busho::before{
+    content: "Fortune部署区分";
+}
+
+#cdBusho::before{
+    content: "部署コード";
+}
+
+#cdBusho1::before{
+    content: "部署コード";
+}
+
+#nmBusho1::before{
+    content: "部署名";
+}
+
+#nmBusho::before{
+    content: "部署名";
+}
+
+#kbBushoPage::before{
+    content: "部署区分";
+}
+
+#kbBusho::before{
+    content: "部署区分";
+}
+
+#fgDeletePage::before{
+    content: "有効フラグ";
+}
+
+#fgDelete::before{
+    content: "有効フラグ";
+}
+
+#btnClear::before{
+    content: "条件クリア";
+}
+
+#btnClear1::before{
+    content: "条件クリア";
+}
