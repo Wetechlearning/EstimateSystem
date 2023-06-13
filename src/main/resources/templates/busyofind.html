@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>部署一覧</title>
+    <!--　テキスト表示　-->
+    <link rel="stylesheet" type="text/css" th:href="@{../static/style/bushofind.css}" />
+    <!-- 様式 -->
+    <!--<link rel="stylesheet" type="text/css" href="@{../static/style/common.css}" />-->
+</head>
+
+<style>
+    body{
+        background: url("../static/img/back.jpg");
+    }
+    #popDiv{
+        display: none;
+        background-color: #c8c3ff;
+        z-index: 11;
+        width: 600px;
+        height: 600px;
+        position:fixed;
+        top:0;
+        right:0;
+        left:0;
+        bottom:0;
+        margin:auto;
+    }
+
+</style>
+
+<body>
+
+    <div id="dataSearch">
+        <form id="async-form1">
+            <table>
+                <thead>
+                <tr>
+                    <th id="swSearchJyoken1"></th>
+                </tr>
+                </thead>
+
+                <!--会社-->
+                <tr data-user-input="selKaisha1">
+                    <td class="input_label"><label id="selKaisha1"></label></td>
+                    <td>
+                        <select id="selKaisha_input1">
+                            <option value="1001">1001</option>
+                            <option value="1002">1002</option>
+                            <option value="1003">1003</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <!--事業部-->
+                <tr data-user-input="cdJigyoMc5">
+                    <td class="input_label"><label id="cdJigyoMc51"></label></td>
+                    <td>
+                        <select id="cdJigyoMc5_input1">
+                            <option value="1000000001">1000000001</option>
+                            <option value="1000000002">1000000002</option>
+                            <option value="1000000003">1000000003</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <!--Fortune部署区分-->
+                <tr data-user-input="kbMc5Busho">
+                    <td class="input_label"><label id="kbMc5Busho1"></label></td>
+                    <td>
+                        <select id="kbMc5Busho_input1">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                        <a>就職・教育以外の部署は『就職教育以外の部門』を選択</a>
+                    </td>
+                </tr>
+
+                <!--部署コード-->
+                <tr data-user-input="cdBusho">
+                    <td class="input_label"><label id="cdBusho1"></label></td>
+                    <td>
+                        <input id="cdBusho_input1" class="SB">
+                    </td>
+                </tr>
+
+                <!--部署名-->
+                <tr data-user-input="nmBusho">
+                    <td class="input_label"><label id="nmBusho1"></label></td>
+                    <td>
+                        <input id="nmBusho_input1" class="SB">
+                    </td>
+                </tr>
+
+                <!--部署区分-->
+                <tr data-user-input="kbBusho">
+                    <td class="input_label"><label id="kbBushoPage"></label></td>
+                    <td>
+                        <input type="radio" name="kbBusho1_input" value="0">起票部門
+                        <input type="radio" name="kbBusho1_input" value="1">集計部門
+                    </td>
+                </tr>
+
+                <!--有効フラグ-->
+                <tr data-user-input="fgDelete">
+                    <td class="input_label"><label id="fgDeletePage"></label></td>
+                    <td>
+                        <input type="radio" name="fgDelete1_input" value="0">有効
+                        <input type="radio" name="fgDelete1_input" value="1">無効
+                    </td>
+
+                    <td>
+                        <!--検索区分-->
+                        <label id="kbSearch1" for="kbSearch_input1"></label>
+                        <select id="kbSearch_input1" class="SG" data-format="00">
+                            <option value="検索">検索</option>
+                            <option value="CSV">CSV</option>
+                        </select>
+                        <!-- 検索実行ボタン -->
+                        <!--<button id="btnSearch_input" class="B" data-format="00">
+                            <label id="btnSearch"></label></button >-->
+                        <button type="button" value="実行" onclick="popDivShow()" id="btnJiko">実行</button>
+                        <!-- ダウンロードボタン -->
+                        <!-- <button id="btnDownload_input" class="B" data-format="00"><label id="btnDownload"></label></button> -->
+                        <!-- 条件クリアボタン -->
+                        <button id="btnClear_input1" class="B" data-format="00" type="button"><label id="btnClear1"></label></button>
+                    </td>
+                </tr>
+
+
+            </table>
+        </form>
+
+    </div>
+
+    <!--検索結果-->
+    <div id="resultPage">
+
+    </div>
+    <div th:fragment="resultFragmentPage" th:if="${not #lists.isEmpty(busyoPageInfo1)}">
+        <div>
+            <table style="text-align: center">
+
+                <thead>
+
+                <tr>
+                    <th id="searchResultsPage"></th>
+                </tr>
+                <tr>
+                    <td rowspan="2" colspan="2">
+                        <label></label>
+                    </td>
+
+                    <td rowspan="2" colspan="4">
+                        <label>部署</label>
+                    </td>
+
+                    <td rowspan="2" colspan="5">
+                        <label>Fortune部署区分</label>
+                    </td>
+
+                    <td rowspan="2" colspan="4">
+                        <label>作業部署初期値1</label>
+                    </td>
+
+                    <td rowspan="2" colspan="4">
+                        <label>作業部署初期値2</label>
+                    </td>
+
+                    <td rowspan="2" colspan="4">
+                        <label>作業部署初期値3</label>
+                    </td>
+
+                    <td rowspan="2" colspan="2">
+                        <label>無効</label>
+                    </td>
+                </tr>
+
+
+                </thead>
+                <div>
+                    <tbody th:each="busho:${busyoPageInfo1.list}">
+
+                    <tr>
+                        <td rowspan="2" colspan="2">
+                            <button th:onclick="bushoFind([[${busho.getCdBusho()}]])" class="B" type="button" th:value="${busho.getCdBusho()}" th:name="${busho.getCdBusho()}"><label>詳細</label></button>
+                        </td>
+
+                        <td colspan="4" th:text="${busho.getCdBusho()}" style="text-align: left"></td>
+
+                        <td colspan="5" rowspan="2" th:text="${busho.getKbBushoMc5()}" style="text-align: left"></td>
+
+                        <td colspan="4" rowspan="2" th:text="${busho.getCdSagyoBushoDef1()}" style="text-align: left"></td>
+                        <td colspan="4" rowspan="2" th:text="${busho.getCdSagyoBushoDef1()}" style="text-align: left"></td>
+                        <td colspan="4" rowspan="2" th:text="${busho.getCdSagyoBushoDef1()}" style="text-align: left"></td>
+
+                        <td>
+                            <div th:if="${busho.getFgDelete() eq 1}">
+                                <input type="checkbox" checked>
+                            </div>
+                            <div th:if="${busho.getFgDelete() eq 0}">
+                                <input type="checkbox" >
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td colspan="2" th:text="${busho.getNmBusho()}" style="text-align: left"></td>
+                    </tr>
+                    </tbody>
+                </div>
+            </table>
+        </div>
+
+        <div>
+                <div style="float: left">
+                    当前第<span th:text="${busyoPageInfo1.pageNum}"></span>页
+                    总记录数<span th:text="${busyoPageInfo1.total}"></span>
+                </div>
+                <div style="float: right">
+                    <a th:text="首页" th:if="${busyoPageInfo1.pageNum>1}" th:href="@{${path}}"></a>
+                    <a th:text="上一页" th:if="${busyoPageInfo1.pageNum>1}" th:href="@{${path}+${busyoPageInfo1.pageNum-1}}"></a>
+                    <a th:href="@{${path}+${i}}" th:each="i:${#numbers.sequence(1,busyoPageInfo1.pages)}" th:text="${i}"
+
+                       th:class="${busyoPageInfo1.pageNum==i}? 'page active':'page'"></a>
+                    <a th:text="下一页" th:if="${busyoPageInfo1.pageNum<busyoPageInfo1.pages}" th:href="@{${path}+${busyoPageInfo1.pageNum+1}}"></a>
+                    <a th:text="尾页" th:if="${busyoPageInfo1.pageNum<busyoPageInfo1.pages}" th:href="@{${path}+${busyoPageInfo1.pages}}"></a>
+                </div>
+            </div>
+    </div>
+
+    <!--ポップアップ-->
+    <div id="popDiv">
+        <div>
+            <span id="close">&times;</span>
+        </div>
+
+        <div>
+            <form id="async-form"><!-- th:action="@{/search/busyos?pageIndex=1}" method="post"   th:object="${busyoSearch}" -->
+                <table>
+                    <thead>
+                    <tr>
+                        <th id="swSearchJyoken"></th>
+                    </tr>
+                    </thead>
+
+                    <!--会社-->
+                    <tr data-user-input="selKaisha">
+                        <td class="input_label"><label id="selKaisha"></label></td>
+                        <td>
+                            <select id="selKaisha_input"><!-- th:field="*{cdKaisha}"-->
+                                <option value="1001">1001</option>
+                                <option value="1002">1002</option>
+                                <option value="1003">1003</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <!--事業部-->
+                    <tr data-user-input="cdJigyoMc5">
+                        <td class="input_label"><label id="cdJigyoMc5"></label></td>
+                        <td>
+                            <select id="cdJigyoMc5_input"><!--th:field="*{cdJigyoMc5}"-->
+                                <option value="1000000001">1000000001</option>
+                                <option value="1000000002">1000000002</option>
+                                <option value="1000000003">1000000003</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <!--Fortune部署区分-->
+                    <tr data-user-input="kbMc5Busho">
+                        <td class="input_label"><label id="kbMc5Busho"></label></td>
+                        <td>
+                            <select id="kbMc5Busho_input"><!-- th:field="*{kbBushoMc5}"-->
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                            <a>就職・教育以外の部署は『就職教育以外の部門』を選択</a>
+                        </td>
+                    </tr>
+
+                    <!--部署コード-->
+                    <tr data-user-input="cdBusho">
+                        <td class="input_label"><label id="cdBusho"></label></td>
+                        <td>
+                            <input id="cdBusho_input" class="SB"><!-- th:field="*{cdBusho}"-->
+                        </td>
+                    </tr>
+
+                    <!--部署名-->
+                    <tr data-user-input="nmBusho">
+                        <td class="input_label"><label id="nmBusho"></label></td>
+                        <td>
+                            <input id="nmBusho_input" class="SB"><!--th:field="*{nmBusho}" -->
+                        </td>
+                    </tr>
+
+                    <!--部署区分-->
+                    <tr data-user-input="kbBusho">
+                        <td class="input_label"><label id="kbBusho"></label></td>
+                        <td>
+                            <input type="radio" name="kbBusho_input" value="0">起票部門<!-- th:field="*{kbBusho}"-->
+                            <input type="radio" name="kbBusho_input" value="1">集計部門<!-- th:field="*{kbBusho}"-->
+                        </td>
+                    </tr>
+
+                    <!--有効フラグ-->
+                    <tr data-user-input="fgDelete">
+                        <td class="input_label"><label id="fgDelete"></label></td>
+                        <td>
+                            <input type="radio" name="fgDelete_input" value="0">有効<!-- th:field="*{fgDelete}"-->
+                            <input type="radio" name="fgDelete_input" value="1">無効<!-- th:field="*{fgDelete}"-->
+                        </td>
+
+                        <td>
+
+                            <!-- 検索実行ボタン -->
+                            <!--<button id="btnSearch_input" class="B" data-format="00">
+                                <label id="btnSearch"></label></button >-->
+                            <!--<input type="submit" value="検索" id="btnsubmit">-->
+                            <button id="btnsubmit" type="button">検索</button>
+                            <!--<button th:onclick="submitData([[${busyoSearch}]])"></button>
+                            <script th:inline="javascript" type="text/javascript">
+                                function submitData(object){
+                                    $.ajax({
+                                        url:"busyos",
+                                        type:"POST",
+                                        data: [[${busyoSearch}]],
+                                        success : function(data) {
+                                            $(".resultFragment").html(data);
+                                        }
+                                    })
+                                }
+
+                            </script>-->
+                            <!-- ダウンロードボタン -->
+                            <!-- <button id="btnDownload_input" class="B" data-format="00"><label id="btnDownload"></label></button> -->
+                            <!-- 条件クリアボタン -->
+                            <button id="btnClear_input" class="B" data-format="00" type="button"><label id="btnClear"></label></button>
+                        </td>
+                    </tr>
+
+
+                </table>
+            </form>
+        </div>
+
+        <!--検索結果-->
+        <div id="dataShow1">
+
+        </div>
+        <div th:if="${not #lists.isEmpty(busyoList1)}" th:fragment="resultFragment" class="resultFragment" id="dataShow"><!---->
+
+            <table id="busho_data_container" style="text-align: center">
+
+                <thead>
+                <tr>
+                    <td colspan="5">
+                        <button type="button" id="btnAllChoose">全て選択</button>
+                    </td>
+                    <script>
+                        $("#btnAllChoose").on("click",function() {
+                            let BushoList = document.getElementsByName("bushoChoose");
+                            for (let i = 0;i<BushoList.length; i++){
+                                BushoList[i].checked="checked";
+                            }
+                        })
+                    </script>
+                    <td colspan="5">
+                        <button type="button" id="btnAllCancel">全て解除</button>
+                    </td>
+                    <script>
+                        $("#btnAllCancel").on("click",function() {
+                            let BushoList = document.getElementsByName("bushoChoose");
+                            for (let i = 0;i<BushoList.length; i++){
+                                BushoList[i].checked="";
+                            }
+                        })
+                    </script>
+
+                    <td align="right" colspan="4">
+                        <button type="button" id="btnKetei">決定</button>
+                    </td>
+                    <script>
+                        $("#btnKetei").on("click",function() {
+                            document.getElementById("popDiv").style.display = "none";
+                            var cdBushoList = [];
+                            let BushoList = document.getElementsByName("bushoChoose");
+                            for (let i = 0;i<BushoList.length; i++){
+                                if (BushoList[i].checked){
+
+                                    cdBushoList.push(BushoList[i].value);
+                                }
+
+                            }
+                            console.log(cdBushoList)
+
+                            let params = {"busyo":null,
+                                "cdBushoList":cdBushoList};
+
+                            $.ajax({
+                                url :"/search/busyos",
+                                type:"POST",
+                                contentType:"application/json;charset=UTF-8",
+                                async:false,
+                                data: JSON.stringify(params),
+                                success:function (data){
+                                    $("#resultPage").html(data)
+                                }
+                            })
+                        })
+                    </script>
+                </tr>
+
+                    <tr>
+                        <th id="searchResults">検索結果</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" colspan="2">
+                            <label></label>
+                        </td>
+
+                        <td rowspan="2" colspan="4">
+                            <label>部署</label>
+                        </td>
+
+                        <td rowspan="2" colspan="5">
+                            <label>Fortune部署区分</label>
+                        </td>
+
+                        <td rowspan="2" colspan="4">
+                            <label>作業部署初期値1</label>
+                        </td>
+
+                        <td rowspan="2" colspan="4">
+                            <label>作業部署初期値2</label>
+                        </td>
+
+                        <td rowspan="2" colspan="4">
+                            <label>作業部署初期値3</label>
+                        </td>
+
+                        <td rowspan="2" colspan="2">
+                            <label>無効</label>
+                        </td>
+                    </tr>
+
+
+                </thead>
+                <div>
+                <tbody th:each="busho:${busyoList1}">
+
+                <tr>
+                    <td rowspan="2" colspan="2">
+                        <input type="checkbox" th:value="${busho.cdBusho}" name="bushoChoose">
+                        <button id="btnSelect_input" class="B"><label id="btnSelect">選択</label></button>
+                    </td>
+
+                    <td colspan="4" th:text="${busho.getCdBusho()}" style="text-align: left"></td>
+
+                    <td colspan="5" rowspan="2" th:text="${busho.getKbBushoMc5()}" style="text-align: left"></td>
+
+                    <td colspan="4" rowspan="2" th:text="${busho.getCdSagyoBushoDef1()}" style="text-align: left"></td>
+                    <td colspan="4" rowspan="2" th:text="${busho.getCdSagyoBushoDef1()}" style="text-align: left"></td>
+                    <td colspan="4" rowspan="2" th:text="${busho.getCdSagyoBushoDef1()}" style="text-align: left"></td>
+
+                    <td>
+                        <div th:if="${busho.getFgDelete() eq 1}">
+                            <input type="checkbox" checked>
+                        </div>
+                        <div th:if="${busho.getFgDelete() eq 0}">
+                            <input type="checkbox" >
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="2" th:text="${busho.getNmBusho()}" style="text-align: left"></td>
+                </tr>
+                </tbody>
+                </div>
+            </table>
+
+            <!--<div>
+                <div style="float: left">
+                    当前第<span th:text="${page.pageNum}"></span>页
+                    总记录数<span th:text="${page.total}"></span>
+                </div>
+                <div style="float: right">
+                    <a th:text="首页" th:if="${page.pageNum>1}" th:href="@{${path}}"></a>
+                    <a th:text="上一页" th:if="${page.pageNum>1}" th:href="@{${path}+${page.pageNum-1}}"></a>
+                    <a th:href="@{${path}+${i}}" th:each="i:${#numbers.sequence(1,page.pages)}" th:text="${i}"
+
+                       th:class="${page.pageNum==i}? 'page active':'page'"></a>
+                    <a th:text="下一页" th:if="${page.pageNum<page.pages}" th:href="@{${path}+${page.pageNum+1}}"></a>
+                    <a th:text="尾页" th:if="${page.pageNum<page.pages}" th:href="@{${path}+${page.pages}}"></a>
+                </div>
+            </div>-->
+
+        </div>
+    </div>
+</body>
+<script th:inline="javascript" th:src="@{../static/js/Jquery.js}"></script>
+<script th:inline="javascript" th:src="@{../static/js/busyofind.js}"></script>
+
+</html>

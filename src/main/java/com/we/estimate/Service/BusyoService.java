@@ -1,6 +1,11 @@
 package com.we.estimate.Service;
 
+import com.github.pagehelper.PageInfo;
 import com.we.estimate.Entity.Busyo;
+import com.we.estimate.Search.BusyoVo;
+
+import java.util.List;
+
 public interface BusyoService{
 
 
@@ -17,4 +22,11 @@ public interface BusyoService{
     int updateByPrimaryKey(Busyo record);
 
     Busyo selectByBusyoCode(String busyoCode);
+
+    PageInfo<Busyo> selectByConditions(Integer pageIndex, Integer pageSize, BusyoVo busyoVo);
+
+    List<Busyo> selectByConditionsList(BusyoVo busyoVo);
+
+    PageInfo<Busyo> selectByIds(Integer pageIndex, Integer pageSize, List cdBushoList);
+
 }

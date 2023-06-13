@@ -53,7 +53,7 @@ public class ClientController {
 
 
     //クライアント検索
-    @RequestMapping("/search/clients")
+    @GetMapping("/search/clients")
     public String findClients(Model model,@ModelAttribute("clientSearch")Client client,@RequestParam(value = "pageIndex", required = false, defaultValue = "1") Integer pageIndex,
                                           @RequestParam(value = "pageSize", required = false, defaultValue = "2") Integer pageSize,
                                           @RequestParam(value = "nmClient",required = false)String nmClientPage,
@@ -61,7 +61,8 @@ public class ClientController {
         System.out.println(pageIndex);
         System.out.println(pageSize);
         System.out.println(client);
-        client.setNmClient(String.format("%-60s",client.getNmClient()));
+
+
 
 
         /*Map<String,Object> paramMap = new HashMap<>();
@@ -69,23 +70,22 @@ public class ClientController {
         paramMap.put("limit",pageSize);
         paramMap.put("client",client);*/
         ClientVo clientVo = new ClientVo();
-        if (client!=null){
-            clientVo.setClient(client);
-            model.addAttribute("clientSearch",client);
-        }else {
-            client.setNmClient(nmClientPage);
-            client.setFgJiko(fgJikoPage);
-            clientVo.setClient(client);
-            model.addAttribute("clientSearch",client);
-        }
+        if (client.getNmClient()!=null){
+            if (client.getNmClient()!=""){
+                client.setNmClient(String.format("%-60s",client.getNmClient()));
+            }
 
 
-        PageInfo<Client> clientPageInfo = clientService.selectByConditions(pageIndex, pageSize, clientVo);
+
+            clientVo.setClient(client);
+            model.addAttribute("clientSearch",client);
+
+            PageInfo<Client> clientPageInfo = clientService.selectByConditions(pageIndex, pageSize, clientVo);
 
         /*ClientSearchResult clientSearchResult = new ClientSearchResult();
         clientSearchResult.setClients(clients);
         clientSearchResult.setCount(clients.size());*/
-        //System.out.println(clientPageInfo);
+            //System.out.println(clientPageInfo);
         /*if (client.getCdEigyoBusho()!=null){
             System.out.println(client.getCdEigyoBusho());
             Busyo busyo = busyoService.selectByBusyoCode(client.getCdEigyoBusho());
@@ -95,13 +95,23 @@ public class ClientController {
 
 
 
-        System.out.println(clientPageInfo.getList());
-        model.addAttribute("clientList",clientPageInfo.getList());
-        model.addAttribute("page",clientPageInfo);
-        model.addAttribute("path","/search/clients?pageIndex=");
+            System.out.println(clientPageInfo.getList());
+            model.addAttribute("clientList",clientPageInfo.getList());
+            model.addAttribute("page",clientPageInfo);
+            model.addAttribute("path","/search/clients?pageIndex=");
 
 
-        return "clientfind";
+            return "clientfind";
+        }else {
+            /*client.setNmClient(nmClientPage);
+            client.setFgJiko(fgJikoPage);
+            clientVo.setClient(client);
+            model.addAttribute("clientSearch",client);*/
+            return "clientfind";
+        }
+
+
+
 
     }
 

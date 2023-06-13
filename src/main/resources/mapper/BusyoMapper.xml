@@ -627,4 +627,32 @@
     from BUSYO
     where CD_BUSHO = #{busyoCode,jdbcType=VARCHAR}
     </select>
+
+  <select id="getBusyos" parameterType="com.we.estimate.Search.BusyoVo" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM
+    BUSYO
+    <where>
+      <if test="busyo.cdKaisha != null and busyo.cdKaisha != ''">AND CD_KAISHA = #{busyo.cdKaisha}</if>
+      <if test="busyo.nmBusho != null and busyo.nmBusho != ''">AND NM_BUSHO = #{busyo.nmBusho}</if>
+      <if test="busyo.cdBusho != null and busyo.cdBusho != ''">AND CD_BUSHO = #{busyo.cdBusho}</if>
+      <if test="busyo.cdJigyoMc5 != null and busyo.cdJigyoMc5 != ''">AND CD_JIGYO_MC5 = #{busyo.cdJigyoMc5}</if>
+      <if test="busyo.kbBushoMc5 != null and busyo.kbBushoMc5 != ''">AND KB_BUSHO_MC5 = #{busyo.kbBushoMc5}</if>
+      <if test="busyo.kbBusho != null and busyo.kbBusho != ''">AND KB_BUSHO = #{busyo.kbBusho}</if>
+      <if test="busyo.fgDelete != null and busyo.fgDelete != ''">AND FG_DELETE = #{busyo.fgDelete}</if>
+    </where>
+    </select>
+
+  <select id="selectByIds" parameterType="java.util.List" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM
+    BUSYO
+    WHERE
+    CD_BUSHO IN 
+    <foreach collection="list" item="id" index="index" open="(" close=")" separator=",">
+      #{id,jdbcType=VARCHAR}
+    </foreach>
+    </select>
 </mapper>

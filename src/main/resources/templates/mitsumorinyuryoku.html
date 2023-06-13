@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>見積入力</title>
+    <link rel="stylesheet" type="text/css" th:href="@{../static/style/mitsumorinyuryoku.css}" />
+</head>
+<style>
+    body{
+        background: url("../static/img/back.jpg");
+    }
+
+</style>
+<body>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>基本情報</th>
+        </tr>
+        </thead>
+        <form th:action="@{/mitsumori/nyuryoku}" th:object="${mitsumoriSearch}" method="get" id="async-form">
+        <!--見積No-->
+        <tr data-user-input="noMitsumori">
+            <td class=""><label id="noMitsumori"></label></td>
+            <td>
+                <input id="noMitsumori_input" class="SB" th:field="*{noMitsumori}">
+            </td>
+        </tr>
+        <!--クライアントコード有/無-->
+        <tr data-user-input="fgClientUmu">
+            <td class=""><label id="fgClientUmu"></label></td>
+            <td>
+                <input name="fgClientUmu_input" class="SB" type="radio" value="0" th:field="*{fgClientUmu}">コード有
+                <input name="fgClientUmu_input" class="SB" type="radio" value="1" th:field="*{fgClientUmu}">コード無
+            </td>
+        </tr>
+        <!--媒体年度-->
+        <tr data-user-input="yyBaitai">
+            <td class=""><label id="yyBaitai"></label></td>
+            <td>
+                <select id="yyBaitai_input" class="SB" th:field="*{yyBaitai}">
+                    <option value="2019">2019年度(47期)</option>
+                </select>
+            </td>
+        </tr>
+        <!--クライアント-->
+        <tr data-user-input="cdClient">
+            <td class=""><label id="cdClient"></label></td>
+            <td>
+                <input id="cdClient_input" class="SB" th:field="*{cdClient}">
+                <button type="button" id="btnSearchClient">検索</button>
+                <input id="nmClientHyoji" class="SB" th:field="*{nmClient}">
+            </td>
+        </tr>
+        <!--クライアント名（印字用）-->
+        <tr data-user-input="nmClient">
+            <td class=""><label id="nmClient"></label></td>
+            <td>
+                <input id="nmClient_input" class="SB" >
+            </td>
+        </tr>
+        <!--見積グループ名-->
+        <tr data-user-input="nmMitsumoriGroup">
+            <td class="" rowspan="2"><label id="nmMitsumoriGroup"></label></td>
+            <td>
+                    <select id="nmMitsumoriGroup_input" class="SB" th:field="*{noMitsumoriGrp}">
+                        <option value="111">111</option>
+                    </select>
+                    <button type="button" id="btnSearchMitsumoriGroup">新規登録</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a>※見積グループーつにつき、昇格できる見積は一つだけです。</a>
+            </td>
+        </tr>
+        <!--グループ昇格-->
+        <tr data-user-input="nmGroupShokaku">
+            <td class=""><label id="nmGroupShokaku"></label></td>
+            <td>
+                <input id="nmGroupShokaku_input" class="SB" th:field="*{fgMitsumoriShokaku}">
+            </td>
+        </tr>
+        <!--見積名-->
+        <tr data-user-input="nmMitsumori">
+            <td class=""><label id="nmMitsumori"></label></td>
+            <td>
+                <input id="nmMitsumori_input" class="SB" th:field="*{nmMitsumori}">
+                <button type="button" id="btnMitsumoriGroupHanei">見積グループ名を反映</button>
+            </td>
+        </tr>
+        <!--見積フロー-->
+        <tr data-user-input="kbMitsumoriFlw">
+            <td class=""><label id="kbMitsumoriFlw"></label></td>
+            <td>
+                <select id="kbMitsumoriFlw_input" class="SB" th:field="*{kbMitsumoriFlw}">
+                    <option value=""></option>
+                    <option value=""></option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <!--営業担当部署-->
+            <td class=""><label id="EigyoBusho"></label></td>
+            <td>
+                <input id="cdEigyoBusho_input" class="SB" th:field="*{cdEigyoBusho}">
+                <input id="nmEigyoBusho_input" class="SB" >
+            </td>
+            <!--営業担当者-->
+            <td class=""><label id="EigyoTanto"></label></td>
+            <td>
+                <input id="cdEigyoTanto_input" class="SB" th:field="*{cdEigyoTanto}">
+                <input id="nmEigyoTanto_input" class="SB" >
+            </td>
+        </tr>
+
+        <tr>
+            <!--作業依頼先-->
+            <td class=""><label id="Iraisaki"></label></td>
+            <td>
+                <input id="cdIraisaki_input" class="SB">
+                <input id="nmIraisaki_input" class="SB">
+            </td>
+            <!--作業担当者-->
+            <td class=""><label id="SagyoTanto"></label></td>
+            <td>
+                <input id="cdSagyoTanto_input" class="SB" th:field="*{cdSagyoTanto}">
+                <input id="nmSagyoTanto_input" class="SB">
+            </td>
+        </tr>
+
+        <tr>
+            <!--申請時作業依頼先-->
+            <td class=""><label id="shinseiIraisaki"></label></td>
+            <td>
+                <input id="cdIraisakiShinsei_input" class="SB" >
+                <input id="nmIraisakiShinsei_input" class="SB" >
+            </td>
+            <!--見積有効期限-->
+            <td class=""><label id="dtMitsumoriEnd"></label></td>
+            <td>
+                <input id="dtMitsumoriEnd_input" class="SB" th:field="*{dtMitsumoriEnd}">
+            </td>
+        </tr>
+
+        <tr>
+            <!--作成日時-->
+            <td class=""><label id="tdSakuseiNichiji"></label></td>
+            <td>
+                <input type="date" id="tdSakuseiNichiji_input" class="SB" th:field="*{tdSakusei}">
+            </td>
+            <!--最終更新日時-->
+            <td class=""><label id="tdKoshinNichiji"></label></td>
+            <td>
+                <input type="date" id="tdKoshinNichiji_input" class="SB" th:field="*{tdSaishuKoshin}">
+            </td>
+        </tr>
+
+        <tr>
+            <!--承認ステータス-->
+            <td class=""><label id="nmWfStatus"></label></td>
+            <td>
+                <input id="nmWfStatus_input" class="SB" th:field="*{noWfSt}">
+            </td>
+            <!--見積昇格-->
+            <td class=""><label id="nmMitsumoriShokaku"></label></td>
+            <td>
+                <input id="nmMitsumoriShokaku_input" class="SB" th:field="*{fgMitsumoriShokaku}">
+            </td>
+        </tr>
+
+        <tr>
+            <!--見積書のフォーマット-->
+            <td class=""><label id="kbMitsumoriFormat"></label></td>
+            <td>
+                <select id="kbMitsumoriFormat_input" class="SB" th:field="*{kbMitsumoriFrmShingaku}">
+                    <option value="1">1</option>
+                </select>
+            </td>
+            <!--見積明細書出力制御-->
+            <td class=""><label id="fgMeisaiPrint"></label></td>
+            <td>
+                <input id="fgMeisaiPrint_input" class="SB" type="checkbox" value="0" th:field="*{fgMeisaiPrt}">明細書も印刷する
+            </td>
+        </tr>
+
+        <tr>
+            <!--見積表示フラグ名-->
+            <td class=""><label id="nmFgMitsumoriHyoji"></label></td>
+            <td>
+                <input id="nmFgMitsumoriHyoji_input" placeholder="表示" th:field="*{fgHyoji}">
+            </td>
+        </tr>
+
+        <tr>
+            <td><label id="ynTeikaGokei"></label></td>
+            <td>
+                <input id="ynTeikaGokei-input" th:field="*{ynTeikaSum}">円
+            </td>
+            <td><label id="ynTeianGokei"></label></td>
+            <td>
+                <input id="ynTeianGokei-input" th:field="*{ynTeianSum}">円
+            </td>
+            <td><label id="ynNebikiGokei"></label></td>
+            <td>
+                <input id="ynNebikiGokei-input" th:field="*{ynNebikiSum}">円
+            </td>
+        </tr>
+
+        <tr>
+            <td><label>値引タイトル</label></td>
+            <td><input id="nmNebikiTitle" th:field="*{nmNebikiTitle}"></td>
+        </tr>
+
+        <tr>
+            <td><label>提案価格タイトル</label></td>
+            <td><input id="nmTeianTitle" th:field="*{nmNebikiTitle}"></td>
+        </tr>
+
+        <tr>
+            <td rowspan="12"><label>備考</label></td>
+            <td><input id="nmBiko1" th:field="*{nmBiko1}"></td>
+        </tr>
+        <tr>
+            <td><input id="nmBiko2" th:field="*{nmBiko2}"></td>
+        </tr>
+        <tr>
+            <td><input id="nmBiko3" th:field="*{nmBiko3}"></td>
+        </tr>
+        <tr>
+            <td><input id="nmBiko4" th:field="*{nmBiko4}"></td>
+        </tr>
+        <tr>
+            <td><input id="nmBiko5" th:field="*{nmBiko5}"></td>
+        </tr>
+        <tr>
+            <td><input id="nmBiko6" th:field="*{nmBiko6}"></td>
+        </tr>
+        <tr>
+            <td><input id="nmBiko7" th:field="*{nmBiko7}"></td>
+        </tr>
+        <tr>
+            <td><input id="nmBiko8" th:field="*{nmBiko8}"></td>
+        </tr>
+        <tr>
+            <td><input id="nmBiko9" th:field="*{nmBiko9}"></td>
+        </tr>
+        <tr>
+            <td><input id="nmBiko10" th:field="*{nmBiko10}"></td>
+        </tr>
+        <tr>
+            <td><input id="nmBiko11" th:field="*{nmBiko11}"></td>
+        </tr>
+        <tr>
+            <td><input id="nmBiko12" th:field="*{nmBiko12}"></td>
+        </tr>
+        <tr>
+            <td rowspan="12"><label>申し送り事項</label></td>
+            <td rowspan="12"><textarea rows="12" th:field="*{nmMoshiokuri}"></textarea></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="保存">
+            </td>
+        </tr>
+
+        </form>
+
+
+    </table>
+</div>
+
+</body>
+</html>

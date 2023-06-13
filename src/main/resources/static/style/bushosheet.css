@@ -1,0 +1,87 @@
+#nmKaisha::before{
+    content: "会社";
+}
+
+#cdBusho::before{
+    content: "部署コード";
+}
+
+#cdOldBusho::before{
+    content: "旧部署コード";
+}
+
+#nmBusho::before{
+    content: "部署名1";
+}
+
+#nmBusho2::before{
+    content: "部署名2";
+}
+
+#nmBusho3::before{
+    content: "部署名3";
+}
+
+#address::before{
+    content: "所在地";
+}
+
+#noTel::before{
+    content: "電話（TEL）";
+}
+
+#kbJigyoHombu::before{
+    content: "事業本部区分";
+}
+
+#kbJigyo::before{
+    content: "事業区分";
+}
+
+#kbHatchuLevel::before{
+    content: "センター発注権限レベル";
+}
+
+#cdBushoOya::before{
+    content: "親部署コード";
+}
+
+#kbBusho::before{
+    content: "部署区分";
+}
+
+#kbBushoOya::before{
+    content: "上位部門区分";
+}
+
+#noHyojiBusho::before{
+    content: "部署表示順（就職管理）";
+}
+
+#kbBushoEigyo::before{
+    content: "営業部署区分";
+}
+
+#kbBushoMc5::before{
+    content: "Fortune部署区分";
+}
+
+#cdSagyoBushoDef1::before{
+    content: "作業部署初期値1";
+}
+
+#cdSagyoBushoDef2::before{
+    content: "作業部署初期値2";
+}
+
+#cdSagyoBushoDef3::before{
+    content: "作業部署初期値3";
+}
+
+#kbKankatsuTokatsu::before{
+    content: "管轄統括部区分";
+}
+
+#fgDelete::before{
+    content: "有効フラグ";
+}

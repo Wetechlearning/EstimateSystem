@@ -1,0 +1,99 @@
+#noMitsumori::before{
+    content: "見積No";
+}
+
+#fgClientUmu::before{
+    content: "クライアントコード有/無";
+}
+
+#yyBaitai::before{
+    content: "媒体年度";
+}
+
+#cdClient::before{
+    content: "クライアント";
+}
+
+#nmClient::before{
+    content: "クライアント名（印字用）";
+}
+
+#nmMitsumoriGroup::before{
+    content: "見積グループ名";
+}
+
+#nmGroupShokaku::before{
+    content: "グループ昇格";
+}
+
+#nmMitsumori::before{
+    content: "見積名";
+}
+
+#kbMitsumoriFlw::before{
+    content: "見積フロー";
+}
+
+#EigyoBusho::before{
+    content: "営業担当部署";
+}
+
+#EigyoTanto::before{
+    content: "営業担当者";
+}
+
+#Iraisaki::before{
+    content: "作業依頼先";
+}
+
+#SagyoTanto::before{
+    content: "作業担当者";
+}
+
+#shinseiIraisaki::before{
+    content: "申請時作業依頼先";
+}
+
+#dtMitsumoriEnd::before{
+    content: "見積有効期限";
+}
+
+#tdSakuseiNichiji::before{
+    content: "作成日時";
+}
+
+#tdKoshinNichiji::before{
+    content: "最終更新日時";
+}
+
+#nmWfStatus::before{
+    content: "承認ステータス";
+}
+
+#nmMitsumoriShokaku::before{
+    content: "見積昇格";
+}
+
+#kbMitsumoriFormat::before{
+    content: "見積書のフォーマット";
+}
+
+#fgMeisaiPrint::before{
+    content: "見積明細書出力制御";
+}
+
+#nmFgMitsumoriHyoji::before{
+    content: "見積表示フラグ名";
+}
+
+#ynTeikaGokei::before{
+    content: "定価合計";
+}
+
+#ynTeianGokei::before{
+    content: "提案価格合計";
+}
+
+#ynNebikiGokei::before{
+    content: "値引合計";
+}
