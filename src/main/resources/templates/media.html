@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>媒体一覧</title>
+  <script type="text/javascript"></script>
+
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+  </style>
+
+</head>
+<body>
+
+<h1>媒体一覧</h1>
+
+
+<button type="button" class="button" >Menu</button>
+<button type="button" class="button" >Logout</button>
+
+
+<table>
+  <tr>
+    <th>検索条件</th>
+    <th></th>
+  </tr>
+  <tr>
+    <td>媒体年度</td>
+    <td>
+      <select name="yyBaitai" id="yyBaitai">
+        <option value="2022年度">2022年度</option>
+        <option value="2022年度">2023年度</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>事業区分</td>
+    <td>
+      <select  name="kbJigyo" id="kbJigyo">
+        <option value="就職">就職</option>
+        <option value="無職">無職</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>区分</td>
+    <td>
+      <select name="kbn" id="kbn">
+        <option value="选项1">选项1</option>
+        <option value="选项2">选项2</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>媒体コード</td>
+    <td>
+      <input type="text"  id="cdBaitai_2" name="cdBaitai_2" >
+    </td>
+
+  </tr>
+  <tr>
+    <td>媒体名</td>
+    <td>
+      <input type="text"  id="nmBaitai" name="nmBaitai" >
+    </td>
+
+  </tr>
+  <tr>
+    <td>サービス完了区分</td>
+    <td>
+      <select name="kbServiceEnd" id="kbServiceEnd">
+        <option value="选项1">选项1</option>
+        <option value="选项2">选项2</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>媒体分類</td>
+    <td>
+      <select name="kbBaitaiBunrui" id="kbBaitaiBunrui">
+        <option value="选项1">选项1</option>
+        <option value="选项2">选项2</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>有効フラグ</td>
+    <td>
+      <input type="radio" name="fgYukou"   id="fgYukou"  value="有効"> 有效
+      <input type="radio" name="fgMukou"   id="fgMukou"  value="无効"> 无效
+    </td>
+  </tr>
+</table>
+<button>检索</button>
+<button onclick="clearTable()">条件クリア</button>
+
+
+</body>
+</html>
